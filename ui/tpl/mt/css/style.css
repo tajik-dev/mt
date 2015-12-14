@@ -1,0 +1,85 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+/* nav styling */
+.navbar-blue {
+    background-color: #DC3300;
+    border-color: #ce2c00;
+}
+.navbar-blue .navbar-brand {
+    color: #EEE;
+}
+.navbar-blue .navbar-brand:hover,
+.navbar-blue .navbar-brand:focus {
+    color: #FFF;
+}
+.navbar-blue .navbar-nav > li > a {
+    color: #EEE;
+}
+.navbar-blue .navbar-nav > li > a:hover,
+.navbar-blue .navbar-nav > li > a:focus {
+    color: #EEE;
+    background-color:#ce2c00;
+}
+.navbar-blue .navbar-nav > .active > a, 
+.navbar-blue .navbar-nav > .active > a:hover, 
+.navbar-blue .navbar-nav > .active > a:focus {
+    color: #EEE;
+    background-color: #c42700;
+}
+.navbar-blue .navbar-nav > .active2 > a {
+    border-right:1px solid #c42700;
+}
+.navbar-blue .navbar-nav > .open > a, 
+.navbar-blue .navbar-nav > .open > a:hover, 
+.navbar-blue .navbar-nav > .open > a:focus {
+    color: #EEE;
+    background-color: #c42700;
+}
+.navbar-blue .navbar-nav > .dropdown > a .caret {
+    border-top-color: #EEE;
+    border-bottom-color: #EEE;
+}
+.navbar-blue .navbar-nav > .dropdown > a:hover .caret,
+.navbar-blue .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #EEE;
+    border-bottom-color: #EEE;
+}
+.navbar-blue .navbar-nav > .open > a .caret, 
+.navbar-blue .navbar-nav > .open > a:hover .caret, 
+.navbar-blue .navbar-nav > .open > a:focus .caret {
+    border-top-color: #c42700;
+    border-bottom-color: #c42700;
+}
+.navbar-blue .navbar-toggle {
+    border-color: #c42700;
+}
+.navbar-blue .navbar-toggle:hover,
+.navbar-blue .navbar-toggle:focus {
+    background-color: #c42700;
+}
+.navbar-blue .navbar-toggle .icon-bar {
+    background-color: #EEE;
+}
+@media (max-width: 767px) {
+    .navbar-blue .navbar-nav .open .dropdown-menu > li > a {
+        color: #EEE;
+    }
+    .navbar-blue .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-blue .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #c42700;
+    }
+}
+/* end nav styling */
+
+#xcontent {
+    margin-top:15px;
+}
+.jumbotron {
+    background-image: url("../../../img/jumbotron_bg.png");
+    background-size: cover;
+    color:white;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
+    }
