@@ -68,7 +68,9 @@
         <div class="col-md-4">
           <p class="text-left text-muted">
           <small>
-          Powered by <strong>NIHOL</strong>
+          <a href="http://code.tj/" target="_blank" title="Powered by NIHOL">
+            <img src="./ui/img/nihol.png" />
+          </a>
           </small>
           </p>
         </div>
@@ -76,7 +78,7 @@
         <div class="col-md-4">
           <p class="text-center text-muted">
           <small>
-          OpenEdu &#169; <?php echo date('Y'); ?> :: <?php echo microtime(true)-$start; ?> <!-- :: Powered by NIHOL -->
+          OpenEdu &#169; <?php global $start; echo date('Y'); ?> :: <?php echo microtime(true)-$start; ?> <!-- :: Powered by NIHOL -->
           </small>
           </p>
         </div>

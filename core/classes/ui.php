@@ -81,7 +81,7 @@ class UI {
     }
 
     public function render(){
-        global $conf,$start; // start to count exec time, in index.php
+        global $conf; // start to count exec time, in index.php
         $UI=\CORE\UI::init();
         if($UI->tpl()!=''){include($UI->tpl());}
     }

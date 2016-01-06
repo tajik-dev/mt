@@ -82,4 +82,25 @@ body {
     background-size: cover;
     color:white;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
-    }
+}
+.langflag {
+    display:inline-block;
+    position:relative;
+    top:2px;
+    width:19px;
+    height:14px;
+    background-image:url('../img/lang_flags.png');
+    background-repeat: no-repeat;
+    border-right:1px solid silver;
+    border-bottom:1px solid silver;
+}
+
+.langflag-ru {
+    background-position: 0px 0px;
+}
+.langflag-tj {
+    background-position: 0px -13px;
+}
+.langflag-en {
+    background-position: 0px -26px;
+}
