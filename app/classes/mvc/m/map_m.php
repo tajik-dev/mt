@@ -1,7 +1,7 @@
 <?php
 namespace APP\MVC\M;
 
-class TEST_M {
+class MAP_M {
 
 
 

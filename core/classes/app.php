@@ -1,5 +1,5 @@
 <?php
-namespace CORE\BC;
+namespace CORE;
 
 class REQUEST {
 
@@ -84,21 +84,26 @@ class APP {
     public static function init() {
         if(empty(self::$inst)) {
             self::$inst = new self();
-            \CORE::msg('debug','app initialization');
-            if(is_readable(DIR_APP.'/appmain.php')){
-                include(DIR_APP.'/appmain.php');
-            } else {
-                \CORE::init()->msg('debug','application main script not found');
-            }
-            $modules=\CORE::init()->get_modules();
-            $REQUEST = new REQUEST();
-            ROUTER::init($REQUEST,$modules); // check modules
         }
         return self::$inst;
     }
 
-    private function __construct() {
+    private function __construct() { }
 
+    public function run() {
+        \CORE::msg('debug','app->run');
+        if(is_readable(DIR_APP.'/run.php')){
+            include(DIR_APP.'/run.php');
+        } else {
+            \CORE::init()->msg('debug','app/run not found');
+        }
+        $modules=\CORE::init()->get_modules();
+        $REQUEST = new REQUEST();
+        ROUTER::init($REQUEST,$modules); // check modules
+    }
+
+    public function stop() {
+        \CORE::init()->unload();
     }
 
 }

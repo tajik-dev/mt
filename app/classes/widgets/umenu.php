@@ -3,8 +3,8 @@ namespace APP\WIDGETS;
 
 class UMENU {
 	public function show(){
-		$UI=\CORE\BC\UI::init();
-		$USER=\CORE\BC\USER::init();
+		$UI=\CORE\UI::init();
+		$USER=\CORE\USER::init();
 		if($USER->auth()){
 			// for admins
 			if($USER->get('gid')==1){
@@ -19,18 +19,11 @@ class UMENU {
 	            </li>
 			';
 			$UI->pos['mainmenu'].='
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::init()->lang('modules','Модули').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=test">Test</a></li>
-              </ul>
-            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::init()->lang('forms','Формы').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=frm1">Форма-1</a></li>
+                <li><a href="./?c=frm&act=km1">Форма KM-1</a></li>
               </ul>
             </li>
 			';
@@ -73,10 +66,10 @@ class UMENU {
 			$UI->pos['user1'].='<form action="./?c=user&act=login" method="post" class="navbar-form">
 			';
 			$UI->pos['user1'].='<div class="form-group">
-					<input type="text" name="login" placeholder="'.\CORE::init()->lang('login','Login').'" value="'.\COOKIE::get('lastuser').'" class="form-control">
+					<input type="text" name="login" placeholder="'.\CORE::init()->lang('login','Login').'" value="'.\COOKIE::get('lastuser').'" class="form-control" style="width:150px;">
 				</div>
 				<div class="form-group">
-					<input type="password" name="password" placeholder="'.\CORE::init()->lang('password','Password').'" class="form-control">
+					<input type="password" name="password" placeholder="'.\CORE::init()->lang('password','Password').'" class="form-control" style="width:150px;">
 				</div>
 				<button type="submit" class="btn btn-warning">'.\CORE::init()->lang('login','Login').'</button>
 			';

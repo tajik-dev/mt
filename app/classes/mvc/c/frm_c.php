@@ -1,15 +1,15 @@
 <?php
 namespace APP\MVC\C;
 
-class TEST_C {
+class FRM_C {
 
 
 public function __construct($REQUEST,$model,$view){
-	$UI=\CORE\BC\UI::init();
+	$UI=\CORE\UI::init();
 	switch ($REQUEST->get('act')) {
 
-		case 'test':
-			$UI->pos['main'].=$view->main($model);
+		case 'km1':
+			$UI->pos['main'].=$view->km1($model);
 		break;
 
 		default:

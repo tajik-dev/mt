@@ -1,5 +1,5 @@
 <?php
-namespace CORE\BC;
+namespace CORE;
 
 class USER {
 

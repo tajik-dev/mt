@@ -62,11 +62,11 @@
 
       <hr>
 
-      <footer>
+      <footer style="padding-top:40px;">
       <div class="row">
 
         <div class="col-md-4">
-          <p class="text-muted">
+          <p class="text-left text-muted">
           <small>
           Powered by <strong>NIHOL</strong>
           </small>
@@ -82,7 +82,7 @@
         </div>
 
         <div class="col-md-4">
-          <p class="text-center text-muted">
+          <p class="text-right text-muted">
           <small>
           <a href="http://opendefinition.org/">
             <img src="./ui/img/od.png" alt="This material is Open Data"/>

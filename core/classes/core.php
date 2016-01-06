@@ -3,7 +3,7 @@ class CORE {
 
 	private static $inst; // instance for singleton
 
-    private $msg_arr=array('error'=>'','info'=>'','debug'=>'');
+    private $messages=array('error'=>'','info'=>'','debug'=>'');
     // modules: 0 - core; 1 - app;
     private $modules=array('user'=>0,'group'=>0,'acl'=>0,'page'=>0);
     public $dbcon=false;
@@ -26,7 +26,7 @@ class CORE {
             self::$inst = new self();
             // initialization
             CORE::check_mode();
-            spl_autoload_register('CORE::AutoLoader');
+            spl_autoload_register('CORE::autoloader');
             CORE::msg('debug','core initialization');
             SESSION::init();
             CORE::check_lang();
@@ -42,23 +42,21 @@ class CORE {
         }
     }
 
-    public static function AutoLoader($class) {
-        if(CORE::isValid($class,'/^[\\a-zA-Z0-9]+$/')){
-            $cls=strtolower(str_replace('\\', '/', $class));
-            $path='';
-            if(substr($cls,0,5)=='core/'){
-                $path=DIR_CORE.'/'.substr($cls,5).'.php';
-            } elseif(substr($cls,0,4)=='app/') {
-                $path=DIR_APP.'/'.substr($cls,4).'.php';
+    public static function autoloader($class) {
+        $file_path='';
+        if(preg_match('/^[\\a-zA-Z0-9_]+$/',$class)) {
+            $path=strtolower(str_replace('\\', '/', $class));
+            $first=strtok($path, '/'); // get first substr before "/"
+            if($first=='core') {
+                $file_path=DIR_CORE.'/classes/'.substr($path,5).'.php';
+            } elseif($first=='app') {
+                $file_path=DIR_APP.'/classes/'.substr($path,4).'.php';
             }
-            if(is_readable($path)) {
-                require $path;
-                //CORE::msg('debug','autoloader: '.$class); 
-            } else {
-                CORE::msg('debug','Can not find required class: '.$class);
-            }
+        }
+        if($file_path!='' && is_readable($file_path)) {
+            require $file_path;
         } else {
-            CORE::msg('debug','Not valid class name required: '.$class);
+            CORE::msg('debug','Can not load class '.$class);
         }
     }
 
@@ -73,13 +71,13 @@ class CORE {
             } else {
                 if(CORE::init()->is_ajax()) { echo $msg; return; }
             }            
-            if(isset(CORE::init()->msg_arr[$type])){
-                CORE::init()->msg_arr[$type].=htmlspecialchars($msg)."<br>\n";
+            if(isset(CORE::init()->messages[$type])){
+                CORE::init()->messages[$type].=htmlspecialchars($msg)."<br>\n";
             }
         }
     }
 
-    public static function get_msg_arr(){ return CORE::init()->msg_arr; }
+    public static function get_msg_arr(){ return CORE::init()->messages; }
 
     public static function check_lang(){
         global $conf;
@@ -118,6 +116,8 @@ class CORE {
         }
         return $result;
 	}
+
+    public function lng(){return $this->lang;}
 
     public function is_ajax(){ return $this->ajax; }
 
@@ -287,7 +287,7 @@ class SEC {
         \CORE::msg('debug','Checking ACL');
         $access=false;
 
-        $USER=\CORE\BC\USER::init();
+        $USER=\CORE\USER::init();
         $uid=(int) $USER->get('uid');
         $gid=(int) $USER->get('gid');
         $uid=(string) $uid;

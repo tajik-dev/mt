@@ -1,5 +1,5 @@
 <?php
-namespace CORE\BC;
+namespace CORE;
 
 class UI {
 
@@ -80,9 +80,9 @@ class UI {
         if(isset($this->pos[$name])){ echo $this->pos[$name]; }
     }
 
-    public function show_template(){
-        global $conf,$start;
-        $UI=\CORE\BC\UI::init();
+    public function render(){
+        global $conf,$start; // start to count exec time, in index.php
+        $UI=\CORE\UI::init();
         if($UI->tpl()!=''){include($UI->tpl());}
     }
 

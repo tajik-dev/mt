@@ -1,13 +1,14 @@
 <?php
-\CORE::msg('debug','appmain running');
-$my_pages=array(
+$pages=array(
     'home'=>'home',
     'about'=>'about',
+    'team'=>'team',
     'form1'=>'form1'
     );
-\CORE\BC\UI::init()->set_pages($my_pages);
+\CORE\UI::init()->set_pages($pages);
 \CORE::init()->set_modules(array(
-	'test'=>1,
+	'map'=>1,
+	'frm'=>1,
 	));
 $UMENU = new \APP\WIDGETS\UMENU;
 $UMENU->show();
