@@ -1,7 +1,7 @@
 <?php
 // CONST
 define('DIR_BASE',str_replace('\\','/',realpath(dirname(__FILE__)))); // base dir
-define('DIR_CORE','/datos/www/nihol/core'); // core dir
+define('DIR_CORE',DIR_BASE.'/core'); // core dir
 define('DIR_APP',DIR_BASE.'/app'); // app dir
 define('APPNAME','mt'); // app name
 define('PREFX',APPNAME.'_'); // app prefix (for sessions)
