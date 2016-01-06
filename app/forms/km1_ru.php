@@ -1,7 +1,7 @@
 <h1>Ҳисобот оид ба китобҳои дарсӣ ва бадеии муассисаҳои таҳcилоти умумӣ</h1>
 <h2 class="text-center">Шакли КМ-1</h2>
 <br/>
-<form class="form-horizontal" action="action.php" method="post">
+<form class="form-horizontal" action="./?c=frm&act=km1" method="post">
     <div class="row">
         <div class="col-sm-5">
             <div class="form-group">
