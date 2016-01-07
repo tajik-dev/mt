@@ -104,3 +104,6 @@ body {
 .langflag-en {
     background-position: 0px -26px;
 }
+.cbrd {
+    border:1px solid silver;
+}

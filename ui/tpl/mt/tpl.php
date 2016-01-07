@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./"><strong>OpenEdu</strong></a>
+          <a class="navbar-brand" href="./"><strong>MT</strong></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -78,7 +78,7 @@
         <div class="col-md-4">
           <p class="text-center text-muted">
           <small>
-          OpenEdu &#169; <?php global $start; echo date('Y'); ?> :: <?php echo microtime(true)-$start; ?> <!-- :: Powered by NIHOL -->
+          MT &#169; <?php global $start; echo date('Y'); ?> :: <?php echo microtime(true)-$start; ?> <!-- :: Powered by NIHOL -->
           </small>
           </p>
         </div>

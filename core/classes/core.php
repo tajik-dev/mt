@@ -117,6 +117,26 @@ class CORE {
         return $result;
 	}
 
+    public static function t($alias,$default=''){
+        $result=$default;
+        $CORE=CORE::init();
+        if($CORE->lang!=''){
+            if(!$CORE->langfile){
+                if(is_readable(DIR_CORE.'/lang/'.$CORE->lang.'.php')){
+                    include(DIR_CORE.'/lang/'.$CORE->lang.'.php');
+                    $CORE->lng=$lng;
+                    $CORE->langfile=true;
+                    //CORE::msg('debug','core language file loaded');
+                } else { CORE::msg('debug','core language file is not loaded'); }
+            }
+            //CORE::msg('debug','t: '.$alias);
+            if(isset($CORE->lng[$alias])){
+                $result=$CORE->lng[$alias];
+            }
+        }
+        return $result;
+    }
+
     public function lng(){return $this->lang;}
 
     public function is_ajax(){ return $this->ajax; }
@@ -333,6 +353,15 @@ class SEC {
         return $acl;
     }
 
+    public function get_acl_file($path=''){
+        if($path=='') $path=PATH_APP.'/acl.php';
+        $acl=array();
+        if(is_readable($path)){
+            include($path);
+        }
+        return $acl;
+    }
+
     public function check_acl($acl,$type,$c,$act,$id){
         $a=false;
         //\CORE::msg('debug','type:'.$type.';c:'.$c.';act:'.$act.';id:'.$id.';');
@@ -363,6 +392,8 @@ class SEC {
         $uid=(string) $uid;
         $gid=(string) $gid;
 
+        $acl=$this->get_acl_file();
+
         // dafault acl settings (0-gid type)
         $acl[0]['']['']['*']=1; // default main page
         $acl[0]['*']['*']['1']=1; // for administrators
@@ -370,25 +401,7 @@ class SEC {
         if($gid>0){
             $acl[0]['user']['logout']['*']=1;
             $acl[0]['user']['profile']['*']=1;
-            $acl[0]['user']['change_password']['*']=1;
-            $acl[0]['user']['passwd']['*']=1;
-            // bweb2
-            $acl[0]['plist']['']['*']=1;
-            $acl[1]['es']['events']['135']=1;
-            $acl[1]['es']['events']['76']=1;
-            $acl[1]['es']['events']['126']=1; // 6; 125;
         }
-        // bweb2
-        $acl[0]['page']['ciscocall']['*']=1; // page for all
-        $acl[0]['es']['']['*']=1; // es for all
-        $acl[0]['es']['list']['*']=1;
-        $acl[0]['es']['hash']['*']=1;
-
-        // here we can load $acl from db
-            // $acl_db=$this->get_acl_db();
-        // or load $acl from json file
-            // $acl_json=$this->get_acl_json();
-        //// but for the moment I will use php array ;)
 
         // group gid
         if($this->check_acl($acl,0,$c,$act,$gid)) $access=true;

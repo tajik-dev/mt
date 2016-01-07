@@ -89,30 +89,61 @@ class UMENU {
 		$UI=\CORE\UI::init();
 		$USER=\CORE\USER::init();
 		if($USER->auth()){
-			// for admins
-			if($USER->get('gid')==1){
-			$UI->pos['mainmenu'].='<li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-	              '.\CORE::init()->lang('foradmins','Администраторам').' <span class="caret"></span></a>
-	              <ul class="dropdown-menu">
-	                <li><a href="./?c=users">'.\CORE::init()->lang('users','Пользователи').'</a></li>
-	                <li><a href="./?c=group">'.\CORE::init()->lang('groups','Группы').'</a></li>
-	                <!--<li><a href="./?c=acl">'.\CORE::init()->lang('acl','Управление доступом').'</a></li>-->
-	              </ul>
-	            </li>
-			';
 			$UI->pos['mainmenu'].='
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('reports','Отчеты').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              	<li class="dropdown-header">'.\CORE::t('input_forms','Формы ввода данных').'</li>
+              	<li class="divider"></li>
+                <li><a href="./">'.\CORE::t('mt_frm_passport','Паспорт образовательного учреждения').'</a></li>
+                <li><a href="./">'.\CORE::t('mt_frm_bmt1','Форма БМТ-1').'</a></li>
+                <li><a href="./">'.\CORE::t('mt_frm_kom1','Форма КОМ-1').'</a></li>
+                <li><a href="./">'.\CORE::t('mt_frm_tm1','Форма ОШ-1').'</a></li>
+                <li><a href="./">'.\CORE::t('mt_frm_fb','Форма ФБ').'</a></li>
+                <li><a href="./?c=frm&act=km1">'.\CORE::t('mt_frm_km1','Форма КМ-1').'</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::init()->lang('forms','Формы').' <span class="caret"></span></a>
+              '.\CORE::t('statistic','Статистика').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=frm&act=km1">Форма KM-1</a></li>
+                <li><a href="./">----</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('visualization','Визуализация').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=map">'.\CORE::t('map','Карта').'</a></li>
+                <li><a href="./">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
+              </ul>
+            </li>
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('opendata','Открытые данные').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=od&act=about">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
+                <li><a href="./?c=od">'.\CORE::t('opendata','Открытые данные').'</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=app&act=reg">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
+                <li><a href="./?c=app&act=check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
+              </ul>
+            </li>
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('about','О проекте').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','Описание проекта').'</a></li>
+                <li><a href="./?c=page&act=team">'.\CORE::t('team','Команда проекта').'</a></li>
               </ul>
             </li>
 			';
-			}
-			
-			// for users
 			$UI->pos['user1'].='
 			<ul class="nav navbar-nav">
 				'.LANGUAGE::SWITCHER(true).'
@@ -147,6 +178,40 @@ class UMENU {
 		    </ul>
 			';
 		} else {
+			$UI->pos['mainmenu'].='
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('visualization','Визуализация').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=map">'.\CORE::t('map','Карта').'</a></li>
+                <li><a href="./">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
+              </ul>
+            </li>
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('opendata','Открытые данные').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=od&act=about">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
+                <li><a href="./?c=od">'.\CORE::t('opendata','Открытые данные').'</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=app&act=reg">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
+                <li><a href="./?c=app&act=check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
+              </ul>
+            </li>
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              '.\CORE::t('about','О проекте').' <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','Описание проекта').'</a></li>
+                <li><a href="./?c=page&act=team">'.\CORE::t('team','Команда проекта').'</a></li>
+              </ul>
+            </li>
+			';
 			$UI->pos['user1'].='<form action="./?c=user&act=login" method="post" class="navbar-form">
 			'.LANGUAGE::SWITCHER();
 			$UI->pos['user1'].='<div class="form-group">
@@ -159,34 +224,6 @@ class UMENU {
 			';
 			$UI->pos['user1'].='</form>
 			';
-		}
-		$UI->pos['mainmenu'].='
-			<li><a href="./?c=map">'.\CORE::init()->lang('map','Карта').'</a></li>
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::init()->lang('opendata','Открытые данные').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=od&act=about">'.\CORE::init()->lang('about_opendata','Об открытых данных').'</a></li>
-                <li><a href="./?c=od">'.\CORE::init()->lang('opendata','Открытые данные').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::init()->lang('visualization','Визуализация').'</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::init()->lang('zayavleniya','Заявления').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=app&act=reg">'.\CORE::init()->lang('reg_form','Форма регистрации').'</a></li>
-                <li><a href="./?c=app&act=check">'.\CORE::init()->lang('check_app','Проверить статус заявки').'</a></li>
-              </ul>
-            </li>
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::init()->lang('about','О проекте').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about">'.\CORE::init()->lang('about_project','Описание проекта').'</a></li>
-                <li><a href="./?c=page&act=team">'.\CORE::init()->lang('team','Команда проекта').'</a></li>
-              </ul>
-            </li>
-		';
+		}		
 	}
 }
