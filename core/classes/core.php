@@ -174,9 +174,18 @@ class CORE {
 
     public static function ROUTER(){
         $REQUEST= new REQUEST();
+        $USER=USER::init();
         $modules=\CORE::init()->get_modules();
         if($REQUEST->get('c')==''){
-            \CORE\UI::init()->static_page('home');
+            if($USER->auth()){
+                if($USER->get('gid')==1){
+                    \CORE\UI::init()->static_page('admin',true);
+                } else {
+                    \CORE\UI::init()->static_page('user',true);
+                }
+            } else {
+                \CORE\UI::init()->static_page('home');
+            }    
         } else {
             if(isset($modules[$REQUEST->get('c')])){
                 // \CORE::msg('debug','Controller: '.$REQUEST->get('c'));
@@ -205,7 +214,15 @@ class CORE {
                     }
             } else {
                 \CORE::msg('error','Unregistered module');
-                \CORE\UI::init()->static_page('home');
+                if($USER->auth()){
+                    if($USER->get('gid')==1){
+                        \CORE\UI::init()->static_page('admin',true);
+                    } else {
+                        \CORE\UI::init()->static_page('user',true);
+                    }
+                } else {
+                    \CORE\UI::init()->static_page('home');
+                }
             }
         }
     }
@@ -386,7 +403,7 @@ class SEC {
         \CORE::msg('debug','Checking ACL');
         $access=false;
 
-        $USER=\CORE\USER::init();
+        $USER=\USER::init();
         $uid=(int) $USER->get('uid');
         $gid=(int) $USER->get('gid');
         $uid=(string) $uid;
@@ -411,6 +428,53 @@ class SEC {
 
         if(!$access) \CORE::msg('error','Access denied.');
         return $access;
+    }
+
+}
+
+class USER {
+
+    private static $inst;
+
+    private $uid=0; // user id
+    private $gid=0; // group id
+    private $pid=0; // profile id
+    private $username=''; // username
+
+    public static function init() {
+        if(empty(self::$inst)) {
+            self::$inst = new self();
+        }
+        return self::$inst;
+    }
+
+    private function __construct() {
+        $uid=SESSION::get('uid');
+        if($uid!=''){
+            $this->uid=(int) $uid;
+            if($this->uid>0){
+                $gid=SESSION::get('gid');
+                if($gid!='') $this->gid=(int) $gid;
+                $pid=SESSION::get('pid');
+                if($pid!='') $this->pid=(int) $pid;
+                $user=SESSION::get('user');
+                if($user!='') $this->username=$user;
+            }
+        }
+        CORE::msg('debug','user (uid:'.$this->uid.'; gid:'.$this->gid.';)');
+    }
+
+    public function get($item){
+        if(isset($this->$item)) {
+            return $result=$this->$item;
+        } else {
+            return '';
+        }
+    }
+
+    public function auth(){
+        $result=($this->uid > 0 ? true : false);
+        return $result;
     }
 
 }

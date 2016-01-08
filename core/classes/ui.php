@@ -86,9 +86,9 @@ class UI {
         if($UI->tpl()!=''){include($UI->tpl());}
     }
 
-    public function static_page($alias=''){
+    public function static_page($alias='',$single=false){
         if(isset($this->pages[$alias])){
-            if(\CORE::init()->lang!='') {$lang='_'.\CORE::init()->lang;} else {$lang='';}
+            if(\CORE::init()->lang!='' && !$single) {$lang='_'.\CORE::init()->lang;} else {$lang='';}
             $path=DIR_APP.'/pages/'.$this->pages[$alias].$lang.'.php';
             if(is_readable($path)){
                 include($path);
@@ -98,6 +98,7 @@ class UI {
             }
         } else {
             \CORE::msg('error','Page is not available');
+            print_r($this->pages);
         }
     }
 

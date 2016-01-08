@@ -87,14 +87,14 @@ class LANGUAGE {
 class UMENU {
 	public function show(){
 		$UI=\CORE\UI::init();
-		$USER=\CORE\USER::init();
+		$USER=\USER::init();
 		if($USER->auth()){
 			$UI->pos['mainmenu'].='
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('reports','Отчеты').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-              	<li class="dropdown-header">'.\CORE::t('input_forms','Формы ввода данных').'</li>
+              	<li class="dropdown-header">'.\CORE::t('input_forms','Формы ввода данных:').'</li>
               	<li class="divider"></li>
                 <li><a href="./">'.\CORE::t('mt_frm_passport','Паспорт образовательного учреждения').'</a></li>
                 <li><a href="./">'.\CORE::t('mt_frm_bmt1','Форма БМТ-1').'</a></li>
@@ -108,7 +108,7 @@ class UMENU {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('statistic','Статистика').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./">----</a></li>
+                <li><a href="./?c=stat">----</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -116,14 +116,14 @@ class UMENU {
               '.\CORE::t('visualization','Визуализация').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=map">'.\CORE::t('map','Карта').'</a></li>
-                <li><a href="./">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('opendata','Открытые данные').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=od&act=about">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
+                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
                 <li><a href="./?c=od">'.\CORE::t('opendata','Открытые данные').'</a></li>
               </ul>
             </li>
@@ -131,8 +131,8 @@ class UMENU {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=app&act=reg">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
-                <li><a href="./?c=app&act=check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
+                <li><a href="./?c=apps&act=create">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
+                <li><a href="./?c=apps&act=status_check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
@@ -184,14 +184,14 @@ class UMENU {
               '.\CORE::t('visualization','Визуализация').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=map">'.\CORE::t('map','Карта').'</a></li>
-                <li><a href="./">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('opendata','Открытые данные').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=od&act=about">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
+                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
                 <li><a href="./?c=od">'.\CORE::t('opendata','Открытые данные').'</a></li>
               </ul>
             </li>
@@ -199,8 +199,8 @@ class UMENU {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=app&act=reg">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
-                <li><a href="./?c=app&act=check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
+                <li><a href="./?c=apps&act=create">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
+                <li><a href="./?c=apps&act=status_check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">

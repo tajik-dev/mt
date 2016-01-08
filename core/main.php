@@ -9,7 +9,7 @@ if(is_readable(DIR_CORE.'/classes/core.php')) {
 }
 
 $CORE=CORE::init();
-$USER=\CORE\USER::init();
+$USER=USER::init();
 $UI=\CORE\UI::init();
 $APP=\CORE\APP::init();
 
