@@ -6,3 +6,4 @@ $lng['signin']='Войти';
 $lng['signout']='Выйти';
 $lng['profile']='Профиль';
 $lng['settings']='Настройки';
+$lng['translation']='перевод';

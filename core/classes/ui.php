@@ -126,7 +126,7 @@ class UI {
             '.$body.'
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">'.\CORE::t('close','Close').'</button>
             <input type="submit" id="'.$btn_id.'" class="btn btn-primary" value="'.$btn_txt.'">
           </div>
           </form>

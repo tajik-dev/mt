@@ -23,6 +23,7 @@ class APP {
         }
         // mvc router
         \CORE::ROUTER();
+        \CORE::msg('debug','router');
     }
 
     public function stop() {

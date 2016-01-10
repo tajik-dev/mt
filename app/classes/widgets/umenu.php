@@ -86,6 +86,7 @@ class LANGUAGE {
 
 class UMENU {
 	public function show(){
+		\CORE::msg('debug','umenu');
 		$UI=\CORE\UI::init();
 		$USER=\USER::init();
 		$UI->pos['js'].='
@@ -176,13 +177,13 @@ $(document).ready(function() {
 	                <!--<li>
 	                	<a href="./?c=user&act=profile">
 	                		<small><i class="glyphicon glyphicon-user"></i>&nbsp;</small> 
-				    		<span class="text">'.\CORE::init()->lang('profile','Профиль').'</span>
+				    		<span class="text">'.\CORE::t('profile','Профиль').'</span>
 	                	</a>
 	                </li>-->
 	                <!--<li>
 	                	<a href="./?c=user&act=change_password">
 	                		<small><i class="glyphicon glyphicon-pencil"></i>&nbsp;</small> 
-				    		<span class="text">'.\CORE::init()->lang('cpasswd','Сменить пароль').'</span>
+				    		<span class="text">'.\CORE::t('cpasswd','Сменить пароль').'</span>
 	                	</a>
 	                </li>
 	                -->
@@ -190,7 +191,7 @@ $(document).ready(function() {
 	                <li>
 	                	<a href="./?c=user&act=logout">
 	                		<small><i class="glyphicon glyphicon-off"></i>&nbsp;</small> 
-				    		<span class="text">'.\CORE::init()->lang('logout','Logout').'</span>
+				    		<span class="text">'.\CORE::t('logout','Logout').'</span>
 	                	</a>
 	                </li>
 	              </ul>
@@ -236,12 +237,12 @@ $(document).ready(function() {
 			$UI->pos['user1'].='<form action="./?c=user&act=login" method="post" class="navbar-form">
 			'.LANGUAGE::SWITCHER();
 			$UI->pos['user1'].='<div class="form-group">
-					<input type="text" name="login" placeholder="'.\CORE::init()->lang('login','Login').'" value="'.\COOKIE::get('lastuser').'" class="form-control" style="width:150px;">
+					<input type="text" name="login" placeholder="'.\CORE::t('login','Login').'" value="'.\COOKIE::get('lastuser').'" class="form-control" style="width:150px;">
 				</div>
 				<div class="form-group">
-					<input type="password" name="password" placeholder="'.\CORE::init()->lang('password','Password').'" class="form-control" style="width:150px;">
+					<input type="password" name="password" placeholder="'.\CORE::t('password','Password').'" class="form-control" style="width:150px;">
 				</div>
-				<button type="submit" class="btn btn-warning">'.\CORE::init()->lang('login','Login').'</button>
+				<button type="submit" class="btn btn-warning">'.\CORE::t('login','Login').'</button>
 			';
 			$UI->pos['user1'].='</form>
 			';

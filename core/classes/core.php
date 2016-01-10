@@ -11,7 +11,8 @@ class CORE {
     public $lang='';
     public $langs=array('en'=>'English','ru'=>'Русский','tj'=>'Тоҷикӣ');
 	public $langfile=false;
-	public $lng=array();
+    public $lng=array();
+	private $request=null;
     // ajax mode
     public $ajax=false;
 
@@ -29,6 +30,7 @@ class CORE {
             spl_autoload_register('CORE::autoloader');
             CORE::msg('debug','core initialization');
             SESSION::init();
+            CORE::init()->request=new REQUEST();
             CORE::check_lang();
         }
         return self::$inst; // singleton pattern
@@ -98,35 +100,19 @@ class CORE {
         }
     }
 
-	public function lang($alias,$default=''){
-        $result=$default;
-        if($this->lang!=''){
-    		if(!$this->langfile){
-    			if(is_readable(DIR_CORE.'/lang/'.$this->lang.'.php')){
-    				include(DIR_CORE.'/lang/'.$this->lang.'.php');
-    				$this->lng=$lng;
-    				$this->langfile=true;
-    				//CORE::msg('debug','core language file loaded');
-    			} else { CORE::msg('debug','core language file is not loaded'); }
-    		}
-            //CORE::msg('debug','lng: '.$alias);
-    		if(isset($this->lng[$alias])){
-    			$result=$this->lng[$alias];
-    		}
-        }
-        return $result;
-	}
+    // ->t() replace ->lang()
 
     public static function t($alias,$default=''){
         $result=$default;
         $CORE=CORE::init();
         if($CORE->lang!=''){
             if(!$CORE->langfile){
-                if(is_readable(DIR_CORE.'/lang/'.$CORE->lang.'.php')){
-                    include(DIR_CORE.'/lang/'.$CORE->lang.'.php');
+                if(is_readable(DIR_CORE.'/translation/'.$CORE->lang.'.php')){
+                    $lng=$CORE->lng;
+                    include(DIR_CORE.'/translation/'.$CORE->lang.'.php');
                     $CORE->lng=$lng;
                     $CORE->langfile=true;
-                    //CORE::msg('debug','core language file loaded');
+                    CORE::msg('debug','core language file loaded');
                 } else { CORE::msg('debug','core language file is not loaded'); }
             }
             //CORE::msg('debug','t: '.$alias);
@@ -137,7 +123,15 @@ class CORE {
         return $result;
     }
 
+    public static function get_c(){
+        return CORE::init()->request->get('c');
+    }
+
     public static function lng(){return CORE::init()->lang;}
+    public static function set_lng($lng){
+        // experimental
+        CORE::init()->lng=$lng;
+    }
 
     public function is_ajax(){ return $this->ajax; }
 
@@ -166,14 +160,9 @@ class CORE {
         if($this->dbcon){DB::init()->close();}
     }
 
-    public function get_request($parameter) {
-        if(isset($this->request[$parameter])){
-            return $this->request[$parameter];
-        } else return '';
-    }
-
     public static function ROUTER(){
-        $REQUEST= new REQUEST();
+        $REQUEST=\CORE::init()->request;
+        \CORE::init()->c=$REQUEST->get('c');
         $USER=USER::init();
         $modules=\CORE::init()->get_modules();
         if($REQUEST->get('c')==''){

@@ -16,6 +16,33 @@ $pages=array(
 	'vs'=>1,
 	'od'=>1,
 	'apps'=>1,
+	'translation'=>1,
 	));
+
+// load translations from DB
+$new_lng=array();
+$c_lang=\CORE::lng();
+
+$DB=\DB::init();
+if($DB->connect()){
+	if(\CORE::get_c()!=''){
+		$sql="SELECT * FROM `mt-translation` WHERE `t-module`=:module OR `t-module`='all';";
+		$sth=$DB->dbh->prepare($sql);
+    	$sth->execute(array('module'=>\CORE::get_c()));
+	} else {
+		$sql="SELECT * FROM `mt-translation` WHERE `t-module`='all';";
+		$sth=$DB->dbh->prepare($sql);
+    	$sth->execute();
+	}    
+    $DB->query_count();
+    if($sth->rowCount()>0){
+        while($r=$sth->fetch()){
+    		$new_lng[$r['t-alias']]=$r['t-'.$c_lang];  
+        }
+    }
+}
+\CORE::msg('debug','load translations from DB');
+\CORE::set_lng($new_lng);
+
 $UMENU = new \APP\WIDGETS\UMENU;
 $UMENU->show();
