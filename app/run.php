@@ -9,6 +9,7 @@ $pages=array(
     );
 \CORE\UI::init()->set_pages($pages);
 \CORE::init()->set_modules(array(
+	'mt'=>1,
 	'frm'=>1,
 	'stat'=>1,
 	'map'=>1,

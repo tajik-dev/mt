@@ -89,6 +89,7 @@ class UMENU {
 		$UI=\CORE\UI::init();
 		$USER=\USER::init();
 		if($USER->auth()){
+			// authorized users
 			$UI->pos['mainmenu'].='
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -96,11 +97,11 @@ class UMENU {
               <ul class="dropdown-menu">
               	<li class="dropdown-header">'.\CORE::t('input_forms','Формы ввода данных:').'</li>
               	<li class="divider"></li>
-                <li><a href="./">'.\CORE::t('mt_frm_passport','Паспорт образовательного учреждения').'</a></li>
-                <li><a href="./">'.\CORE::t('mt_frm_bmt1','Форма БМТ-1').'</a></li>
-                <li><a href="./">'.\CORE::t('mt_frm_kom1','Форма КОМ-1').'</a></li>
-                <li><a href="./">'.\CORE::t('mt_frm_tm1','Форма ОШ-1').'</a></li>
-                <li><a href="./">'.\CORE::t('mt_frm_fb','Форма ФБ').'</a></li>
+                <li><a href="./?c=frm&act=ps">'.\CORE::t('mt_frm_passport','Паспорт образовательного учреждения').'</a></li>
+                <li><a href="./?c=frm&act=bmt1">'.\CORE::t('mt_frm_bmt1','Форма БМТ-1').'</a></li>
+                <li><a href="./?c=frm&act=kom1">'.\CORE::t('mt_frm_kom1','Форма КОМ-1').'</a></li>
+                <li><a href="./?c=frm&act=tm1">'.\CORE::t('mt_frm_tm1','Форма ОШ-1').'</a></li>
+                <li><a href="./?c=frm&act=fb">'.\CORE::t('mt_frm_fb','Форма ФБ').'</a></li>
                 <li><a href="./?c=frm&act=km1">'.\CORE::t('mt_frm_km1','Форма КМ-1').'</a></li>
               </ul>
             </li>
@@ -178,6 +179,7 @@ class UMENU {
 		    </ul>
 			';
 		} else {
+			// guests
 			$UI->pos['mainmenu'].='
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
