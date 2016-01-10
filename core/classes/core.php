@@ -137,7 +137,7 @@ class CORE {
         return $result;
     }
 
-    public function lng(){return $this->lang;}
+    public static function lng(){return CORE::init()->lang;}
 
     public function is_ajax(){ return $this->ajax; }
 

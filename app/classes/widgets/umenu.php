@@ -15,7 +15,7 @@ class LANGUAGE {
 	              <span class="caret"></span></a>
 	              <ul class="dropdown-menu">
 	                <li>
-	                	<a href="./?lang=tj">
+	                	<a href="./?lang=tj" class="change_language" rel="tj">
 	                		<small><i class="langflag langflag-tj"></i></small>&nbsp; TJ
 	                	</a>
 	                </li>
@@ -31,7 +31,7 @@ class LANGUAGE {
 	              <span class="caret"></span></a>
 	              <ul class="dropdown-menu">
 	                <li>
-	                	<a href="./?lang=ru">
+	                	<a href="./?lang=ru" class="change_language" rel="ru">
 	                		<small><i class="langflag langflag-ru"></i></small>&nbsp; RU
 	                	</a>
 	                </li>
@@ -52,7 +52,7 @@ class LANGUAGE {
 	              </button>
 	              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
 	                    <li role="usermenu">
-	                        <a role="menuitem" tabindex="-1" href="./?lang=tj">
+	                        <a role="menuitem" tabindex="-1" href="./?lang=tj" class="change_language" rel="tj">
 	                        <i class="langflag langflag-tj"></i>&nbsp;<small>TJ</small>
 	                        </a>
 	                    </li>                    
@@ -69,7 +69,7 @@ class LANGUAGE {
 	              </button>
 	              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
 	                    <li role="usermenu">
-	                        <a role="menuitem" tabindex="-1" href="./?lang=ru">
+	                        <a role="menuitem" tabindex="-1" href="./?lang=ru" class="change_language" rel="ru">
 	                        <i class="langflag langflag-ru"></i>&nbsp;<small>RU</small>
 	                        </a>
 	                    </li>                    
@@ -88,6 +88,25 @@ class UMENU {
 	public function show(){
 		$UI=\CORE\UI::init();
 		$USER=\USER::init();
+		$UI->pos['js'].='
+<script>
+$(document).ready(function() {
+
+	function change_language(xlang){
+		$.post("./?lang="+xlang, function(){
+			location.reload();
+		});
+	}  
+
+	$("a.change_language").click(function(e){
+		e.preventDefault();
+		var xlang = $(this).attr("rel");
+		change_language(xlang);
+	});
+
+});
+</script>
+';
 		if($USER->auth()){
 			// authorized users
 			$UI->pos['mainmenu'].='
