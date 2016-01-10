@@ -99,7 +99,11 @@ $(document).ready(function() {
 			';
 		}
 		$result.='</tbody>
-		</table>';
+		</table>
+		<span class="text-muted">
+		P.S. Example of using this in the code: CORE::t("alias","Default translation");
+		</span>
+		';
 		// modal: edit
 
 	} else {
