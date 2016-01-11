@@ -82,16 +82,16 @@ $(document).ready(function() {
 		<tbody>
 		';
 		$cnt=0;
-		foreach ($translations as $module_name => $t_array) {
+		foreach ($translations as $alias => $t_array) {
 			$cnt++;
 			$result.='
 			<tr>
 			<td>'.$cnt.'</td>
-			<td>'.$t_array['alias'].'</td>
+			<td>'.$alias.'</td>
 			<td>'.$t_array['ru'].'</td>
 			<td>'.$t_array['tj'].'</td>
 			<td>
-			<div id="'.$t_array['alias'].'" class="btn-group btn-group-xs">
+			<div id="'.$alias.'" class="btn-group btn-group-xs">
 				<button type="button" class="btn btn-default del_translation">delete</button>
 			</div>
 			</td>

@@ -150,7 +150,7 @@ $(document).ready(function() {
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
+              '.\CORE::t('zayavki','Заявки').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=apps&act=create">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
                 <li><a href="./?c=apps&act=status_check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
@@ -158,10 +158,10 @@ $(document).ready(function() {
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('about','О проекте').' <span class="caret"></span></a>
+              '.\CORE::t('project','Проект').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=page&act=about">'.\CORE::t('about_project','Описание проекта').'</a></li>
-                <li><a href="./?c=page&act=team">'.\CORE::t('team','Команда проекта').'</a></li>
+                <li><a href="./?c=page&act=team">'.\CORE::t('project_team','Команда проекта').'</a></li>
               </ul>
             </li>
 			';

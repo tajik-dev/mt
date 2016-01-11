@@ -34,8 +34,8 @@ public function get_translations($module='all'){
         $DB->query_count();
         if($sth->rowCount()>0){
             while($r=$sth->fetch()){
-        		$translations[$r['t-module']]=array(
-        			'alias'=>$r['t-alias'],
+        		$translations[$r['t-alias']]=array(
+        			'module'=>$r['t-module'],
         			'ru'=>$r['t-ru'],
         			'tj'=>$r['t-tj']
         		);      
