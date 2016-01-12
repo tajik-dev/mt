@@ -8,7 +8,7 @@ public function main($model){
 	$modules_list=$model->get_list_of_modules();
 	$result='<div>
 	<h4>'.mb_convert_case(\CORE::t('translation','Translation'),MB_CASE_TITLE,"UTF-8").':</h4>
-	'.\CORE::t('module','Модуль').' '.$UI->html_list($modules_list,'',' id="sel_module"',$model->sel_module).'
+	'.\CORE::t('module','Модуль').': '.$UI->html_list($modules_list,'',' id="sel_module"',$model->sel_module).'
 	<!-- (Ҷҷ, Ӯӯ, Ққ, Ӣӣ, Ғғ, Ҳҳ) -->
 	'.$UI::bootstrap_modal_btn('add_new_translation','new_translation',\CORE::t('new_translation','Новый перевод')).'
 	</div><br>';
@@ -39,7 +39,8 @@ $(document).ready(function() {
 		window.location.href = "./?c=translation&sel_module=" + $(this).val();
 	});
 
-	$("#create_new_translation").click(function(){
+	$("#create_new_translation").click(function(e){
+		e.preventDefault();
 		var new_alias=$("#alias").val();
 		var new_ru=$("#ru_txt").val();
 		var new_tj=$("#tj_txt").val();
@@ -55,14 +56,16 @@ $(document).ready(function() {
 
 	$(".del_translation").click(function(){
 		var del_alias = $(this).parent("div").attr("id");
-		$.post("./?c=translation&act=del&sel_module="+$("#sel_module").val()+"&ajax", {alias: del_alias}, function(data){
-			if(data=="deleted"){
-				location.reload();
-			} else {
-				alert("Error, check js log...");
-				console.log(data);
-			}
-		});
+		if(confirm("'.\CORE::t('delete','Удалить').'?")){
+			$.post("./?c=translation&act=del&sel_module="+$("#sel_module").val()+"&ajax", {alias: del_alias}, function(data){
+				if(data=="deleted"){
+					location.reload();
+				} else {
+					alert("Error, check js log...");
+					console.log(data);
+				}
+			});
+		}
 	});
 
 });
@@ -72,11 +75,11 @@ $(document).ready(function() {
 		<table class="table table-bordered table-hover" style="width:auto;">
 		<thead>
 		<tr>
-		<th>#</th>
-		<th>ALIAS</th>
+		<th>№</th>
+		<th>Alias</th>
 		<th>RU</th>
 		<th>TJ</th>
-		<th class="text-center">ACTION</th>
+		<th class="text-center">'.\CORE::t('action','Действие').'</th>
 		</tr>
 		</thead>
 		<tbody>

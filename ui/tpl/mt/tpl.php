@@ -79,7 +79,7 @@
           <p class="text-center text-muted">
           <small>
           MT &#169; <?php global $start; echo date('Y'); ?> 
-          <?php echo '<div id="exec_time" style="display:none;">'.(microtime(true)-$start).'</div>'; ?>
+          <?php echo ' :: <span id="exec_time">'.(microtime(true)-$start).'</span>'; ?>
           </small>
           </p>
         </div>

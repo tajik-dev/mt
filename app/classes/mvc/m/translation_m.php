@@ -15,7 +15,7 @@ function __construct(){
 }
 
 public function get_list_of_modules(){
-	$modules['all']='-- '.\CORE::t('universal','универсально').' --';
+	$modules['all']='-- '.\CORE::t('all','все').' --';
 	$type=array(' (core)',' (app)');
 	foreach (\CORE::init()->get_modules() as $key => $value) {
 		$modules[$key]=$key.$type[(int) $value];

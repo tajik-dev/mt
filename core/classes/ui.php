@@ -146,7 +146,7 @@ class UI {
                     if($sel<=0) {
                         $list.='<option value="0" selected="selected">'.$zero."</option>\n";
                     } else {
-                        '<option value="0">'.$zero."</option>\n";
+                        $list.='<option value="0">'.$zero."</option>\n";
                     }
                 }
                 if($key==''){
