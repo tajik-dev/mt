@@ -10,8 +10,9 @@ public function main($model){
 	$mt=$model->get_mt();
 	$mt_types=$model->get_mt_types();
 	$mt_count=count($mt);
-	$result.='<p>'.\CORE::t('types','Типы').': '.$UI->html_list($mt_types,'',' id="type"',$model->selected_type,'-- '.\CORE::t('all','Все').' --');
-	$result.=$UI->bootstrap_modal_btn('show_newModal','newModal',\CORE::t('add_mt','Добавить учреждение')).'</p>';
+	$result.='<p><strong>'.\CORE::t('filter','Фильтр').':</strong> '.\CORE::t('types','Типы').' 
+	'.$UI->html_list($mt_types,'',' id="type"',$model->selected_type,'-- '.\CORE::t('all','Все').' --').'<p>';
+	$result.='<p>'.$UI->bootstrap_modal_btn('show_newModal','newModal',\CORE::t('add_mt','Добавить учреждение')).'</p>';
 	if($mt_count>0){
 		$geo=$model->get_geo_objects();
 $result.='
@@ -35,8 +36,7 @@ $result.='
 			$mt_type='';
 			if(isset($mt_types[$mt_val['mt-type']])){$mt_type=$mt_types[$mt_val['mt-type']];}
 			$mt_geo='';
-			if(isset($geo[$mt_val['mt-geo-id']])) {$mt_geo=$geo[$mt_val['mt-geo-id']];}
-			
+			if(isset($geo[$mt_val['mt-geo-id']])) {$mt_geo=$geo[$mt_val['mt-geo-id']];}			
 $result.='
 <tr>
 <td>'.$cnt.'</td>
@@ -60,12 +60,18 @@ $result.='
 	} else {
 		\CORE::msg('info',\CORE::t('no_mt','В базе не найдены образовательные учреждения'));
 	}
-	$location_info='
-  <div class="form-group">
-    <label for="new_geo">'.\CORE::t('location','Расположение').'</label>
-
-  </div>';
-	$new_body=$location_info.'
+	$geo_info='';
+	$geo_list=$model->get_gid_geo_objects();
+	if(count($geo_list)>0){
+		// totdo !!! change for all groups - gid
+		$geo_info='
+		<div class="form-group">
+			<label for="new_geo">'.\CORE::t('location','Расположение').'</label>
+			'.$UI->html_list($geo_list,'',' id="new_geo" class="form-control"').'
+		</div>';
+	}
+	
+	$new_body=$geo_info.'
   <div class="form-group">
     <label for="new_type">'.\CORE::t('type','Тип').'</label>
 	'.$UI->html_list($mt_types,'',' id="new_type" class="form-control"',$model->selected_type).'
@@ -99,11 +105,11 @@ $result.='
     <div class="row">
     	<div class="col-md-6">
     		<label for="new_geo_lat">Latitude</label>
-    		<input type="text" class="form-control" id="new_geo_lat" placeholder="38.5725115">
+    		<input type="text" class="form-control" id="new_geo_lat" placeholder="38.XXXXXXX">
     	</div>
     	<div class="col-md-6">
     		<label for="new_geo_lng">Longitude</label>
-    		<input type="text" class="form-control" id="new_geo_lng" placeholder="68.7902390">
+    		<input type="text" class="form-control" id="new_geo_lng" placeholder="68.XXXXXXX">
     	</div>
     </div>
   </div>

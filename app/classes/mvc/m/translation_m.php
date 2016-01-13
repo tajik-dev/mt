@@ -86,6 +86,77 @@ public function create(){
 	}
 }
 
+public function get($module='all',$alias=''){
+	if(isset($_POST['module'])) { $module=trim($_POST['module']); }
+	if(isset($_POST['alias'])) { $alias=trim($_POST['alias']); }
+	$translation=array(
+			'module'=>$module,
+			'alias'=>$alias,
+			'ru'=>'',
+			'tj'=>''
+		);
+	if($module!='' && $alias!=''){
+		$DB=\DB::init();
+        if($DB->connect()){
+            $sql="SELECT * FROM `mt-translation` WHERE `t-module`=:module AND `t-alias`=:alias;";
+	        $sth=$DB->dbh->prepare($sql);
+	        $sth->execute(array('module'=>$module,'alias'=>$alias));
+	        $DB->query_count();
+	        if($sth->rowCount()>0){
+	            while($r=$sth->fetch()){
+	        		$translation=array(
+						'module'=>$r['t-module'],
+						'alias'=>$r['t-alias'],
+						'ru'=>$r['t-ru'],
+						'tj'=>$r['t-tj']
+					);  
+	            }
+	        }
+        }
+	}
+	echo json_encode($translation);
+}
+
+public function update(){
+	$module=''; $alias=''; $ru=''; $tj='';
+	if(isset($_POST['module'])){
+		if(preg_match('/^[\\a-zA-Z0-9_]+$/',$_POST['module'])){
+			$module=trim($_POST['module']);
+		}		
+	}
+	if(isset($_POST['alias'])){
+		if(preg_match('/^[\\a-zA-Z0-9_]+$/',$_POST['alias'])){
+			$alias=trim($_POST['alias']);
+		}		
+	}
+	if(isset($_POST['ru'])){
+		$ru=trim($_POST['ru']);
+	}
+	if(isset($_POST['tj'])){
+		$tj=trim($_POST['tj']);
+	}
+	if($alias!='module' && $alias!='' && $ru!='' && $tj!=''){
+		$DB=\DB::init();
+		if($DB->connect()){
+			$sql="SELECT * FROM `mt-translation` WHERE `t-module`=:module AND `t-alias`=:alias;";
+			$sth=$DB->dbh->prepare($sql);
+       		$sth->execute(array('module'=>$module,'alias'=>$alias));
+	        $DB->query_count();
+	        if($sth->rowCount()>0){
+	        	$sql="UPDATE `mt-translation` SET `t-ru`=:ru,`t-tj`=:tj WHERE `t-module`=:module AND `t-alias`=:alias;";
+		        $sth=$DB->dbh->prepare($sql);
+		        $sth->execute(array('ru'=>$ru,'tj'=>$tj,'module'=>$module,'alias'=>$alias));
+		        $DB->query_count();
+		        \CORE::msg('info','updated');
+	        } else {
+	        	\CORE::msg('error','You tried to update non-existent record');
+	        }
+	    }
+	} else {
+		\CORE::msg('error','Incorrect parameters');
+	}
+}
+
 public function delete($alias=''){
 	if(isset($_POST['alias'])) { $alias=trim($_POST['alias']); }
 	if($alias!=''){

@@ -27,6 +27,27 @@ public function get_geo_objects(){
     return $geo;
 }
 
+public function get_gid_geo_objects(){
+    $gid=\USER::init()->get('gid');
+    $lang=\CORE::lng();
+    $geo_list=array();
+    $DB=\DB::init();
+    if($DB->connect()){
+        $sql="SELECT * FROM `mt-geo-objects` LEFT OUTER JOIN `mt-geo-types` ON `geo-type`=`gt-id`;";
+        $sth=$DB->dbh->prepare($sql);
+        $sth->execute();
+        $DB->query_count();
+        if($sth->rowCount()>0){
+            while($r=$sth->fetch()){
+                if($gid==1) {
+                    $geo_list[$r['geo-id']]=$r['gt-name-short-'.$lang].' '.$r['geo-title-'.$lang];
+                }
+            }
+        }
+    }
+    return $geo_list;
+}
+
 public function get_mt_types(){
     $lang=\CORE::lng();
     $types=array();

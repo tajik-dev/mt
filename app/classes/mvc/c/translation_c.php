@@ -9,6 +9,14 @@ class TRANSLATION_C {
 				$model->create();
 			break;
 
+			case 'get':
+				$model->get();
+			break;
+
+			case 'update':
+				$model->update();
+			break;
+
 			case 'del':
 				$model->delete();
 			break;
