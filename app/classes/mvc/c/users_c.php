@@ -1,15 +1,13 @@
 <?php
 namespace APP\MVC\C;
 
-class FRM_C {
-
+class USERS_C {
 
 public function __construct($REQUEST,$model,$view){
-	$UI=\CORE\UI::init();
-	switch ($REQUEST->get('act')) {
-
+	switch($REQUEST->get('act')){
 		default:
-			$UI->pos['main'].=$view->main($model,$REQUEST->get('act'));
+			$UI=\CORE\UI::init();
+			$UI->pos['main'].=$view->main($model);
 		break;
 	}
 	if(\CORE::init()->is_ajax()){ \DB::init()->close(); exit; }

@@ -1,5 +1,5 @@
 <?php
-namespace CORE\MVC\C;
+namespace APP\MVC\C;
 
 class USER_C {
 
@@ -11,34 +11,28 @@ public function __construct($REQUEST,$model,$view){
 		case 'logout':
 			$model->logout();
 		break;
-		case 'profile':
-			$view->profile($model);
-		break;
-		case 'change_password':
-			$UI=\CORE\BC\UI::init();
-			$UI->pos['main'].=$view->change_pwd();
-		break;
 		case 'passwd':
-			$model->passwd();
+			$UI=\CORE\UI::init();
+			$UI->pos['main'].=$view->passwd();
 		break;
 		case 'manage':
 			if(isset($_GET['do'])){
 				switch ($_GET['do']) {
-					case 'add':
-						$model->add();
+					case 'create':
+						$model->create();
 					break;
-					case 'edit':
-						$model->edit();
+					case 'read':
+						$model->read();
 					break;
 					case 'update':
 						$model->update();
 					break;
-					case 'del':
-						$model->del();
+					case 'delete':
+						$model->delete();
 					break;
 				}
 			} else {
-				$UI=\CORE\BC\UI::init();
+				$UI=\CORE\UI::init();
 				$UI->pos['main'].=$view->manage($model);
 			}
 		break;

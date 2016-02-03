@@ -3,19 +3,19 @@ namespace APP\MVC\V;
 
 class FRM_V {
 
-public function main($model){
-	$result='<div><h4>FRM</h4></div>';
-
-	return $result;
-}
-
-public function km1($model){
-	$result='';
-	$path=DIR_APP.'/forms/km1_'.\CORE::init()->lng().'.php';
-	if(is_readable($path)){
-		$result=file_get_contents($path);
+public function main($model,$act=''){
+	$UI=\CORE\UI::init();
+	$result=''; $lang=\CORE::lng();
+	if($act==''){
+		$result='<div><h4>Forms:</h4></div>';
+	} else {
+		$path=DIR_APP.'/forms/'.$act.'.php';
+		if(is_readable($path)){
+			include($path);
+		}
 	}
 	return $result;
 }
+
 
 }

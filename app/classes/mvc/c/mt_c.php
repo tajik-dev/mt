@@ -7,7 +7,10 @@ class MT_C {
 public function __construct($REQUEST,$model,$view){
 	$UI=\CORE\UI::init();
 	switch ($REQUEST->get('act')) {
-		case 'get':
+		case 'create':
+			$model->create();
+		break;
+		case 'read':
 			
 		break;
 		case 'update':

@@ -9,6 +9,8 @@ $pages=array(
     );
 \CORE\UI::init()->set_pages($pages);
 \CORE::init()->set_modules(array(
+	'user'=>1,
+	'users'=>1,
 	'mt'=>1,
 	'frm'=>1,
 	'stat'=>1,
@@ -17,7 +19,7 @@ $pages=array(
 	'od'=>1,
 	'apps'=>1,
 	'translation'=>1,
-	));
+	),true);
 
 $USER=\USER::init();
 if($USER->auth()){

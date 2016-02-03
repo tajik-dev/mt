@@ -6,15 +6,15 @@ class MT_V {
 public function main($model){
 	$lang=\CORE::lng();
 	$UI=\CORE\UI::init();
-	$result='<div><h4>'.\CORE::t('mt','Образовательные учреждения').':</h4></div>';
 	$mt=$model->get_mt();
 	$mt_types=$model->get_mt_types();
 	$mt_count=count($mt);
+	$result='<div><h4>'.\CORE::t('mt','Образовательные учреждения').': <span class="badge">'.$mt_count.'</span></h4></div>';
 	$result.='<p><strong>'.\CORE::t('filter','Фильтр').':</strong> '.\CORE::t('types','Типы').' 
-	'.$UI->html_list($mt_types,'',' id="type"',$model->selected_type,'-- '.\CORE::t('all','Все').' --').'<p>';
+	'.$UI->html_list($mt_types,'',' id="type_filter"',$model->sel_type,'-- '.\CORE::t('all','Все').' --').'<p>';
 	$result.='<p>'.$UI->bootstrap_modal_btn('show_newModal','newModal',\CORE::t('add_mt','Добавить учреждение')).'</p>';
 	if($mt_count>0){
-		$geo=$model->get_geo_objects();
+		$geo=$model->get_all_geo();
 $result.='
 <table class="table table-bordered table-hover" style="width:auto;">
 	<thead>
@@ -60,21 +60,19 @@ $result.='
 	} else {
 		\CORE::msg('info',\CORE::t('no_mt','В базе не найдены образовательные учреждения'));
 	}
-	$geo_info='';
-	$geo_list=$model->get_gid_geo_objects();
+	$geo_new='';
+	$geo_list=$model->available_geo;
 	if(count($geo_list)>0){
-		// totdo !!! change for all groups - gid
-		$geo_info='
+		$geo_new='
 		<div class="form-group">
 			<label for="new_geo">'.\CORE::t('location','Расположение').'</label>
-			'.$UI->html_list($geo_list,'',' id="new_geo" class="form-control"').'
+			'.$UI->html_list($geo_list,'',' id="new_geo" class="form-control"',$model->sel_geo,'-- '.\CORE::t('all','Все').' --').'
 		</div>';
 	}
-	
-	$new_body=$geo_info.'
+	$new_body=$geo_new.'
   <div class="form-group">
     <label for="new_type">'.\CORE::t('type','Тип').'</label>
-	'.$UI->html_list($mt_types,'',' id="new_type" class="form-control"',$model->selected_type).'
+	'.$UI->html_list($mt_types,'',' id="new_type" class="form-control"',$model->sel_type).'
   </div>
   <div class="form-group">
     <label for="new_name_ru">'.\CORE::t('mt_name','Название учреждения').' (RU)</label>
@@ -119,18 +117,43 @@ $result.='
 <script>
 $(document).ready(function() {
 
-	$("#type").change(function(){
-		var sel_type = $(this).val();
+	function changeMyFilter(){
+		var sel_type = $("#type_filter").val();
 		if(sel_type>0){
 			window.location.href="./?c=mt&type="+sel_type;
 		} else {
 			window.location.href="./?c=mt";
 		}
+	}
+
+	$("#type_filter").change(function(){
+		changeMyFilter();
 	});
 
 	$("#addNew").click(function(e){
 		e.preventDefault();
-		alert("add...");
+		var new_geo=$("#new_geo").val();
+		var new_type=$("#new_type").val();
+		var new_ru=$("#new_name_ru").val();
+		var new_tj=$("#new_name_tj").val();
+		var new_director=$("#new_director").val();
+		var new_address=$("#new_address").val();
+		var new_phone=$("#new_phone").val();
+		var new_geo_lat=$("#new_geo_lat").val();
+		var new_geo_lng=$("#new_geo_lng").val();
+		$.post("./?c=mt&act=create", {
+			geo: new_geo,
+			type: new_type,
+			ru: new_ru,
+			tj: new_tj,
+			new_dir: new_director,
+			geo: new_address,
+			geo: new_phone,
+			lat: new_geo_lat,
+			lng: new_geo_lng
+		}, function(data){
+			// 
+		});
 	});
 
 	$(".edit").click(function(){
