@@ -23,7 +23,7 @@ function __construct(){
             $this->sel_geo=$available_geo[$tmp_geo_id];
         }        
     }
-    $this->get_geox();
+    ////$this->get_geox();
 }
 
 public function get_mt_types(){

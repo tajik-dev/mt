@@ -1,51 +1,46 @@
 <?php
-$UI->pos['main'].='<h1 class="text-center">ШИНОСНОМАИ МАКТАБ</h1>
-<p class="text-center">
-<em>(Шиноснома маълумот оид ба муассисаи таҳсилоти миёнаи умумиро дар бар мегирад)</em>
-</p>
+$UI->pos['main'].='<div class="row">
+    <div class="col-sm-6 text-center">
+        <h2>ШИНОСНОМАИ МАКТАБ</h2>
+        <p><em>
+(Шиноснома маълумот оид ба муассисаи таҳсилоти миёнаи умумиро дар бар мегирад)
+        </em></p>
+    </div>
+</div>
 <br>
-<form class="form-horizontal" action="./?c=frm&act=km1" method="post">
+<form class="form-horizontal" action="./?c=frm&act=km1&do=add" method="post">
     <div class="row">
+
         <div class="col-sm-12">
             <div class="form-group">
-                <label for="psnumber" class="col-sm-6 control-label">Рақами шиноснома:</label>
+                <label for="shinosnoma_num" class="col-sm-3 control-label">Рақами шиноснома:</label>
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" id="psnumber" name="psnumber">
+                    <input type="text" class="form-control" id="shinosnoma_num" name="shinosnoma_num">
                 </div>
             </div>
             <div class="form-group">
-                <label for="name" class="col-sm-4 control-label">Номи пурраи муассиса:</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="name" name="name">
+                <label for="mt_name" class="col-sm-3 control-label">*Номи пурраи муассиса:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="mt_name" name="mt_name">
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-5">
-            <div class="form-group">
-                <label for="nohiya" class="col-sm-3 control-label">Муассиса</label>
 
-                <div class="col-sm-9">
-                    <select id="filial" name="filial" class="form-control">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="mt_type" class="col-sm-3 control-label">Намуди муассиса:</label>
+                <div class="col-sm-3">
+                    <select id="mt_type" name="mt_type" class="form-control">
                         <option value="1">1. Сардафтар ҳаст</option>
                         <option value="2">2. Филиал ҳаст</option>
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="jamoat" class="col-sm-3 control-label">Ҷамоат</label>
-
-                <div class="col-sm-9">
-                    <select id="jamoat" name="jamoat" class="form-control">
-                        <option>--Интихоб намоед--</option>
-                        <option>Ҷамоат 1</option>
-                        <option>Ҷамоат 2</option>
-                        <option>Ҷамоат 3</option>
-                        г
-                        <option>Ҷамоат 4</option>
-                        <option>Ҷамоат 5</option>
+                <label for="mt_geo" class="col-sm-3 control-label">*Ҷойгиршавӣ:</label>
+                <div class="col-sm-6">
+                    <select id="mt_geo" name="mt_geo" class="form-control">
+                        <option value="1">Geo</option>
                     </select>
                 </div>
             </div>
