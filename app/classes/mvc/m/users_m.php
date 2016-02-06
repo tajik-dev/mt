@@ -27,6 +27,7 @@ public function get_users(){
 					'user'=>$r['usr-login'],
 					'gid'=>$r['gp-group'],
 					'pid'=>$r['usr-pid'],
+					'geo'=>$r['usr-geo'],
 					'status'=>$status,
 					'created'=>$created,
 					'lastlogin'=>$lastlogin,

@@ -90,6 +90,7 @@ public function manage($model){
 			<th>#</th>
 			<th>USER</th>
 			<th>GROUP</th>
+			<th>GEO</th>
 			<th>STATUS</th>
 			<th>LOGIN TIME</th>
 			<th class="text-center">ACTION</th>
@@ -105,6 +106,7 @@ public function manage($model){
 	<td>'.$cnt.'</td>
 	<td>'.$user['user'].'</td>
 	<td>'.$user['gid'].'</td>
+	<td>'.$user['geo'].'</td>
 	<td>'.$user['status'].'</td>
 	<td>'.$user['lastlogin'].'</td>
 	<td>

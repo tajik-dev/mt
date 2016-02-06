@@ -22,6 +22,7 @@ if($counter>0){
 			<th>#</th>
 			<th>USER</th>
 			<th>GROUP</th>
+			<th>GEO</th>
 			<th>STATUS</th>
 			<th>LOGIN TIME</th>
 		</tr>
@@ -36,6 +37,7 @@ if($counter>0){
 	<td>'.$cnt.'</td>
 	<td>'.$user['user'].'</td>
 	<td>'.$user['gid'].'</td>
+	<td>'.$user['geo'].'</td>
 	<td>'.$user['status'].'</td>
 	<td>'.$user['lastlogin'].'</td>
 </tr>

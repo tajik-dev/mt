@@ -209,6 +209,7 @@ public function get_users(){
 					'gid'=>$r['gp-group'],
 					'pid'=>$r['usr-pid'],
 					'status'=>$status,
+					'geo'=>$r['usr-geo'],
 					'created'=>$created,
 					'lastlogin'=>$lastlogin,
 					);
