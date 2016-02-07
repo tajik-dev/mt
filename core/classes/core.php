@@ -216,6 +216,21 @@ class CORE {
         }
     }
 
+    public static function g($var,$pre=false){ // like print (g from get)
+        $result='';
+        switch (gettype($var)) {
+            case 'boolean':
+                ($var ? $result='true' : $result='false');
+                break;
+            // integer, double, string, array, object, resource, NULL, unknown type
+            default:
+                $result=print_r($var,true);
+                break;
+        }
+        if($pre) $result='<pre>'.$result.'</pre>';
+        return $result;
+    }
+
 }
 
 class REQUEST {
@@ -458,6 +473,12 @@ class USER {
             return $result=$this->$item;
         } else {
             return '';
+        }
+    }
+
+    public function set($prop,$value){
+        if(!isset($this->$prop)) {
+            $this->$prop=$value;
         }
     }
 

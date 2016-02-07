@@ -38,9 +38,15 @@ public function login($login='',$password=''){
 								// here may be some additional records, like when loged in, which ip, etc
 								$uid=(int) $r['usr-uid'];
 								$gid=(int) $r['usr-gid'];
+								$geo=0; // specific for mt app
+								if($r['usr-geo']!='') $geo=(int) $r['usr-geo'];
+								$mt=0;
+								if($r['usr-mt']!='') $mt=(int) $r['usr-mt'];
 								\SESSION::set('uid',$uid);
 								\SESSION::set('gid',$gid);
 								\SESSION::set('user',$login);
+								\SESSION::set('geo',$geo);
+								\SESSION::set('mt',$mt);
 								\COOKIE::set('lastuser',$login); // optional
 								if(isset($r['usr-pid'])){
 									if($r['usr-pid']!=''){

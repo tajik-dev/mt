@@ -74,7 +74,7 @@ public function get_all_geo(){
     $geo=array();
     $DB=\DB::init();
     if($DB->connect()){
-        $sql="SELECT * FROM `mt-geo` LEFT OUTER JOIN `mt-geo-types` ON `geo-type`=`gt-id` WHERE `geo-id`!=1;";
+        $sql="SELECT * FROM `mt-geo` LEFT OUTER JOIN `mt-geo-types` ON `geo-type`=`gt-id` WHERE `geo-id`!=1;"; // only Dushanbe rayons
         $sth=$DB->dbh->prepare($sql);
         $sth->execute();
         $DB->query_count();

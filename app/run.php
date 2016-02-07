@@ -22,6 +22,8 @@ $pages=array(
 	),true);
 
 $USER=\USER::init();
+$USER->set('geo',(int) \SESSION::get('geo'));
+$USER->set('mt',(int) \SESSION::get('mt'));
 if($USER->auth()){
 	// for authorized users (!) because of $DB->connect()
 	// load translations from DB

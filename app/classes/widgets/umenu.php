@@ -117,7 +117,7 @@ $(document).ready(function() {
               <ul class="dropdown-menu">
               	<li class="dropdown-header">'.\CORE::t('input_forms','Формы ввода данных:').'</li>
               	<li class="divider"></li>
-                <li><a href="./?c=frm&act=ps">'.\CORE::t('mt_frm_passport','Паспорт образовательного учреждения').'</a></li>
+                <li><a href="./?c=frm&act=ps">'.\CORE::t('mt_frm_ps','Паспорт школы').'</a></li>
                 <li><a href="./?c=frm&act=bmt1">'.\CORE::t('mt_frm_bmt1','Форма БМТ-1').'</a></li>
                 <li><a href="./?c=frm&act=kom1">'.\CORE::t('mt_frm_kom1','Форма КОМ-1').'</a></li>
                 <li><a href="./?c=frm&act=tm1">'.\CORE::t('mt_frm_tm1','Форма ОШ-1').'</a></li>
