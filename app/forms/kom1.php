@@ -7,11 +7,22 @@ $UI->pos['main'].='<h3>Хисобот оид ба хайати кормандо�
         <form>
   <fieldset>
     <legend>Шакли титули</legend>
-    <label>Номи муассиса</label>
-    <input type="text" placeholder="Муассисаи…">
-    <span class="help-block">Подсказка или доп. информация.</span>
-    <label class="checkbox">
-      <input type="checkbox"> Нажми здесь и выдели checkbox
+<div class="controls controls-row">
+<select class="span3" placeholder="Нохия/Шахр">
+  ...
+</select>
+  <select class="span3" placeholder="Чамоат/Дехот">
+  ...
+</select>
+  <input class="span4" type="text" placeholder="Сурога">
+  <input class="span1" type="text" placeholder="№ муассиса">
+  <input class="span1" type="text" placeholder="№ филиал">
+  <input class="span5" type="text" placeholder="Номи пурраи муассиса">
+  <input class="span3" type="text" placeholder="Шумораи филиалхо">
+  <input class="span1" type="text" placeholder="Соли таъсисёби">
+  
+</div>
+    
     </label>
     <button type="submit" class="btn">Отправить</button>
   </fieldset>
