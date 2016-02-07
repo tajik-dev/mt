@@ -1,5 +1,5 @@
 <?php
-$UI->pos['main'].='<h3>Form title</h3>
+$UI->pos['main'].='<h3>Хисобот оид ба хайати кормандон ва омeзгорони муассисахои тахсилоти умуми дар соли хониши 20___ / 20___</h3>
 <h3>Subtitle</h3>
 <br/>
 <form class="form-horizontal" action="./?c=frm&act=tm1" method="post">
