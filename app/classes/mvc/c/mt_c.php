@@ -11,13 +11,13 @@ public function __construct($REQUEST,$model,$view){
 			$model->create();
 		break;
 		case 'read':
-			
+			$model->read();
 		break;
 		case 'update':
-			
+			$model->update();
 		break;
-		case 'del':
-			
+		case 'delete':
+			$model->delete();
 		break;
 		default:
 			$UI->pos['main'].=$view->main($model);

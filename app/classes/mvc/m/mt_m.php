@@ -74,7 +74,7 @@ public function get_all_geo(){
     $geo=array();
     $DB=\DB::init();
     if($DB->connect()){
-        $sql="SELECT * FROM `mt-geo` LEFT OUTER JOIN `mt-geo-types` ON `geo-type`=`gt-id`;";
+        $sql="SELECT * FROM `mt-geo` LEFT OUTER JOIN `mt-geo-types` ON `geo-type`=`gt-id` WHERE `geo-id`!=1;";
         $sth=$DB->dbh->prepare($sql);
         $sth->execute();
         $DB->query_count();
@@ -116,7 +116,277 @@ public function xtree($geo,$pid=0,$l=-1){
 }
 
 public function create(){
+    $mt=array(
+        'type'=>0,
+        'name_ru'=>'',
+        'name_tj'=>'',
+        'geo'=>0,
+        'lat'=>'',
+        'lng'=>'',
+        'address'=>'',
+        'director'=>'',        
+        'phone'=>'',
+        'cellphone'=>'',
+        );
+    // get user data
+    $valid=true;
+    if(isset($_POST['type'])){
+        $mt['type']=(int) $_POST['type'];
+    }
+        if($mt['type']==0) {
+            $valid=false;
+            \CORE::msg('error','Incorrect mt type.');
+        }
+    if(isset($_POST['ru'])){
+        $mt['name_ru']=htmlspecialchars(trim($_POST['ru']));
+    }
+        if($mt['name_ru']=='') {
+            $valid=false;
+            \CORE::msg('error','Incorrect name ru.');
+        }
+    if(isset($_POST['tj'])){
+        $mt['name_tj']=htmlspecialchars(trim($_POST['tj']));
+    }
+        if($mt['name_tj']=='') {
+            $valid=false;
+            \CORE::msg('error','Incorrect name tj.');
+        }
+    if(isset($_POST['geo'])){
+        $mt['geo']=(int) $_POST['geo'];
+    }
+        if($mt['geo']==0) {
+            $valid=false;
+            \CORE::msg('error','Incorrect geo id.');
+        }
+    if(isset($_POST['lat'])){
+        $mt['lat']=(float) $_POST['lat'];
+    }
+        if($mt['lat']==0) {
+            $mt['lat']=NULL;
+        }
+    if(isset($_POST['lng'])){
+        $mt['lng']=(float) $_POST['lng'];
+    }
+        if($mt['lng']==0) {
+            $mt['lng']=NULL;
+        }
+    if(isset($_POST['address'])){
+        $mt['address']=htmlspecialchars(trim($_POST['address']));
+    }
+        if($mt['address']=='') {
+            $mt['address']=NULL;
+        }
+    if(isset($_POST['dir'])){
+        $mt['director']=htmlspecialchars(trim($_POST['dir']));
+    }
+        if($mt['director']=='') {
+            $mt['director']=NULL;
+        }
+    if(isset($_POST['phone'])){
+        $mt['phone']=htmlspecialchars(trim($_POST['phone']));
+    }
+        if($mt['phone']=='') {
+            $mt['phone']=NULL;
+        }
+    if(isset($_POST['cellphone'])){
+        $mt['cellphone']=htmlspecialchars(trim($_POST['cellphone']));
+    }
+        if($mt['cellphone']=='') {
+            $mt['cellphone']=NULL;
+        }
     
+    if($valid){
+        $DB=\DB::init();
+        if($DB->connect()){
+            $sql="SELECT * FROM `mt` WHERE `mt-type`=:type AND `mt-name-ru`=:name_ru;";
+            $sth=$DB->dbh->prepare($sql);
+            $sth->execute(array('type'=>$mt['type'],'name_ru'=>$mt['name_ru']));
+            $DB->query_count();
+            if($sth->rowCount()>0){
+                \CORE::msg('error','Such record already exists.');
+            } else {
+                $sql="INSERT INTO `mt` (
+                    `mt-type`,
+                    `mt-name-ru`,
+                    `mt-name-tj`,
+                    `mt-geo-id`,
+                    `mt-geo-lat`,
+                    `mt-geo-lng`,
+                    `mt-address`,
+                    `mt-director`,
+                    `mt-phone`,
+                    `mt-cellphone`
+                    ) 
+                VALUES (:type,:name_ru,:name_tj,:geo,:lat,:lng,:address,:director,:phone,:cellphone);";
+                $sth=$DB->dbh->prepare($sql);
+                $sth->execute($mt);
+                $DB->query_count();
+                \CORE::msg('info','ok');
+            }
+        }        
+    } else {
+        \CORE::msg('error','Invalid user data.');
+    }
+}
+
+public function update(){
+    $mt=array(
+        'type'=>0,
+        'name_ru'=>'',
+        'name_tj'=>'',
+        'geo'=>0,
+        'lat'=>'',
+        'lng'=>'',
+        'address'=>'',
+        'director'=>'',        
+        'phone'=>'',
+        'cellphone'=>'',
+        'id'=>'',
+        );
+    // get user data
+    $valid=true;
+    if(isset($_POST['type'])){
+        $mt['type']=(int) $_POST['type'];
+    }
+        if($mt['type']==0) {
+            $valid=false;
+            \CORE::msg('error','Incorrect mt type.');
+        }
+    if(isset($_POST['ru'])){
+        $mt['name_ru']=htmlspecialchars(trim($_POST['ru']));
+    }
+        if($mt['name_ru']=='') {
+            $valid=false;
+            \CORE::msg('error','Incorrect name ru.');
+        }
+    if(isset($_POST['tj'])){
+        $mt['name_tj']=htmlspecialchars(trim($_POST['tj']));
+    }
+        if($mt['name_tj']=='') {
+            $valid=false;
+            \CORE::msg('error','Incorrect name tj.');
+        }
+    if(isset($_POST['geo'])){
+        $mt['geo']=(int) $_POST['geo'];
+    }
+        if($mt['geo']==0) {
+            $valid=false;
+            \CORE::msg('error','Incorrect geo id.');
+        }
+    if(isset($_POST['lat'])){
+        $mt['lat']=(float) $_POST['lat'];
+    }
+        if($mt['lat']==0) {
+            $mt['lat']=NULL;
+        }
+    if(isset($_POST['lng'])){
+        $mt['lng']=(float) $_POST['lng'];
+    }
+        if($mt['lng']==0) {
+            $mt['lng']=NULL;
+        }
+    if(isset($_POST['address'])){
+        $mt['address']=htmlspecialchars(trim($_POST['address']));
+    }
+        if($mt['address']=='') {
+            $mt['address']=NULL;
+        }
+    if(isset($_POST['dir'])){
+        $mt['director']=htmlspecialchars(trim($_POST['dir']));
+    }
+        if($mt['director']=='') {
+            $mt['director']=NULL;
+        }
+    if(isset($_POST['phone'])){
+        $mt['phone']=htmlspecialchars(trim($_POST['phone']));
+    }
+        if($mt['phone']=='') {
+            $mt['phone']=NULL;
+        }
+    if(isset($_POST['cellphone'])){
+        $mt['cellphone']=htmlspecialchars(trim($_POST['cellphone']));
+    }
+        if($mt['cellphone']=='') {
+            $mt['cellphone']=NULL;
+        }
+    if(isset($_POST['id'])){
+        $mt['id']=(int) $_POST['id'];
+    }
+        if($mt['id']==0) {
+            $valid=false;
+            \CORE::msg('error','Incorrect mt id.');
+        }
+    
+    if($valid){
+        $DB=\DB::init();
+        if($DB->connect()){
+            $sql="UPDATE `mt` SET 
+                `mt-type`=:type,
+                `mt-name-ru`=:name_ru,
+                `mt-name-tj`=:name_tj,
+                `mt-geo-id`=:geo,
+                `mt-geo-lat`=:lat,
+                `mt-geo-lng`=:lng,
+                `mt-address`=:address,
+                `mt-director`=:director,
+                `mt-phone`=:phone,
+                `mt-cellphone`=:cellphone
+                WHERE `mt-id`=:id";
+            $sth=$DB->dbh->prepare($sql);
+            $sth->execute($mt);
+            $DB->query_count();
+            \CORE::msg('info','ok');
+        }        
+    } else {
+        \CORE::msg('error','Invalid user data.');
+    }
+}
+
+public function read(){
+    $id=0;
+    if(isset($_POST['id'])) $id=(int) $_POST['id'];
+    if($id>0){
+        $DB=\DB::init();
+        if($DB->connect()){
+            $sql = "SELECT * FROM `mt` WHERE `mt-id`=:id;";
+            $sth = $DB->dbh->prepare($sql);
+            $sth->execute(array('id'=>$id));
+            $DB->query_count();
+            if($sth->rowCount()==1){
+                $r=$sth->fetch();
+                $mt=array(
+                    'type'=>$r['mt-type'],
+                    'name_ru'=>$r['mt-name-ru'],
+                    'name_tj'=>$r['mt-name-tj'],
+                    'geo'=>$r['mt-geo-id'],
+                    'lat'=>$r['mt-geo-lat'],
+                    'lng'=>$r['mt-geo-lng'],
+                    'address'=>$r['mt-address'],
+                    'director'=>$r['mt-director'],        
+                    'phone'=>$r['mt-phone'],
+                    'cellphone'=>$r['mt-cellphone'],
+                );
+                echo json_encode($mt);
+            } else {
+                \CORE::msg('error','Such record not found.');
+            }
+        }
+    }
+}
+
+public function delete(){
+    $id=0;
+    if(isset($_POST['id'])) $id=(int) $_POST['id'];
+    if($id>0){
+        $DB=\DB::init();
+        if($DB->connect()){
+            $sql = "DELETE FROM `mt` WHERE `mt-id`=:id;";
+            $sth = $DB->dbh->prepare($sql);
+            $sth->execute(array('id'=>$id));
+            $DB->query_count();
+            \CORE::msg('info','deleted');
+        }
+    }
 }
 
 

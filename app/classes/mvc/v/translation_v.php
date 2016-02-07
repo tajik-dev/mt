@@ -7,7 +7,7 @@ public function main($model){
 	$UI=\CORE\UI::init();
 	$modules_list=$model->get_list_of_modules();
 	$result='<div>
-	<h4>'.mb_convert_case(\CORE::t('translation','Translation'),MB_CASE_TITLE,"UTF-8").':</h4>
+	<h4>'.mb_convert_case(\CORE::t('translation','Translation'),MB_CASE_TITLE,"UTF-8").': <span class="text-muted">Ҷҷ, Ӯӯ, Ққ, Ӣӣ, Ғғ, Ҳҳ</span></h4>
 	'.\CORE::t('module','Модуль').': '.$UI->html_list($modules_list,'',' id="sel_module"',$model->sel_module).'
 	<!-- (Ҷҷ, Ӯӯ, Ққ, Ӣӣ, Ғғ, Ҳҳ) -->
 	'.$UI::bootstrap_modal_btn('add_new_translation','new_translation',\CORE::t('new_translation','Новый перевод')).'

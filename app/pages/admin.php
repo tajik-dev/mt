@@ -18,6 +18,11 @@ $this->pos['main']='
 	  <!--<li><a href="./?c=map&manage">'.\CORE::t('map','Карта').'</a></li>-->
 	</ul>
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-4">
+  	<ul class="nav nav-pills nav-stacked" style="border-radius: 4px;border: 1px solid #efefef;box-shadow: 5px 5px 10px 0px rgba(204,204,204,1);">
+	  <li class="active"><a href="./">'.\CORE::t('devteam','Группа разработчиков').'</a></li>
+	  <!--<li><a href="./?c=todo">'.\CORE::t('tasks','Задачи').'</a></li>-->
+	</ul>
+  </div>
 </div>
 ';

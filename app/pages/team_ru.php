@@ -29,23 +29,24 @@ $this->pos['main'].='
       <!-- Three -->
       <div class="row text-center">
 
-        <div class="col-lg-4">
-          <img class="img-circle cbrd" src="./ui/img/team/zevar1.png" alt="Зевар Давлатмамадова" width="140" height="140">
-          <h3>Зевар Давлатмамадова</h3>
-          <p>Тренер по информационным технологиям<br> ОО «Центр ИКТ»</p>
-          <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+        <div class="col-lg-3">
+
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <img class="img-circle cbrd" src="./ui/img/team/bakhtiyor1.png" alt="Бахтиёр Бахриддинов" width="140" height="140">
           <h3>Бахтиёр Бахриддинов</h3>
           <p>Разработчик программист</p>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <img class="img-circle cbrd" src="./ui/img/team/komil1.png" alt="Комил Раджабов" width="140" height="140">
           <h3>Комил Раджабов</h3>
           <p>Разработчик</p>
+        </div>
+
+        <div class="col-lg-3">
+
         </div>
 
       </div><!-- /.Three -->
