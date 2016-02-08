@@ -91,6 +91,9 @@ $UI->pos['main'].='<div class="row">
                     <input type="text" class="form-control" id="soli_tasisebi" name="soli_tasisebi">
                 </div>
             </div>
+
+            <hr>
+
 	            <div class="form-group text-center">
                 	<h4 class="col-sm-6">КООРДИНАТҲОИ ҶУҒРОФИ МУАССИСА</h4>
             	</div>
@@ -194,9 +197,12 @@ $UI->pos['main'].='<div class="row">
                     </select>
                 </div>
             </div>
+
             <hr>
             
             <div class="form-group text-center"><h4 class="col-sm-6">Иҷозатнома оид ба ҳуқуқи пешбурди фаъолияти таълимӣ</h4></div>
+
+            <hr>
 
             <div class="row">
 
@@ -232,7 +238,11 @@ $UI->pos['main'].='<div class="row">
 
 	        </div>
 
+            <hr>
+
             <div class="form-group text-center"><h4 class="col-sm-6">Шаҳодатнома дар бораи аккредитатсияи давлатӣ</h4></div>
+
+            <hr>
 
             <div class="row">
             
@@ -257,7 +267,11 @@ $UI->pos['main'].='<div class="row">
 
 	        </div>
 
+            <hr>
+
             <div class="form-group text-center"><h4 class="col-sm-6">Шаҳодатнома дар бораи бақайдгирии давлатии таъсисёбии муассиса</h4></div>
+
+            <hr>
 
             <div class="row">
 	            <div class="col-sm-8">
@@ -275,7 +289,11 @@ $UI->pos['main'].='<div class="row">
 		        </div>
 	        </div>
 
+            <hr>
+
             <div class="form-group text-center"><h4 class="col-sm-6">Шиносномаи техникии муассиса</h4></div>
+
+            <hr>
 
             <div class="row">
 	            <div class="col-sm-8">
@@ -293,7 +311,11 @@ $UI->pos['main'].='<div class="row">
 		        </div>
 	        </div>
 
+            <hr>
+
             <div class="form-group text-center"><h4 class="col-sm-6">Сертификати замине, ки дар он мактаб ҷойгир шудааст</h4></div>
+
+            <hr>
 
             <div class="row">
 	            <div class="col-sm-8">
