@@ -91,9 +91,9 @@ $UI->pos['main'].='<div class="row">
                     <input type="text" class="form-control" id="soli_tasisebi" name="soli_tasisebi">
                 </div>
             </div>
-	            <div class="form-group">
-	                <label for="geo_coordinates" class="col-sm-5 control-label">КООРДИНАТҲОИ ҶУҒРОФИ МУАССИСА</label>
-	            </div>
+	            <div class="form-group text-center">
+                	<h4 class="col-sm-6">КООРДИНАТҲОИ ҶУҒРОФИ МУАССИСА</h4>
+            	</div>
             <div class="form-group">
                 <label for="lat" class="col-sm-3 control-label">Арз (широта/latitude):</label>
                 <div class="col-sm-2">
@@ -137,7 +137,7 @@ $UI->pos['main'].='<div class="row">
             </div>
             <div class="form-group">
                 <label for="namudi_tobeiyat" class="col-sm-3 control-label">Намуди тобеъият:</label>
-                <div class="col-sm-9">
+                <div class="col-sm-3">
                     <select id="namudi_tobeiyat" name="namudi_tobeiyat" class="form-control">
                         <option disabled>-- Интихоб намоед --</option>
                         <option>Маҳаллӣ</option>
@@ -145,7 +145,173 @@ $UI->pos['main'].='<div class="row">
                     </select>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="joygirshavi" class="col-sm-3 control-label">Мавзеъи ҷойгиршавӣ</label>
+                <div class="col-sm-3">
+                    <select id="joygirshavi" name="joygirshavi" class="form-control">
+                        <option disabled>-- Интихоб намоед --</option>
+                        <option>Шаҳр</option>
+                        <option>Деҳот</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="joygirshavi" class="col-sm-3 control-label">Макоми муассиса</label>
+                <div class="col-sm-3">
+                    <select id="joygirshavi" name="joygirshavi" class="form-control">
+                        <option disabled>-- Интихоб намоед --</option>
+                        <option>Оддӣ</option>
+                        <option>Президентӣ</option>
+                        <option>Барои бачагони лаёқатманд</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="namudi_maktab" class="col-sm-3 control-label">Намуди мактаб</label>
+                <div class="col-sm-5">
+                    <select id="namudi_maktab" name="namudi_maktab" class="form-control">
+                        <option disabled>-- Интихоб намоед --</option>
+                        <option>Ибтидоӣ</option>
+                        <option>Асосӣ</option>
+                        <option>Миёна(пурра)</option>
+                        <option>Гимназия</option>
+                        <option>Литсей</option>
+                        <option>Мактаб-интернати кӯдакони ятим</option>
+                        <option>Мактаб-интернати кӯдакони кар</option>
+                        <option>Мактаб-интернати санаторӣ</option>
+                        <option>Мактаб-интернат барои кӯдакони шунавоияшон суст ва деркаршуда</option>
+                        <option>Мактаб-интернати кӯдакони нобино ва биноияшон суст</option>
+                        <option>Мактаб-интернати низомаш махсус (полиомиелит)</option>
+                        <option>Мактаби махсус (душвортарбия)</option>
+                        <option>Интернати наздимактабӣ</option>
+                        <option>Мактаб-интернати ёрирасон (кӯдакони ақлан носолим)</option>
+                        <option>Хонаи бачагон</option>
+                        <option>Мактаб-кӯдакистон</option>
+                        <option>Мактаби ғоибона (шабона)</option>
+                        <option>Мактаб-интернати мусиқӣ</option>
+                        <option>Мактаб-интернати варзишӣ</option>
+                        <option>Мактаб-интернати лаёқатманд</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="form-group text-center"><h4 class="col-sm-6">Иҷозатнома оид ба ҳуқуқи пешбурди фаъолияти таълимӣ</h4></div>
 
+            <div class="row">
+
+            	<div class="col-sm-4">
+					<div class="form-group">
+		                <label for="muassis" class="col-sm-5 control-label">Муассис:</label>
+		                <div class="col-sm-7">
+		                    <input type="text" class="form-control" id="muassis" name="muassis">
+		                </div>
+	                </div>
+		            <div class="form-group">
+		                <label for="sanai_ijozatnoma" class="col-sm-8 control-label">Санаи гирифтани иҷозатнома:</label>
+		                <div class="col-sm-4">
+		                    <input type="text" class="form-control" id="sanai_ijozatnoma" name="sanai_ijozatnoma">
+		                </div>
+		            </div>
+		        </div>
+
+		        <div class="col-sm-4">
+					<div class="form-group">
+		                <label for="muassis" class="col-sm-7 control-label">Серия ва рақами иҷозатнома:</label>
+		                <div class="col-sm-5">
+		                    <input type="text" class="form-control" id="muassis" name="muassis">
+		                </div>
+	                </div>
+		            <div class="form-group">
+		                <label for="sanai_ijozatnoma" class="col-sm-7 control-label">Мӯҳлати иҷозатнома то:</label>
+		                <div class="col-sm-4">
+		                    <input type="text" class="form-control" id="sanai_ijozatnoma" name="sanai_ijozatnoma">
+		                </div>
+		            </div>
+		        </div>
+
+	        </div>
+
+            <div class="form-group text-center"><h4 class="col-sm-6">Шаҳодатнома дар бораи аккредитатсияи давлатӣ</h4></div>
+
+            <div class="row">
+            
+            	<div class="col-sm-12">
+					<div class="form-group">
+		                <label for="seria_akredit" class="col-sm-2 control-label">Серия ва рақами он:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="seria_akredit" name="seria_akredit">
+		                </div>
+
+		                <label for="tarihi_akredit" class="col-sm-2 control-label">Таърихи додани санад:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="tarihi_akredit" name="tarihi_akredit">
+		                </div>
+
+		                <label for="muhlat_akredit" class="col-sm-2 control-label">Мӯҳлати шаҳодатнома то:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="muhlat_akredit" name="muhlat_akredit">
+		                </div>
+		            </div>
+		        </div>
+
+	        </div>
+
+            <div class="form-group text-center"><h4 class="col-sm-6">Шаҳодатнома дар бораи бақайдгирии давлатии таъсисёбии муассиса</h4></div>
+
+            <div class="row">
+	            <div class="col-sm-8">
+					<div class="form-group">
+		                <label for="rakami_mushahhas" class="col-sm-3 control-label">Рақами ягонаи мушаххас:</label>
+		                <div class="col-sm-3">
+		                    <input type="text" class="form-control" id="rakami_mushahhas" name="rakami_mushahhas">
+		                </div>
+
+		                <label for="sanai_sudur" class="col-sm-2 control-label">Санаи судур:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="sanai_sudur" name="sanai_sudur">
+		                </div>
+		            </div>
+		        </div>
+	        </div>
+
+            <div class="form-group text-center"><h4 class="col-sm-6">Шиносномаи техникии муассиса</h4></div>
+
+            <div class="row">
+	            <div class="col-sm-8">
+					<div class="form-group">
+		                <label for="rakami_baruyhatgiri" class="col-sm-3 control-label">Рақами барӯйхатгирӣ:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="rakami_baruyhatgiri" name="rakami_baruyhatgiri">
+		                </div>
+
+		                <label for="sanai_tech_pass" class="col-sm-3 control-label">Санаи додани он:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="sanai_tech_pass" name="sanai_tech_pass">
+		                </div>
+		            </div>
+		        </div>
+	        </div>
+
+            <div class="form-group text-center"><h4 class="col-sm-6">Сертификати замине, ки дар он мактаб ҷойгир шудааст</h4></div>
+
+            <div class="row">
+	            <div class="col-sm-8">
+					<div class="form-group">
+		                <label for="rakami_sert_zamin" class="col-sm-3 control-label">Рақами сертификат:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="rakami_sert_zamin" name="rakami_sert_zamin">
+		                </div>
+
+		                <label for="sanai_sert_zamin" class="col-sm-3 control-label">Санаи додани он:</label>
+		                <div class="col-sm-2">
+		                    <input type="text" class="form-control" id="sanai_sert_zamin" name="sanai_sert_zamin">
+		                </div>
+		            </div>
+		        </div>
+	        </div>
+
+            <hr>
 
         </div>
     </div>
