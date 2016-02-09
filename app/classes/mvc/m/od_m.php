@@ -6,6 +6,7 @@ class OD_M {
 
 public function get_mt(){
 	$mt=array();
+    $format='json';
 	$filter_geo=0;
 	$filter_type=0;
 	$filter_id=0;
@@ -23,17 +24,20 @@ public function get_mt(){
         $DB->query_count();
         if($sth->rowCount()>0){
             while($r=$sth->fetch()){
-                $mt[]=array(
-                	$r['mt-geo-lng'],
-                	$r['mt-geo-lat'],
-                	(int) $r['mt-geo-id'],
-                	(int) $r['mt-type'],
-                	$r['mt-name'.$lang],
-                	$r['mt-address']
-                );
+                if($r['mt-geo-lng']!='' && $r['mt-geo-lat']!=''){
+                    $mt[]=array(
+                    	$r['mt-geo-lng'],
+                    	$r['mt-geo-lat'],
+                    	(int) $r['mt-geo-id'],
+                    	(int) $r['mt-type'],
+                    	$r['mt-name'.$lang],
+                    	$r['mt-address']
+                    );
+                }
             }
         }
     }
+    // json, xml, csv
 	// lng, lat, geo_id, mt_type, name, address
 	echo json_encode($mt);
 }
