@@ -1,22 +1,3 @@
-<?php
-namespace APP\MVC\V;
-
-class MAP_V {
-
-public function main($model){
-	$UI=\CORE\UI::init();
-	$result='<div class="row">
-	<div id="mt_map" style="height:478px;"></div>
-	<button id="markers">Markers</button>
-	<button id="clear">Clear</button>
-</div>';
-	$UI->pos['link'].='<link rel="stylesheet" href="./ui/ext/map/css/leaflet.css" />';
-	$UI->pos['js'].='
-<script type="text/javascript" src="./ui/ext/map/js/leaflet.js"></script>
-<script type="text/javascript" src="./ui/ext/map/js/singleclick.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-
 $(document).ready(function(){
 
 var MyMap;
@@ -101,12 +82,3 @@ $("#clear").click(function(){
 
 
 });
-
-});
-</script>
-';
-	return $result;
-}
-
-
-}

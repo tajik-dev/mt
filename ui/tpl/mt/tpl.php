@@ -1,6 +1,6 @@
 <?php if(!defined('DIR_BASE')){echo '[+_+]'; exit;} ?>
 <!DOCTYPE html>
-<html lang="ru,tj">
+<html lang="en,ru,tj">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

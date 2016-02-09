@@ -7,7 +7,7 @@ $UI->pos['main'].='<div class="row">
         </em></p>
     </div>
 </div>
-<form class="form-horizontal" action="./?c=frm&act=km1&do=add" method="post">
+<form class="form-horizontal" action="./?c=frm&act=ps&do=add" method="post">
     <div class="row">
     	<hr>
         <div class="col-sm-12">

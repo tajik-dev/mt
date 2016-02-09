@@ -89,8 +89,7 @@ class UMENU {
 		\CORE::msg('debug','umenu');
 		$UI=\CORE\UI::init();
 		$USER=\USER::init();
-		$UI->pos['js'].='
-<script>
+		$UI->pos['js'].='<script>
 $(document).ready(function() {
 
 	function change_language(xlang){
@@ -108,6 +107,7 @@ $(document).ready(function() {
 });
 </script>
 ';
+
 		if($USER->auth()){
 			// authorized users
 			$UI->pos['mainmenu'].='
