@@ -62,7 +62,7 @@
 
       <hr>
 
-      <footer style="padding-top:40px;">
+      <footer>
       <div class="row">
 
         <div class="col-md-4">

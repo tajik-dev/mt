@@ -12,6 +12,10 @@ public function __construct($REQUEST,$model,$view){
 
 		break;
 
+		case 'mt':
+			$model->get_mt();
+		break;
+
 		default:
 			$UI->pos['main'].=$view->main($model);
 		break;

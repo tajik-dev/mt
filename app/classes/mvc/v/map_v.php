@@ -7,8 +7,6 @@ public function main($model){
 	$UI=\CORE\UI::init();
 	$result='<div class="row">
 	<div id="mt_map" style="height:478px;"></div>
-	<button id="markers">Markers</button>
-	<button id="clear">Clear</button>
 </div>';
 	$UI->pos['link'].='<link rel="stylesheet" href="./ui/ext/map/css/leaflet.css" />';
 	$UI->pos['js'].='
@@ -17,10 +15,15 @@ public function main($model){
 <script type="text/javascript">
 $(document).ready(function(){
 
-$(document).ready(function(){
+$("#mt_map").height($(window).height()-180); // change map box height on start
 
-var MyMap;
-var MyMapMarkers = new Array();
+var MyMap; // map
+var MyMapMarkers = new Array(); // markers layer
+
+function IsJsonString(str) {
+	try { JSON.parse(str); } catch(e) { return false; }
+	return true;
+}
 
 function initMyMap() {
 	// set up the map
@@ -34,23 +37,32 @@ function initMyMap() {
 	// start the map in Dushanbe
 	MyMap.setView(new L.LatLng(38.57,68.7781477), 13);
 	MyMap.addLayer(osm);
-	// dont show powered ... text
+	// dont show powered ...
 	MyMap.attributionControl.setPrefix("");
 
 }
 
-function initMyMapMarkers() {
+function getMyIcon(type){
 
-	// define markers
-	var markers = [
-[68.80597829818726,38.563393215861524, "Мактаби № 15", "ш.Душанбе, куч. Айнӣ 49"],
-[68.80027055740356,38.54945760342899, "Мактаби № 16", "ш.Душанбе, куч. Титов 2а"]
-	];
-	// console.log("markers: " + markers);
+	var icon_name = "blue";
 
-	// icons
-	var blueIcon = L.icon({
-	    iconUrl: "ui/ext/map/images/azure.png",
+	switch(type) {
+    case 1: // kudakiston
+        icon_name = "green";
+        break;
+    case 2: // maktab
+        icon_name = "azure";
+        break;
+    case 3: // internat
+        icon_name = "pink";
+        break;
+    case 4: // ilovagi
+        icon_name = "yellow";
+        break;
+	}
+
+	var myIcon = L.icon({
+	    iconUrl: "ui/ext/map/images/" + icon_name + ".png",
 	    shadowUrl: "ui/ext/map/images/marker-shadow.png",
 	    iconSize:     [41, 41], // size of the icon
 	    shadowSize:   [41, 41], // size of the shadow
@@ -59,17 +71,28 @@ function initMyMapMarkers() {
 	    popupAnchor:  [-2, -35] // point from which the popup should open relative to the iconAnchor
 	});
 
+	return myIcon;
+
+}
+
+function initMyMapMarkers(markers) {
+
+	// example: [[LNG, LAT, GEO_ID, MT_TYPE_ID, "NAME", "ADDRESS"],[LNG2, LAT2, GEO_ID2, MT_TYPE_ID2, "NAME2", "ADDRESS2"]]
+
+	// you can define markers manually
+	// var markers = [];
+
 	//Loop through the markers array
     for (var i=0; i<markers.length; i++) {
         if (markers[i][0]>0 && markers[i][1]>0){
-            var lon = markers[i][0];
+            var lng = markers[i][0];
             var lat = markers[i][1];
             var popupText = "<p class=\"xpopup\"> \
-            <strong>"+markers[i][2]+"</strong> \
-            <br/><strong>Суроға: </strong>"+markers[i][3]+" \
+            <strong>"+markers[i][4]+"</strong> \
+            <br/><strong>'.\CORE::t('address','Address').': </strong>"+markers[i][5]+" \
             </p>";
-            var markerLocation = new L.LatLng(lat, lon);
-            var marker = new L.Marker(markerLocation, {icon: blueIcon});
+            var markerLocation = new L.LatLng(lat, lng);
+            var marker = new L.Marker(markerLocation, {icon: getMyIcon(markers[i][3])});
             MyMap.addLayer(marker);
             MyMapMarkers.push(marker);
             marker.bindPopup(popupText,{
@@ -88,19 +111,16 @@ function removeMyMapMarkers() {
 }
 
 
-initMyMap();
+initMyMap(); // show just map
 
+// get and init markers
 
-$("#markers").click(function(){
-	initMyMapMarkers();
+$.post("./?c=od&act=mt&format=json&ajax",{filter_geo:0,filter_type:0,filter_id:0},function(data){
+    if(IsJsonString(data)){
+		initMyMapMarkers(JSON.parse(data));
+	} else { console.log("failed to get json: "+data); }
 });
 
-$("#clear").click(function(){
-	removeMyMapMarkers();
-});
-
-
-});
 
 });
 </script>
