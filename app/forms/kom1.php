@@ -8,18 +8,18 @@ $UI->pos['main'].='<h3>Хисобот оид ба хайати кормандо�
   <fieldset>
     <legend>Шакли титули</legend>
 <div class="controls controls-row">
-<select class="span3" placeholder="Нохия/Шахр">
+<select class="span3" placeholder="Ноҳия/Шаҳр">
   ...
 </select>
-  <select class="span3" placeholder="Чамоат/Дехот">
+  <select class="span3" placeholder="Ҷамоат/Деҳот">
   ...
 </select>
-  <input class="span4" type="text" placeholder="Сурога">
+  <input class="span4" type="text" placeholder="Суроға">
   <input class="span1" type="text" placeholder="№ муассиса">
   <input class="span1" type="text" placeholder="№ филиал">
   <input class="span5" type="text" placeholder="Номи пурраи муассиса">
-  <input class="span3" type="text" placeholder="Шумораи филиалхо">
-  <input class="span1" type="text" placeholder="Соли таъсисёби">
+  <input class="span3" type="text" placeholder="Шумораи филиалҳо">
+  <input class="span1" type="text" placeholder="Соли таъсисёбӣ">
   
 </div>
     
