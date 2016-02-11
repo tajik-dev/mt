@@ -18,7 +18,13 @@ $(document).ready(function(){
 $("#mt_map").height($(window).height()-180); // change map box height on start
 
 var MyMap; // map
-var MyMapMarkers = new Array(); // markers layer
+var MyMarkers = new Array(); // markers layer
+var MyIcons = {
+	type1: getMyIcon("green"), // kudakiston
+	type2: getMyIcon("azure"), // maktab
+	type3: getMyIcon("pink"), // maktab-internat
+	type4: getMyIcon("yellow") // ilovagi
+};
 
 function IsJsonString(str) {
 	try { JSON.parse(str); } catch(e) { return false; }
@@ -42,27 +48,9 @@ function initMyMap() {
 
 }
 
-function getMyIcon(type){
-
-	var icon_name = "blue";
-
-	switch(type) {
-    case 1: // kudakiston
-        icon_name = "green";
-        break;
-    case 2: // maktab
-        icon_name = "azure";
-        break;
-    case 3: // internat
-        icon_name = "pink";
-        break;
-    case 4: // ilovagi
-        icon_name = "yellow";
-        break;
-	}
-
+function getMyIcon(IconColor){
 	var myIcon = L.icon({
-	    iconUrl: "ui/ext/map/images/" + icon_name + ".png",
+	    iconUrl: "ui/ext/map/images/" + IconColor + ".png",
 	    shadowUrl: "ui/ext/map/images/marker-shadow.png",
 	    iconSize:     [41, 41], // size of the icon
 	    shadowSize:   [41, 41], // size of the shadow
@@ -70,12 +58,10 @@ function getMyIcon(type){
 	    shadowAnchor: [10, 40], // the same for the shadow
 	    popupAnchor:  [-2, -35] // point from which the popup should open relative to the iconAnchor
 	});
-
 	return myIcon;
-
 }
 
-function initMyMapMarkers(markers) {
+function showMyMarkers(markers) {
 
 	// example: [[LNG, LAT, GEO_ID, MT_TYPE_ID, "NAME", "ADDRESS"],[LNG2, LAT2, GEO_ID2, MT_TYPE_ID2, "NAME2", "ADDRESS2"]]
 
@@ -92,9 +78,9 @@ function initMyMapMarkers(markers) {
             <br/><strong>'.\CORE::t('address','Address').': </strong>"+markers[i][5]+" \
             </p>";
             var markerLocation = new L.LatLng(lat, lng);
-            var marker = new L.Marker(markerLocation, {icon: getMyIcon(markers[i][3])});
+            var marker = new L.Marker(markerLocation, {icon: MyIcons[ "type" + markers[i][3] ]});
             MyMap.addLayer(marker);
-            MyMapMarkers.push(marker);
+            MyMarkers.push(marker);
             marker.bindPopup(popupText,{
                 minWidth: 230
             });
@@ -103,23 +89,28 @@ function initMyMapMarkers(markers) {
 
 }
 
-function removeMyMapMarkers() {
-	for (i=0;i<MyMapMarkers.length;i++) {
-		MyMap.removeLayer(MyMapMarkers[i]);
+function removeMyMarkers() {
+	for (i=0;i<MyMarkers.length;i++) {
+		MyMap.removeLayer(MyMarkers[i]);
 	}
-	MyMapMarkers=[];
+	MyMarkers=[];
 }
 
+function initMyMarkers(){
+	$.post("./?c=od&act=mt&format=json&ajax",{
+		filter_geo:0,
+		filter_type:0,
+		filter_id:0
+	},function(data){
+	    if(IsJsonString(data)){
+			showMyMarkers(JSON.parse(data));
+		} else { console.log("failed to get json: "+data); }
+	});
+}
 
+// run
 initMyMap(); // show just map
-
-// get and init markers
-
-$.post("./?c=od&act=mt&format=json&ajax",{filter_geo:0,filter_type:0,filter_id:0},function(data){
-    if(IsJsonString(data)){
-		initMyMapMarkers(JSON.parse(data));
-	} else { console.log("failed to get json: "+data); }
-});
+initMyMarkers() // init markers (ajax!) 
 
 
 });
