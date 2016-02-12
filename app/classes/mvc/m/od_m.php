@@ -6,36 +6,44 @@ class OD_M {
 
 public function get_mt(){
 	$mt=array();
-    $format='json';
     $lang=\CORE::lng();
     if($lang!='') $lang='-'.$lang;
 	$filter_geo=0;
 	$filter_type=0;
-	$filter_id=0;
+    $filter_id=0;
+	$only_geo=false;
 	if(isset($_POST['filter_geo'])){$filter_geo=(int) $_POST['filter_geo'];}
 	if(isset($_POST['filter_type'])){$filter_type=(int) $_POST['filter_type'];}
-	if(isset($_POST['filter_id'])){$filter_id=(int) $_POST['filter_id'];}
+    if(isset($_POST['filter_id'])){$filter_id=(int) $_POST['filter_id'];}
+	if(isset($_POST['map'])){$only_geo=true;}
 	$where='';
     // we can add multiply filter for each type then
 	if($filter_geo>0) {
         if($where=='') {
             $where='WHERE `mt-geo-id`='.$filter_geo;
         } else {
-            $where=' AND `mt-geo-id`='.$filter_geo;
+            $where.=' AND `mt-geo-id`='.$filter_geo;
         }
     }
     if($filter_type>0) {
         if($where=='') {
             $where='WHERE `mt-type`='.$filter_type;
         } else {
-            $where=' AND `mt-type`='.$filter_type;
+            $where.=' AND `mt-type`='.$filter_type;
         }
     }
     if($filter_id>0) {
         if($where=='') {
             $where='WHERE `mt-id`='.$filter_id;
         } else {
-            $where=' AND `mt-id`='.$filter_id;
+            $where.=' AND `mt-id`='.$filter_id;
+        }
+    }
+    if($only_geo) {
+        if($where=='') {
+            $where='WHERE `mt-geo-lat` IS NOT NULL AND `mt-geo-lng` IS NOT NULL';
+        } else {
+            $where.=' AND  `mt-geo-lat` IS NOT NULL AND `mt-geo-lng` IS NOT NULL';
         }
     }
 	$DB=\DB::init();
@@ -48,6 +56,7 @@ public function get_mt(){
             while($r=$sth->fetch()){
                 if($r['mt-geo-lng']!='' && $r['mt-geo-lat']!=''){
                     $mt[]=array(
+                        $r['mt-id'],
                     	$r['mt-geo-lng'],
                     	$r['mt-geo-lat'],
                     	(int) $r['mt-geo-id'],
@@ -59,8 +68,7 @@ public function get_mt(){
             }
         }
     }
-    // json, xml, csv
-	// lng, lat, geo_id, mt_type, name, address
+	// id, lng, lat, geo_id, mt_type, name, address
 	echo json_encode($mt);
 }
 

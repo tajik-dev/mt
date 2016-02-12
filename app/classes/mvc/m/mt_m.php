@@ -342,8 +342,7 @@ public function update(){
     }
 }
 
-public function read(){
-    $id=0;
+public function read($id=0){
     if(isset($_POST['id'])) $id=(int) $_POST['id'];
     if($id>0){
         $DB=\DB::init();
@@ -364,11 +363,11 @@ public function read(){
                     'address'=>$r['mt-address'],
                     'director'=>$r['mt-director'],        
                     'phone'=>$r['mt-phone'],
-                    'cellphone'=>$r['mt-cellphone'],
+                    'cellphone'=>$r['mt-cellphone']
                 );
                 echo json_encode($mt);
             } else {
-                \CORE::msg('error','Such record not found.');
+                \CORE::msg('error',\CORE::t('no_record','Такая запись не найдена.'));
             }
         }
     }
@@ -389,5 +388,51 @@ public function delete(){
     }
 }
 
+public function view_mt($id=0){
+    $lang=\CORE::lng();
+    if($lang!='') $lang='-'.$lang;
+    $mt=array(
+        'type'=>'',
+        'name_ru'=>'',
+        'name_tj'=>'',
+        'geo'=>'',
+        'lat'=>'',
+        'lng'=>'',
+        'address'=>'',
+        'director'=>'',        
+        'phone'=>'',
+        'cellphone'=>''
+        );
+    if(isset($_POST['id'])) $id=(int) $_POST['id'];
+    if($id>0){
+        $DB=\DB::init();
+        if($DB->connect()){
+            $sql = "SELECT * FROM `mt`
+            LEFT OUTER JOIN `mt-types` ON `mt-type`=`mt-type-id` 
+            LEFT OUTER JOIN `mt-geo` ON `mt-geo-id`=`geo-id`
+            WHERE `mt-id`=:id;";
+            $sth = $DB->dbh->prepare($sql);
+            $sth->execute(array('id'=>$id));
+            $DB->query_count();
+            if($sth->rowCount()==1){
+                $r=$sth->fetch();
+                $mt=array(
+                    'type'=>$r['mt-type'.$lang],
+                    'name'=>$r['mt-name'.$lang],
+                    'geoname'=>$r['geo-title'.$lang],
+                    'lat'=>$r['mt-geo-lat'],
+                    'lng'=>$r['mt-geo-lng'],
+                    'address'=>$r['mt-address'],
+                    'director'=>$r['mt-director'],        
+                    'phone'=>$r['mt-phone'],
+                    'cellphone'=>$r['mt-cellphone']
+                );
+            } else {
+                \CORE::msg('error',\CORE::t('no_record','Такая запись не найдена.'));
+            }
+        }
+    }
+    return $mt;
+}
 
 }

@@ -19,6 +19,9 @@ public function __construct($REQUEST,$model,$view){
 		case 'delete':
 			$model->delete();
 		break;
+		case 'view':
+			$UI->pos['main'].=$view->mt($model);
+		break;
 		default:
 			$UI->pos['main'].=$view->main($model);
 		break;

@@ -308,4 +308,28 @@ $(document).ready(function() {
 	return $result;
 }
 
+public function mt($model){
+	$result='';
+	if(isset($_GET['id'])){
+		$id=(int) $_GET['id'];
+	}
+	if($id>0){
+		$mt=$model->view_mt($id);
+		$result.='
+<h2 style="color:#337ab7;">'.$mt['name'].'</h2>
+<hr>
+<div style="font-size:18px;">
+<p><strong>'.\CORE::t('mt_type','Тип учреждения').':</strong> '.$mt['type'].'</p>
+<p><strong>'.\CORE::t('addr','Адрес').':</strong> '.$mt['geoname'].', '.$mt['address'].'</p>
+<p><strong>Директор:</strong> '.$mt['director'].'</p>
+<p><strong>Телефон:</strong> '.$mt['phone'].'</p>
+<p><strong>'.\CORE::t('cellphone','Мобильный').':</strong> '.$mt['cellphone'].'</p>
+</div>
+';
+	} else {
+		\CORE::msg('error',\CORE::t('incorrect_id','Некорректный ID'));
+	}
+	return $result;
+}
+
 }

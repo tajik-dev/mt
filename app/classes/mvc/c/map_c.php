@@ -8,8 +8,12 @@ public function __construct($REQUEST,$model,$view){
 	$UI=\CORE\UI::init();
 	switch ($REQUEST->get('act')) {
 
-		case 'test':
+		case 'mtlist':
+			echo $view->mt_list($model);
+		break;
 
+		case 'getcoord':
+			$model->get_coord();
 		break;
 
 		default:
