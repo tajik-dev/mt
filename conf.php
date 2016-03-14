@@ -17,6 +17,6 @@ $conf['db_name']='mt';
 $conf['db_user']='root';
 $conf['db_pass']='';
 // UI - user interface
-$conf['lang']='ru'; // default language
+$conf['lang']='tj'; // default language
 $conf['ui_tpl']=PATH_UI.'/tpl/mt'; // template dir
 // mt

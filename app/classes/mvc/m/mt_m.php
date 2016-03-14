@@ -9,7 +9,6 @@ public $sel_geo=0;
 
 function __construct(){
     if(isset($_GET['type'])){$this->sel_type=(int) $_GET['type'];}
-    ///$this->available_geo
     $gid=\USER::init()->get('gid');
     $uid=\USER::init()->get('uid');
     switch($gid){
@@ -44,21 +43,28 @@ public function get_mt_types(){
     return $types;
 }
 
-public function get_mt($type=0){
+public function get_mt($type=0, $geo=0){
     $lang=\CORE::lng();
 	$mt=array();
 	$DB=\DB::init();
-    $type=$this->sel_type;
-	if($DB->connect()){
-        if($type>0){
-            $sql="SELECT * FROM `mt` WHERE `mt-type`=:type ORDER BY `mt-name-".$lang."`;";
-            $sth=$DB->dbh->prepare($sql);
-            $sth->execute(array('type'=>$type));
+    if($type==0) $type=$this->sel_type;
+    $where='';
+    $order=" ORDER BY `mt-type`,`mt-name-".$lang."`;";
+    if($type>0){
+        $where=" WHERE `mt-type`=".$type;
+        $order=" ORDER BY `mt-name-".$lang."`";
+    }
+    if($geo>0){
+        if($where!='') {
+            $where.=" AND `mt-geo`=".$geo;
         } else {
-            $sql="SELECT * FROM `mt` ORDER BY `mt-type`,`mt-name-".$lang."`;";
-            $sth=$DB->dbh->prepare($sql);
-            $sth->execute();
+            $where.=" WHERE `mt-geo`=".$geo;
         }
+    }
+	if($DB->connect()){
+        $sql="SELECT * FROM `mt`".$where.$order;
+        $sth=$DB->dbh->prepare($sql);
+        $sth->execute();
         $DB->query_count();
         if($sth->rowCount()>0){
             while($r=$sth->fetch()){

@@ -115,29 +115,26 @@ $(document).ready(function() {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('reports','Отчеты').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-              	<li class="dropdown-header">'.\CORE::t('input_forms','Формы ввода данных:').'</li>
-              	<li class="divider"></li>
-                <li><a href="./?c=frm&act=ps">'.\CORE::t('mt_frm_ps','Паспорт школы').'</a></li>
-                <li><a href="./?c=frm&act=bmt1">'.\CORE::t('mt_frm_bmt1','Форма БМТ-1').'</a></li>
-                <li><a href="./?c=frm&act=kom1">'.\CORE::t('mt_frm_kom1','Форма КОМ-1').'</a></li>
-                <li><a href="./?c=frm&act=tm1">'.\CORE::t('mt_frm_tm1','Форма ОШ-1').'</a></li>
+                <li><a href="./?c=frm&act=ps">'.\CORE::t('mt_frm_ps','Шиносномаи мактаб').'</a></li>
+                <li><a href="./?c=frm&act=tm1">'.\CORE::t('mt_frm_tm1','ТМ-1').'</a></li>
+                <li><a href="./?c=frm&act=bmt1">'.\CORE::t('mt_frm_bmt1','БМТ-1').'</a></li>
+                <li><a href="./?c=frm&act=kom1">'.\CORE::t('mt_frm_kom1','КОМ-1').'</a></li>                
                 <li><a href="./?c=frm&act=fb">'.\CORE::t('mt_frm_fb','Форма ФБ').'</a></li>
-                <li><a href="./?c=frm&act=km1">'.\CORE::t('mt_frm_km1','Форма КМ-1').'</a></li>
               </ul>
             </li>
-            <li class="dropdown">
+            <!--<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('statistic','Статистика').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=stat">----</a></li>
               </ul>
-            </li>
+            </li>-->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('visualization','Визуализация').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=map">'.\CORE::t('map','Карта').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
+                <li><a href="./?c=map">'.\CORE::t('map','Харита').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализатсияи додахо').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
@@ -203,18 +200,18 @@ $(document).ready(function() {
 			$UI->pos['mainmenu'].='
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('visualization','Визуализация').' <span class="caret"></span></a>
+              '.\CORE::t('visualization','Визуализатсия').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=map">'.\CORE::t('map','Карта').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализация данных').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализатсияи додаҳо').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('opendata','Открытые данные').' <span class="caret"></span></a>
+              '.\CORE::t('opendata','Додаҳои боз').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
-                <li><a href="./?c=od">'.\CORE::t('opendata','Открытые данные').'</a></li>
+                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','Дар бораи додаҳои боз').'</a></li>
+                <li><a href="./?c=od">'.\CORE::t('opendata','Додаҳои боз').'</a></li>
               </ul>
             </li>
             <li class="dropdown">

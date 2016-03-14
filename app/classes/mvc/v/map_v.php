@@ -98,7 +98,7 @@ function showMyMarkers(markers) {
             var popupText = "<div class=\"xpopup\"> \
             <div class=\"xpopup_title\"><strong>"+markers[i][5]+"</strong></div> \
             <div class=\"xpopup_addr\"><strong>'.\CORE::t('address','Адрес').':</strong> \
-            "+markers[i][6]+"</div> \
+            "+(markers[i][6] || "")+"</div> \
             <div class=\"xpopup_more\"><a href=\"./?c=mt&act=view&id="+markers[i][0]+"\">'.\CORE::t('more...','Подробнее').'...</div> \
             </p>";
             var markerLocation = new L.LatLng(lat, lng);
@@ -138,7 +138,7 @@ function initMyMarkers(f_geo,f_type,f_id){
 
 function jumpTo(lng,lat) {
 	//console.log("jumping to: lng: "+lng+" lat: "+lat);
-	MyMap.setView(new L.LatLng(lat,lng),17);
+	MyMap.setView(new L.LatLng(lat,lng),14);
 	for(i=0;i<MyMarkers.length;i++) {
 		if(MyMarkers[i]._latlng.lat==lat && MyMarkers[i]._latlng.lng==lng){
 			MyMarkers[i].openPopup();
@@ -175,7 +175,7 @@ function MyMapFilter(mt_id){
 
 // run
 initMyMap(); // show just map
-initMyMarkers() // init markers (ajax!) 
+initMyMarkers() // init markers (ajax) 
 
 // mt filtering
 

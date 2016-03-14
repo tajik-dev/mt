@@ -21,10 +21,11 @@ $result.='
 	<tr>
 	<th>№</th>
 	<th>'.\CORE::t('type','Тип').'</th>
-	<th>'.\CORE::t('mt_name','Название учреждения').'</th>
 	<th>ID</th>
-	<th>'.\CORE::t('geo','География').'</th>
+	<th>'.\CORE::t('mt_name','Название').'</th>
+	<th>'.\CORE::t('geo','Расположение').'</th>
 	<th>'.\CORE::t('address','Адрес').'</th>
+	<th>'.\CORE::t('map','Карта').'</th>
 	<th class="text-center">'.\CORE::t('action','Действие').'</th>
 	</tr>
 	</thead>
@@ -36,15 +37,20 @@ $result.='
 			$mt_type='';
 			if(isset($mt_types[$mt_val['mt-type']])){$mt_type=$mt_types[$mt_val['mt-type']];}
 			$mt_geo='';
-			if(isset($geo[$mt_val['mt-geo-id']])) {$mt_geo=$geo[$mt_val['mt-geo-id']];}			
+			if(isset($geo[$mt_val['mt-geo-id']])) {$mt_geo=$geo[$mt_val['mt-geo-id']];}
+			if($mt_val['mt-geo-lat']!='' && $mt_val['mt-geo-lng']!=''){
+				$on_map='<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>';
+			} else {
+				$on_map='<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';}	
 $result.='
 <tr>
 <td>'.$cnt.'</td>
 <td>'.$mt_type.'</td>
-<td>'.htmlspecialchars($mt_val['mt-name-'.$lang]).'</td>
 <td>'.$mt_id.'</td>
+<td>'.htmlspecialchars($mt_val['mt-name-'.$lang]).'</td>
 <td>'.$mt_geo.'</td>
 <td>'.htmlspecialchars($mt_val['mt-address']).'</td>
+<td class="text-center">'.$on_map.'</td>
 <td>
 <div id="'.$mt_id.'" class="btn-group btn-group-xs">
 	<button type="button" class="btn btn-default editItem" data-toggle="modal" data-target="#editModal">'.\CORE::t('edit','изменить').'</button>
@@ -315,12 +321,16 @@ public function mt($model){
 	}
 	if($id>0){
 		$mt=$model->view_mt($id);
+		$address='';
+		if($mt['address']!=''){
+			$address=$mt['geoname'].', '.$mt['address'];
+		}
 		$result.='
 <h2 style="color:#337ab7;">'.$mt['name'].'</h2>
 <hr>
 <div style="font-size:18px;">
 <p><strong>'.\CORE::t('mt_type','Тип учреждения').':</strong> '.$mt['type'].'</p>
-<p><strong>'.\CORE::t('addr','Адрес').':</strong> '.$mt['geoname'].', '.$mt['address'].'</p>
+<p><strong>'.\CORE::t('addr','Адрес').':</strong> '.$address.'</p>
 <p><strong>Директор:</strong> '.$mt['director'].'</p>
 <p><strong>Телефон:</strong> '.$mt['phone'].'</p>
 <p><strong>'.\CORE::t('cellphone','Мобильный').':</strong> '.$mt['cellphone'].'</p>

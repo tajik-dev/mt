@@ -20,10 +20,12 @@ $pages=array(
 	'apps'=>1,
 	'translation'=>1,
 	),true);
-
 $USER=\USER::init();
-$USER->set('geo',(int) \SESSION::get('geo'));
 $USER->set('mt',(int) \SESSION::get('mt'));
+$USER->set('geo',(int) \SESSION::get('geo'));
+$USER->available_geo=\APP\MVC\M\GEO_M::get_available_geo((int) $USER->get('geo'));
+\CORE::msg('debug','user specific app options: mt='.$USER->get('mt').'; geo='.$USER->get('geo').';');
+\CORE::msg('debug','available_geo: '.print_r($USER->available_geo,true));
 if($USER->auth()){
 	// for authorized users (!) because of $DB->connect()
 	// load translations from DB

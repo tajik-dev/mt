@@ -7,7 +7,6 @@ class FRM_C {
 public function __construct($REQUEST,$model,$view){
 	$UI=\CORE\UI::init();
 	switch ($REQUEST->get('act')) {
-
 		default:
 			$UI->pos['main'].=$view->main($model,$REQUEST->get('act'));
 		break;

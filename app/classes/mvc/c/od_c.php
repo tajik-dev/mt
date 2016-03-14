@@ -8,10 +8,6 @@ public function __construct($REQUEST,$model,$view){
 	$UI=\CORE\UI::init();
 	switch ($REQUEST->get('act')) {
 
-		case 'test':
-
-		break;
-
 		case 'mt':
 			$model->get_mt();
 		break;
