@@ -221,7 +221,7 @@ $UI->pos['main'].='
         <input type="text" class="form-control" id="faol_sana" name="faol_sana">
     </div>
     <div class="col-sm-2">
-        <label for="faol_muhlat">Мӯҳлати иҷозатнома то<br>&nbsp;</label>
+        <label for="faol_muhlat">Мӯҳлати иҷозатнома то</label>
         <input type="text" class="form-control" id="faol_muhlat" name="faol_muhlat">
     </div>
 </div>
