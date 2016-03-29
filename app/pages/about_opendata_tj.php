@@ -1,6 +1,6 @@
 <?php
 $this->pos['main'].='
-<h3 class="page-header">Открытые данные</h3>
+<h3 class="page-header">Открытые данные [на перевод]</h3>
 
 <p style="text-align:justify;font-size:17px;">
 Открытые данные - концепция, отражающая идею о том, что определённые данные должны быть свободно 

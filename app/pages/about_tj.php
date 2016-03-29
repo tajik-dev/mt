@@ -1,6 +1,6 @@
 <?php
 $this->pos['main'].='
-<h3 class="page-header">Описание проекта</h3>
+<h3 class="page-header">Описание проекта [на перевод]</h3>
 
 <p style="text-align:justify;font-size:17px;">
 Проект "Открытые данные общеобразовательных учреждений г. Душанбе" был разработан 

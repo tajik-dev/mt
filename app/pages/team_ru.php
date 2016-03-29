@@ -40,7 +40,7 @@ $this->pos['main'].='
         </div>
 
         <div class="col-lg-3">
-          <img class="img-circle cbrd" src="./ui/img/team/komil1.png" alt="Комил Раджабов" width="140" height="140">
+          <img class="img-circle cbrd" src="./ui/img/team/noimage.png" alt="Комил Раджабов" width="140" height="140">
           <h3>Комил Раджабов</h3>
           <p>Разработчик</p>
         </div>

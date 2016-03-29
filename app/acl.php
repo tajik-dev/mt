@@ -7,3 +7,6 @@ $acl[0]['mt']['view']['*']=1;
 $acl[0]['page']['about']['*']=1;
 $acl[0]['page']['team']['*']=1;
 $acl[0]['frm']['*']['3']=1;
+$acl[0]['vs']['']['*']=1;
+$acl[0]['apps']['create']['*']=1;
+$acl[0]['apps']['status_check']['*']=1;
