@@ -21,7 +21,7 @@ public static function get_geo(){
                     'typename'=>$r['gt-name'.$lang],
                     'typeshort'=>$r['gt-name-short'.$lang],
                     'name'=>$r['geo-title'.$lang],
-                    'title'=>$r['gt-name'.$lang].' '.$r['geo-title'.$lang],
+                    'title'=>$r['gt-name-short'.$lang].' '.$r['geo-title'.$lang],
                     'weight'=>$r['geo-weight']
                     );
             }

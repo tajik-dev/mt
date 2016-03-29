@@ -1,43 +1,14 @@
 <?php
-$UI->pos['main'].='
-
-<div class="row">
-    <div class="col-sm-12 text-center">
-        <h3>ВАЗОРАТИ МАОРИФИ ҶУМҲУРИИ ТОҶИКИСТОН</h3>
-        <h4 class="text-center">Ҳисобот оид ба хонандагони муассисаҳои таҳсилоти 
-    	умумӣ<br> дар аввали соли хониши  20___/20___</h4>
-    </div>
-</div><!-- /row1 -->
-
-<div class="row">
-    <div class="col-sm-12">
-        <h4 class="text-center">Рамз аз рӯи таснифоти</h4>
-<table class="table table-bordered text-center">
-<thead>
-<tr>
-<th class="text-center" width="12%" style="vertical-align:middle;">умумии ҳуччатгузории идоравӣ ТУҲИ (ОКУД)</th>
-<th class="text-center" width="12%" style="vertical-align:middle;">умумии корхонаю ташкилотҳо ТУКТ (ОКПО) </th>
-<th class="text-center" width="12%" style="vertical-align:middle;">умумии намуди фаъолияти иқтисодӣ ТУНФИ (ОКЭД)</th>
-<th class="text-center" width="12%" style="vertical-align:middle;">умумии соҳаҳои хоxагии халқ ТУСХХ (ОКОНХ)</th>
-<th class="text-center" width="12%" style="vertical-align:middle;">умумимиллии тақсимоти объектҳои маъмурию ҳудудӣ ТУТОМҲ (ОКАТО)</th>
-<th class="text-center" width="12%" style="vertical-align:middle;">умумимиллии мақомоти идораи {окимияти давлатӣ (вазорат идора) ТУМҲД (ОКОГУ)</th>
-<th class="text-center" width="12%" style="vertical-align:middle;">шакли моликият ТШМ&nbsp;(КФС)</th>
-<th class="text-center" width="12%" style="vertical-align:middle;">шакли ташкилӣ-ҳуқуқии субъектҳои хоxагидор ТШТҲСХ (КОПФ)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><input type="text" class="form-control" id="okud" name="okud"></td>
-<td><input type="text" class="form-control" id="okpo" name="okpo"></td>
-<td><input type="text" class="form-control" id="oked" name="oked"></td>
-<td><input type="text" class="form-control" id="okonh" name="okonh"></td>
-<td><input type="text" class="form-control" id="okato" name="okato"></td>
-<td><input type="text" class="form-control" id="okogu" name="okogu"></td>
-<td><input type="text" class="form-control" id="okud" name="kfs"></td>
-<td><input type="text" class="form-control" id="kopf" name="kopf"></td>
-</tr>
-</tbody>
-</table>
-</div><!-- /row2 -->
-
+$UI->pos['main'].='<h2>Шакли TM-1</h2>
+<a href="./?c=frm&act=tm1&part=1">часть-1</a><br>
+<a href="./?c=frm&act=tm1&part=2">часть-2</a><br>
+<a href="./?c=frm&act=tm1&part=3">часть-3</a><br>
+<a href="./?c=frm&act=tm1&part=4">часть-4</a><br>
+<a href="./?c=frm&act=tm1&part=5">часть-5</a><br>
+<a href="./?c=frm&act=tm1&part=6">часть-6</a><br>
+<a href="./?c=frm&act=tm1&part=7">часть-7</a><br>
+<a href="./?c=frm&act=tm1&part=8">часть-8</a><br>
 ';
+$tm=[
+
+];

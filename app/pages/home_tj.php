@@ -6,6 +6,31 @@ $this->pos['main']='
     ДОДАҲОИ КУШОДИ<br> МУАССИСАҲОИ ТАЪЛИМИИ<br> ШАҲРИ ДУШАНБЕ
     </strong>
     </h1>
-    <!--<p>OpenEdu</p>-->
+</div>
+<div class="row">
+	<div class="col-sm-4">
+		<div class="main_icon_1">
+			<a href="./?c=od">
+				<div class="main_icon main_icon_od"></div>
+				Додаҳои боз
+			</a>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="main_icon_1">
+			<a href="./?c=map">
+				<div class="main_icon main_icon_map"></div>
+				Харита
+			</a>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="main_icon_1">
+			<a href="./?c=app&act=create">
+				<div class="main_icon main_icon_app"></div>
+				Шакли дархост
+			</a>
+		</div>
+	</div>	
 </div>
 ';

@@ -68,17 +68,20 @@
         <div class="col-md-4">
           <p class="text-left text-muted">
           <small>
-          <a href="http://code.tj/" target="_blank" title="Powered by NIHOL">
-            <img src="./ui/img/nihol.png" />
-          </a>
-          </small>
+          MT &#169; <?php echo date('Y'); ?> 
+          </small>          
           </p>
         </div>
 
         <div class="col-md-4">
           <p class="text-center text-muted">
           <small>
-          MT &#169; <?php echo date('Y'); ?> 
+          <a href="http://opendefinition.org/">
+            <img src="./ui/img/od.png" alt="This material is Open Data"/>
+          </a> &nbsp;
+          <a href="http://opendata.tj/" target="_blank">
+            <img src="./ui/img/od_tj.png" /> OPENDATA.TJ
+          </a>
           </small>
           </p>
         </div>
@@ -86,11 +89,8 @@
         <div class="col-md-4">
           <p class="text-right text-muted">
           <small>
-          <a href="http://opendefinition.org/">
-            <img src="./ui/img/od.png" alt="This material is Open Data"/>
-          </a> &nbsp;
-          <a href="http://opendata.tj/" target="_blank">
-            <img src="./ui/img/od_tj.png" /> OPENDATA.TJ
+          <a href="http://code.tj/" target="_blank" title="Powered by NIHOL">
+            <img src="./ui/img/nihol.png" />
           </a>
           </small>
           </p>

@@ -2,7 +2,9 @@ body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
-
+a:hover, a:active {
+    text-decoration: none;
+}
 /* nav styling */
 .navbar-blue {
     background-color: #DC3300;
@@ -130,4 +132,36 @@ body {
 }
 #mt_map_filter div {
     margin-bottom:8px;
+}
+.main_icon_1 {
+    width: 200px;
+    height: 180px;
+    margin-left:auto;
+    margin-right:auto;
+    background-image: url('../img/main_icon_1.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.main_icon_1 a {
+    color:white;
+}
+.main_icon {
+    width: 200px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom:10px;
+}
+.main_icon_od {
+    background-image: url('../img/main_icon_od.png');
+}
+.main_icon_map {
+    background-image: url('../img/main_icon_map.png');
+}
+.main_icon_app {
+    background-image: url('../img/main_icon_app.png');
 }

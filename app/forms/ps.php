@@ -1,10 +1,12 @@
 <?php
 $UI->pos['main'].='
-<form action="./?c=frm&act=ps&do=add" method="post">
+<form action="./?c=frm&act=ps" method="post">
 
 <h2>ШИНОСНОМАИ МАКТАБ</h2>
 <p><em>(Шиноснома маълумот оид ба муассисаи таҳсилоти миёнаи умумиро дар бар мегирад)</em></p>
 <hr>
+
+<!-- mt_id, year -->
 
 <div class="form-group row">
     <div class="col-sm-2">
@@ -24,13 +26,20 @@ $UI->pos['main'].='
     <div class="col-sm-3">
     <label for="geo">Ҷойгиршавӣ *</label>
         <div id="geo_box">
-            <select class="form-control" id="geo" name="geo">
+            <select class="form-control" id="geo" name="geo" disabled>
                 <option value="2">ш. Душанбе, ноҳияи И. Сомони</option>
                 <option value="3">ш. Душанбе, ноҳияи Сино</option>
                 <option value="4">ш. Душанбе, ноҳияи Шоҳмансур</option>
                 <option value="5">ш. Душанбе, ноҳияи Фирдавси</option>
             </select>
         </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-5">
+    <label for="address">Суроғаи юридикӣ *</label>
+    <input type="text" class="form-control" id="address" name="address">
     </div>
 </div>
 
@@ -217,7 +226,7 @@ $UI->pos['main'].='
 </div>
 <div class="form-group row">
     <div class="col-sm-2">
-        <label for="faol_sana">Санаи гирифтани иҷозатнома</label>
+        <label for="faol_sana">Санаи гирифтан</label>
         <input type="text" class="form-control" id="faol_sana" name="faol_sana">
     </div>
     <div class="col-sm-2">
@@ -308,6 +317,7 @@ $ps=[
 'ps_number'=>'',
 'mt_name'=>'',
 'geo'=>0,
+'address'=>'',
 'is_filial'=>0,
 'mt_number'=>null,
 'filial_number'=>null,

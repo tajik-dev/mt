@@ -11,12 +11,12 @@ class LANGUAGE {
 				$result='<ul class="nav navbar-nav">
 				<li class="dropdown">
 	              <a href="#" title="Русский" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				  <small><i class="langflag langflag-ru"></i></small>&nbsp; RU
+				  <small><i class="langflag langflag-ru"></i></small>&nbsp; Русский
 	              <span class="caret"></span></a>
 	              <ul class="dropdown-menu">
 	                <li>
 	                	<a href="./?lang=tj" class="change_language" rel="tj">
-	                		<small><i class="langflag langflag-tj"></i></small>&nbsp; TJ
+	                		<small><i class="langflag langflag-tj"></i></small>&nbsp; Тоҷикӣ
 	                	</a>
 	                </li>
 	              </ul>
@@ -27,12 +27,12 @@ class LANGUAGE {
 				$result='<ul class="nav navbar-nav">
 				<li class="dropdown">
 	              <a href="#" title="Тоҷикӣ" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				  <small><i class="langflag langflag-tj"></i></small>&nbsp; TJ
+				  <small><i class="langflag langflag-tj"></i></small>&nbsp; Тоҷикӣ
 	              <span class="caret"></span></a>
 	              <ul class="dropdown-menu">
 	                <li>
 	                	<a href="./?lang=ru" class="change_language" rel="ru">
-	                		<small><i class="langflag langflag-ru"></i></small>&nbsp; RU
+	                		<small><i class="langflag langflag-ru"></i></small>&nbsp; Русский
 	                	</a>
 	                </li>
 	              </ul>
@@ -47,13 +47,13 @@ class LANGUAGE {
 				$result='<div class="form-group">
 	            <div class="dropdown">
 	              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
-	                <i class="langflag langflag-ru"></i>&nbsp;<small>RU</small>
+	                <i class="langflag langflag-ru"></i>&nbsp;<small>Русский</small>
 	                <span class="caret"></span>
 	              </button>
 	              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
 	                    <li role="usermenu">
 	                        <a role="menuitem" tabindex="-1" href="./?lang=tj" class="change_language" rel="tj">
-	                        <i class="langflag langflag-tj"></i>&nbsp;<small>TJ</small>
+	                        <i class="langflag langflag-tj"></i>&nbsp;<small>Тоҷикӣ</small>
 	                        </a>
 	                    </li>                    
 	              </ul>
@@ -64,13 +64,13 @@ class LANGUAGE {
 				$result='<div class="form-group">
 	            <div class="dropdown">
 	              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
-	                <i class="langflag langflag-tj"></i>&nbsp;<small>TJ</small>
+	                <i class="langflag langflag-tj"></i>&nbsp;<small>Тоҷикӣ</small>
 	                <span class="caret"></span>
 	              </button>
 	              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
 	                    <li role="usermenu">
 	                        <a role="menuitem" tabindex="-1" href="./?lang=ru" class="change_language" rel="ru">
-	                        <i class="langflag langflag-ru"></i>&nbsp;<small>RU</small>
+	                        <i class="langflag langflag-ru"></i>&nbsp;<small>Русский</small>
 	                        </a>
 	                    </li>                    
 	              </ul>
@@ -124,25 +124,25 @@ $(document).ready(function() {
             </li>
             <!--<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('statistic','Статистика').' <span class="caret"></span></a>
+              '.\CORE::t('statistic','Statistic').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=stat">----</a></li>
               </ul>
             </li>-->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('visualization','Визуализация').' <span class="caret"></span></a>
+              '.\CORE::t('visualization','Visualization').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=map">'.\CORE::t('map','Харита').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализатсияи додахо').'</a></li>
+                <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('datavisual','Data visualization').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('opendata','Открытые данные').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','Об открытых данных').'</a></li>
-                <li><a href="./?c=od">'.\CORE::t('opendata','Открытые данные').'</a></li>
+                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','About Open Data').'</a></li>
+                <li><a href="./?c=od">'.\CORE::t('opendata','Open Data').'</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -150,15 +150,15 @@ $(document).ready(function() {
               '.\CORE::t('zayavki','Заявки').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=apps&act=create">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
-                <li><a href="./?c=apps&act=status_check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
+                <li><a href="./?c=apps&act=status_check">'.\CORE::t('status_check','Status check').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('project','Проект').' <span class="caret"></span></a>
+              '.\CORE::t('project','Project').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','Описание проекта').'</a></li>
-                <li><a href="./?c=page&act=team">'.\CORE::t('project_team','Команда проекта').'</a></li>
+                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
+                <li><a href="./?c=page&act=team">'.\CORE::t('project_team','Our team').'</a></li>
               </ul>
             </li>
 			';
@@ -174,13 +174,13 @@ $(document).ready(function() {
 	                <!--<li>
 	                	<a href="./?c=user&act=profile">
 	                		<small><i class="glyphicon glyphicon-user"></i>&nbsp;</small> 
-				    		<span class="text">'.\CORE::t('profile','Профиль').'</span>
+				    		<span class="text">'.\CORE::t('profile','Profile').'</span>
 	                	</a>
 	                </li>-->
 	                <!--<li>
 	                	<a href="./?c=user&act=change_password">
 	                		<small><i class="glyphicon glyphicon-pencil"></i>&nbsp;</small> 
-				    		<span class="text">'.\CORE::t('cpasswd','Сменить пароль').'</span>
+				    		<span class="text">'.\CORE::t('cpasswd','Change password').'</span>
 	                	</a>
 	                </li>
 	                -->
@@ -202,44 +202,44 @@ $(document).ready(function() {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('visualization','Визуализатсия').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=map">'.\CORE::t('map','Карта').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('datavisual','Визуализатсияи додаҳо').'</a></li>
+                <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('datavisual','Data visualization').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('opendata','Додаҳои боз').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','Дар бораи додаҳои боз').'</a></li>
-                <li><a href="./?c=od">'.\CORE::t('opendata','Додаҳои боз').'</a></li>
+                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','About Open Data').'</a></li>
+                <li><a href="./?c=od">'.\CORE::t('opendata','Open Data').'</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=apps&act=create">'.\CORE::t('reg_form','Форма регистрации').'</a></li>
-                <li><a href="./?c=apps&act=status_check">'.\CORE::t('check_app','Проверить статус заявки').'</a></li>
+                <li><a href="./?c=apps&act=create">'.\CORE::t('reg_form','Application form').'</a></li>
+                <li><a href="./?c=apps&act=status_check">'.\CORE::t('status_check','Status check').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('about','О проекте').' <span class="caret"></span></a>
+              '.\CORE::t('project','Project').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','Описание проекта').'</a></li>
-                <li><a href="./?c=page&act=team">'.\CORE::t('team','Команда проекта').'</a></li>
+                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
+                <li><a href="./?c=page&act=team">'.\CORE::t('team','Our team').'</a></li>
               </ul>
             </li>
 			';
 			$UI->pos['user1'].='<form action="./?c=user&act=login" method="post" class="navbar-form">
 			'.LANGUAGE::SWITCHER();
 			$UI->pos['user1'].='<div class="form-group">
-					<input type="text" name="login" placeholder="'.\CORE::t('login','Login').'" value="'.\COOKIE::get('lastuser').'" class="form-control" style="width:150px;">
+					<input type="text" name="login" placeholder="'.\CORE::t('user','User').'" value="'.\COOKIE::get('lastuser').'" class="form-control" style="width:150px;">
 				</div>
 				<div class="form-group">
 					<input type="password" name="password" placeholder="'.\CORE::t('password','Password').'" class="form-control" style="width:150px;">
 				</div>
-				<button type="submit" class="btn btn-warning">'.\CORE::t('login','Login').'</button>
+				<button type="submit" class="btn btn-warning">'.\CORE::t('signin','SignIn').'</button>
 			';
 			$UI->pos['user1'].='</form>
 			';

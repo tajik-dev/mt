@@ -6,8 +6,13 @@ class USER_V {
 
 public function manage($model){
 	$result='';
+	$lang=\CORE::lng();
+	if($lang!='') {$lng='-'.$lang;} else {$lng='';}
 	$UI=\CORE\UI::init();
 	$groups=$model->get_groups();
+	$geo=\APP\MVC\M\GEO_M::get_geo();
+	$mt_m = new \APP\MVC\M\MT_M();
+	$mt=$mt_m->get_mt();
 	$users=$model->get_users();
 	$counter=count($users);
 	$result.='
@@ -21,7 +26,15 @@ public function manage($model){
 <div class="form-group">
 	<label for="new_group">Group</label>
 	'.$UI::html_list($groups,'',' id="new_group" class="form-control"',2).'
-</div>		
+</div>
+<div class="form-group">
+	<label for="new_geo">GEO</label>
+	'.$UI::html_list($geo,'title',' id="new_geo" class="form-control"',0,' -- ').'
+</div>
+<div class="form-group">
+	<label for="new_mt">MT</label>
+	<div id="mew_mt_box">'.$UI::html_list($mt,'mt-name'.$lng,' id="new_mt" class="form-control"',0,' -- ').'</div>
+</div>
 <div class="form-group">
 	<label for="new_user">Username</label>
 	<input type="text" class="form-control" id="new_user" placeholder="username">
@@ -48,7 +61,15 @@ public function manage($model){
 <div class="form-group">
 	<label for="edit_group">Group</label>
 	'.$UI::html_list($groups,'',' id="edit_group" class="form-control"',2).'
-</div>		
+</div>
+<div class="form-group">
+	<label for="edit_geo">GEO</label>
+	'.$UI::html_list($geo,'title',' id="edit_geo" class="form-control"',0,' -- ').'
+</div>
+<div class="form-group">
+	<label for="edit_mt">MT</label>
+	<div id="mew_mt_box">'.$UI::html_list($mt,'mt-name'.$lng,' id="edit_mt" class="form-control"',0,' -- ').'</div>
+</div>
 <div class="form-group">
 	<input type="hidden" id="edit_uid" value="0">
 	<label for="edit_user">Username</label>
@@ -91,6 +112,7 @@ public function manage($model){
 			<th>USER</th>
 			<th>GROUP</th>
 			<th>GEO</th>
+			<th>MT</th>
 			<th>STATUS</th>
 			<th>LOGIN TIME</th>
 			<th class="text-center">ACTION</th>
@@ -107,6 +129,7 @@ public function manage($model){
 	<td>'.$user['user'].'</td>
 	<td>'.$user['gid'].'</td>
 	<td>'.$user['geo'].'</td>
+	<td>'.$user['mt'].'</td>
 	<td>'.$user['status'].'</td>
 	<td>'.$user['lastlogin'].'</td>
 	<td>
@@ -159,11 +182,13 @@ public function manage($model){
 
 		$("#addUser").click(function(e){
 			var xgid = $("#new_group").val();
+			var xgeoid = $("#new_geo").val();
+			var xmtid = $("#new_mt").val();
 			var xuser = $("#new_user").val();
 			var xpwd = $("#new_pwd").val();
 			var xstatus = 1;
 			if(!$("#new_status").prop("checked")){ xstatus=0; }
-			$.post("./?c=user&act=manage&do=create&ajax", {user:xuser,password:xpwd,gid:xgid,status:xstatus}, function(data){
+			$.post("./?c=user&act=manage&do=create&ajax", {user:xuser,password:xpwd,gid:xgid,status:xstatus,geoid:xgeoid,mtid:xmtid}, function(data){
 				if(data=="New user successfully created."){
 					location.reload();
 				} else {
@@ -213,6 +238,8 @@ public function manage($model){
 					var obj = JSON.parse(data);
 					$("#edit_uid").val(obj.uid);
 					$("#edit_group").val(obj.gid);
+					$("#edit_geo").val(obj.geoid);
+					$("#edit_mt").val(obj.mtid);
 					$("#edit_user").val(obj.user);
 					if(obj.status==1){
 						$("#edit_status").prop("checked",true);
@@ -231,13 +258,15 @@ public function manage($model){
 		$("#updateUser").click(function(e){
 			var xuid = $("#edit_uid").val();
 			var xgid = $("#edit_group").val();
+			var xgeoid = $("#edit_geo").val();
+			var xmtid = $("#edit_mt").val();
 			var xuser = $("#edit_user").val();
 			var xchpwd = 0;
 			var xpwd = $("#edit_pwd").val();
 			var xstatus = 1;
 			if($("#edit_pwd_change").prop("checked")){ xchpwd=1; }
 			if(!$("#edit_status").prop("checked")){ xstatus=0; }
-			$.post("./?c=user&act=manage&do=update&ajax", {uid:xuid,gid:xgid,user:xuser,chpwd:xchpwd,password:xpwd,status:xstatus}, function(data){
+			$.post("./?c=user&act=manage&do=update&ajax", {uid:xuid,gid:xgid,user:xuser,chpwd:xchpwd,password:xpwd,status:xstatus,geoid:xgeoid,mtid:xmtid}, function(data){
 				if(data=="User data successfully updated."){
 					location.reload();
 				} else {

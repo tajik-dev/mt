@@ -216,6 +216,7 @@ public function get_users(){
 					'pid'=>$r['usr-pid'],
 					'status'=>$status,
 					'geo'=>$r['usr-geo'],
+					'mt'=>$r['usr-mt'],
 					'created'=>$created,
 					'lastlogin'=>$lastlogin,
 					);
@@ -253,6 +254,14 @@ public function create($user='',$pwd='',$gid=0,$status=1,$pid=0){
 	if($pid==0 && isset($_POST['pid'])) {
 		$pid=(int) $_POST['pid'];
 	}
+		if(isset($_POST['geoid'])) {
+			$geoid=(int) $_POST['geoid'];
+		} else {$geoid=NULL;}
+		if($geoid==0){$geoid=NULL;}
+		if(isset($_POST['mtid'])) {
+			$mtid=(int) $_POST['mtid'];
+		} else {$mtid=NULL;}
+		if($mtid==0){$mtid=NULL;}
 	// validation
 	if($user=='' || !$this->valid('login',$user)) $valid=false;
 	if($pwd=='' || !$this->valid('pwd',$pwd)) $valid=false;
@@ -281,7 +290,9 @@ public function create($user='',$pwd='',$gid=0,$status=1,$pid=0){
 					'hint'=>$pwd_array['hint'],
 					'gid'=>$gid,
 					'pid'=>$pid,
-					'status'=>$status
+					'status'=>$status,
+					'geoid'=>$geoid,
+					'mtid'=>$mtid
 					);
 				if(!$this->pwd_hint()) $usr['hint']=NULL;
 				// insert lowercase login or not?
@@ -292,7 +303,9 @@ public function create($user='',$pwd='',$gid=0,$status=1,$pid=0){
 				`usr-hint`=:hint, 
 				`usr-gid`=:gid, 
 				`usr-pid`=:pid, 
-				`usr-status`=:status;";
+				`usr-status`=:status,
+				`usr-geo`=:geoid,
+				`usr-mt`=:mtid;";
 				$sth = $DB->dbh->prepare($sql);
 				$sth->execute($usr);
 				$DB->query_count();
@@ -318,12 +331,16 @@ public function read($uid=0){
 			$DB->query_count();
 			if($sth->rowCount()==1){
 				$r=$sth->fetch();
+				$geoid=(int) $r['usr-geo'];
+				$mtid=(int) $r['usr-mt'];
 				$user=array(
 					'uid'=>$r['usr-uid'],
 					'gid'=>$r['usr-gid'],
 					'pid'=>$r['usr-pid'],
 					'user'=>htmlspecialchars($r['usr-login']),
 					'status'=>$r['usr-status'],
+					'geoid'=>$geoid,
+					'mtid'=>$mtid,
 					);
 				echo json_encode($user);
 			}
@@ -358,6 +375,14 @@ public function update($uid=0,$gid=0,$user='',$chpwd=0,$pwd='',$status=1,$pid=0)
 	if($pid==0 && isset($_POST['pid'])) {
 		$pid=(int) $_POST['pid'];
 	}
+		if(isset($_POST['geoid'])) {
+			$geoid=(int) $_POST['geoid'];
+		} else {$geoid=NULL;}
+		if($geoid==0){$geoid=NULL;}
+		if(isset($_POST['mtid'])) {
+			$mtid=(int) $_POST['mtid'];
+		} else {$mtid=NULL;}
+		if($mtid==0){$mtid=NULL;}
 	// validation
 	if($user=='' || !$this->valid('login',$user)) $valid=false;
 	if($chpwd!=0){
@@ -384,6 +409,8 @@ public function update($uid=0,$gid=0,$user='',$chpwd=0,$pwd='',$status=1,$pid=0)
 					'gid'=>$gid,
 					'pid'=>$pid,
 					'status'=>$status,
+					'geoid'=>$geoid,
+					'mtid'=>$mtid,
 					'uid'=>$uid
 					);
 				if(!$this->pwd_hint()) $usr['hint']=NULL;
@@ -395,19 +422,25 @@ public function update($uid=0,$gid=0,$user='',$chpwd=0,$pwd='',$status=1,$pid=0)
 					`usr-hint`=:hint, 
 					`usr-gid`=:gid, 
 					`usr-pid`=:pid, 
-					`usr-status`=:status
+					`usr-status`=:status,
+					`usr-geo`=:geoid,
+					`usr-mt`=:mtid
 					WHERE `usr-uid`=:uid;";
 				} else {
 					$usr=array(
 					'gid'=>$gid,
 					'pid'=>$pid,
 					'status'=>$status,
+					'geoid'=>$geoid,
+					'mtid'=>$mtid,
 					'uid'=>$uid
 					);
 					$sql = "UPDATE `n-users` SET 
 					`usr-gid`=:gid, 
 					`usr-pid`=:pid, 
-					`usr-status`=:status
+					`usr-status`=:status,
+					`usr-geo`=:geoid,
+					`usr-mt`=:mtid
 					WHERE `usr-uid`=:uid;";
 				}				
 				$sth = $DB->dbh->prepare($sql);
@@ -433,6 +466,8 @@ public function update($uid=0,$gid=0,$user='',$chpwd=0,$pwd='',$status=1,$pid=0)
 						'gid'=>$gid,
 						'pid'=>$pid,
 						'status'=>$status,
+						'geoid'=>$geoid,
+						'mtid'=>$mtid,
 						'uid'=>$uid
 						);
 					if(!$this->pwd_hint()) $usr['hint']=NULL;
@@ -445,7 +480,9 @@ public function update($uid=0,$gid=0,$user='',$chpwd=0,$pwd='',$status=1,$pid=0)
 						`usr-hint`=:hint, 
 						`usr-gid`=:gid, 
 						`usr-pid`=:pid, 
-						`usr-status`=:status
+						`usr-status`=:status,
+						`usr-geo`=:geoid,
+						`usr-mt`=:mtid
 						WHERE `usr-uid`=:uid;";
 					} else {
 						$usr=array(
@@ -453,13 +490,17 @@ public function update($uid=0,$gid=0,$user='',$chpwd=0,$pwd='',$status=1,$pid=0)
 						'gid'=>$gid,
 						'pid'=>$pid,
 						'status'=>$status,
+						'geoid'=>$geoid,
+						'mtid'=>$mtid,
 						'uid'=>$uid
 						);
 						$sql = "UPDATE `n-users` SET 
 						`usr-login`=LOWER(:login), 
 						`usr-gid`=:gid, 
 						`usr-pid`=:pid, 
-						`usr-status`=:status
+						`usr-status`=:status,
+						`usr-geo`=:geoid,
+						`usr-mt`=:mtid
 						WHERE `usr-uid`=:uid;";
 					}				
 					$sth = $DB->dbh->prepare($sql);

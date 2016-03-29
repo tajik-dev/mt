@@ -7,7 +7,7 @@ public function mt_types_list($model){
 	$result='';
     $mt_types=$model->get_mt_types();
     $result=\CORE\UI::init()->html_list($mt_types,'',' id="type_filter" class="form-control"',
-    	$model->sel_type,'-- '.\CORE::t('all_types','Все типы').' --');
+    	$model->sel_type,'-- '.\CORE::t('all_types','Ҳамаи намудҳо').' --');
 	return $result;
 }
 
@@ -15,7 +15,7 @@ public function mt_list($model){
 	$result='';
     $mt=$model->get_mt($model->sel_type);
     $result=\CORE\UI::init()->html_list($mt,'',' id="id_filter" class="form-control"',
-    	$model->sel_mt,'-- '.\CORE::t('all_facilities','Все учреждения').' --');
+    	$model->sel_mt,'-- '.\CORE::t('all_facilities','Ҳамаи мауссисаҳо').' --');
 	return $result;
 }
 
