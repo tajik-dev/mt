@@ -325,13 +325,14 @@ public function mt($model){
 		if($mt['address']!=''){
 			$address=$mt['geoname'].', '.$mt['address'];
 		}
+		// $mt['director']
 		$result.='
 <h2 style="color:#337ab7;">'.$mt['name'].'</h2>
 <hr>
 <div style="font-size:18px;">
 <p><strong>'.\CORE::t('mt_type','Тип учреждения').':</strong> '.$mt['type'].'</p>
 <p><strong>'.\CORE::t('addr','Адрес').':</strong> '.$address.'</p>
-<p><strong>Директор:</strong> '.$mt['director'].'</p>
+<!--<p><strong>Директор:</strong> - </p>-->
 <p><strong>Телефон:</strong> '.$mt['phone'].'</p>
 <p><strong>'.\CORE::t('cellphone','Мобильный').':</strong> '.$mt['cellphone'].'</p>
 </div>

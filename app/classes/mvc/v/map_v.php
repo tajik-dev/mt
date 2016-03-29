@@ -175,7 +175,7 @@ function MyMapFilter(mt_id){
 
 // run
 initMyMap(); // show just map
-initMyMarkers() // init markers (ajax) 
+initMyMarkers(); // init markers (ajax) 
 
 // mt filtering
 
