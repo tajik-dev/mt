@@ -7,7 +7,7 @@ class DV_M {
 	// 'muassisaho', 'm-id', array('name_ru','namud','director'), 'name_ru'
     	$data=array();
     	$DB=\DB::init();
-    	if($DB->connected()){
+    	if($DB->connect()){
     		$sql = "SELECT * FROM `".$table."`;";
 			$sth = $DB->dbh->prepare($sql);
 			$sth->execute();
@@ -26,7 +26,7 @@ class DV_M {
         // 'muassisaho', 'm-id', array('name_ru','namud','director'), 'name_ru'
         $data=array();
         $DB=\DB::init();
-        if($DB->connected()){
+        if($DB->connect()){            
             if (count($idfields)==0){
                 $sql = "SHOW COLUMNS FROM `".$table."`;";
                 $sth = $DB->dbh->prepare($sql);
@@ -64,7 +64,7 @@ class DV_M {
         // 'muassisaho', 'm-id', array('name_ru','namud','director'), 'name_ru'
         $data=array();
         $DB=\DB::init();
-        if($DB->connected()){
+        if($DB->connect()){
             if (count($idfields)==0){
                 $sql = "SHOW COLUMNS FROM `".$table."`;";
                 $sth = $DB->dbh->prepare($sql);
@@ -106,7 +106,7 @@ class DV_M {
         // 'muassisaho', 'm-id', array('name_ru','namud','director'), 'name_ru'
         $data=array();
         $DB=\DB::init();
-        if($DB->connected()){
+        if($DB->connect()){
             if (count($idfields)==0){
                 $sql = "SHOW COLUMNS FROM `".$table."`;";
                 $sth = $DB->dbh->prepare($sql);
@@ -147,7 +147,7 @@ class DV_M {
     public function boysgirls(){
     	$result='';
     	$DB=\DB::init();
-    	if($DB->connected()){
+    	if($DB->connect()){
     		$sql = "SELECT * FROM `maktab_form1` WHERE `soli_tahsil`=2013;";
 			$sth = $DB->dbh->prepare($sql);
 			$sth->execute();
@@ -177,7 +177,7 @@ class DV_M {
     public function shumora_maktab_rayon($geoid=2){
     	$result=''; $data=array();
     	$DB=\DB::init();
-    	if($DB->connected()){
+    	if($DB->connect()){
             $gdw=" AND `geo_id`=".$geoid;
             if($geoid==0){
                 $gdw=" AND `geo_id`=2 OR `geo_id`=3 OR `geo_id`=4 OR `geo_id`=5";
@@ -241,7 +241,7 @@ class DV_M {
     public function lines(){
     	$result=''; $data=array();
     	$DB=\DB::init();
-    	if($DB->connected()){
+    	if($DB->connect()){
     		$sql = "SELECT `muassisa_id`,`muassisa_name` FROM `maktab_form1` WHERE `soli_tahsil`=2013;";
 			$sth = $DB->dbh->prepare($sql);
 			$sth->execute();
@@ -260,7 +260,7 @@ class DV_M {
     public function lines1(){
         $result=''; $data=array();
         $DB=\DB::init();
-        if($DB->connected()){
+        if($DB->connect()){
             $sql = "SELECT * FROM `maktab_form3` ORDER BY `soli_tahsil`;";
             $sth = $DB->dbh->prepare($sql);
             $sth->execute();
@@ -281,7 +281,7 @@ class DV_M {
     public function lnfrm4(){
         $result=''; $data=array();
         $DB=\DB::init();
-        if($DB->connected()){
+        if($DB->connect()){
             $sql = "SELECT * FROM `maktab_form4` ORDER BY `soli_tahsil`;";
             $sth = $DB->dbh->prepare($sql);
             $sth->execute();
@@ -303,7 +303,7 @@ class DV_M {
     public function dbar(){
         $data=array();
         $DB=\DB::init();
-        if($DB->connected()){
+        if($DB->connect()){
             $sql = "SELECT * FROM `maktab_form5` 
             LEFT OUTER JOIN `geo` ON `geo_id`=`geo-id`
             WHERE `geo_id`>1
