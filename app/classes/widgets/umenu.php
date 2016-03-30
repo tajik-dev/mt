@@ -150,7 +150,7 @@ $(document).ready(function() {
               '.\CORE::t('zayavki','Заявки').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=apps">'.\CORE::t('app_frm','Форма регистрации').'</a></li>
-                <li><a href="./?c=apps&act=status_check">'.\CORE::t('status_check','Status check').'</a></li>
+                <li><a href="./?c=apps&act=status">'.\CORE::t('status_check','Status check').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
@@ -219,7 +219,7 @@ $(document).ready(function() {
               '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=apps">'.\CORE::t('app_frm','Application form').'</a></li>
-                <li><a href="./?c=apps&act=status_check">'.\CORE::t('status_check','Status check').'</a></li>
+                <li><a href="./?c=apps&act=status">'.\CORE::t('status_check','Status check').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">

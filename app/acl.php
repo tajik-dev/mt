@@ -12,4 +12,4 @@ $acl[0]['frm']['*']['3']=1;
 $acl[0]['vs']['']['*']=1;
 $acl[0]['apps']['']['*']=1;
 $acl[0]['apps']['create']['*']=1;
-$acl[0]['apps']['status_check']['*']=1;
+$acl[0]['apps']['status']['*']=1;
