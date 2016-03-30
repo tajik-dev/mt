@@ -4,7 +4,11 @@ namespace APP\MVC\M;
 class OD_M {
 
 
-public function get_mt(){
+public function get_mt($format=''){
+    $formats=array('csv'=>'csv','xml'=>'xml','json'=>'json');
+    if(isset($_GET['format'])){
+        if(isset($formats[$_GET['format']])){$format=$_GET['format'];}
+    }
 	$mt=array();
     $lang=\CORE::lng();
     if($lang!='') $lang='-'.$lang;
@@ -69,7 +73,74 @@ public function get_mt(){
         }
     }
 	// id, lng, lat, geo_id, mt_type, name, address
-	echo json_encode($mt);
+    if($format!=''){
+        $dvm = new \APP\MVC\M\DV_M;
+        $columns=array('mt-type', 
+            'mt-name-ru', 
+            'mt-name-tj', 
+            'mt-address', 
+            'mt-geo-id', 
+            'mt-phone', 
+            'mt-cellphone', 
+            'mt-geo-lat', 
+            'mt-geo-lng');
+    }
+    switch ($format) {
+        case 'csv':
+                $res = $dvm->db2csvgen('mt', $columns);
+                exit;
+            break;
+        case 'xml':
+                $dvm->db2xmlgen('mt', $columns);
+                exit;
+            break;
+        case 'json':
+                $res = $dvm->db2jsongen('mt', $columns);
+                echo json_encode($res);
+                exit;
+            break;
+        
+        default:
+            echo json_encode($mt);
+            break;
+    }
 }
+
+public function ofrm(){ // old forms from es2015
+    $frm=0; $format='json'; $tbl='';
+
+    if(isset($_GET['frm'])) $frm=(int) $_GET['frm'];
+    $formats=array('csv'=>'csv','xml'=>'xml','json'=>'json');
+    if(isset($_GET['format'])){
+        if(isset($formats[$_GET['format']])){$format=$_GET['format'];}
+    }
+
+    if($frm>0 && $frm<=5){
+        $tbl='maktab_form'.$frm;
+    }
+    if($frm==7) {$tbl='kudakiston_form1';}
+
+    if($frm>0 && $tbl!=''){
+        $dvm = new \APP\MVC\M\DV_M;
+        switch($format){
+            case 'json':
+                $res = $dvm->db2jsongen($tbl, array());
+                echo json_encode($res);
+                exit;
+            break;
+            case 'csv':
+                $res = $dvm->db2csvgen($tbl, array());
+                exit;
+            break;
+            case 'xml':
+                $dvm->db2xmlgen($tbl, array());
+                exit;
+            break;
+        }
+    } else {
+        echo 'error.......'; exit;
+    }
+}
+
 
 }

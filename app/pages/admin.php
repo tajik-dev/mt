@@ -14,14 +14,17 @@ $this->pos['main']='
   	<ul class="nav nav-pills nav-stacked" style="border-radius: 4px;border: 1px solid #efefef;box-shadow: 5px 5px 10px 0px rgba(204,204,204,1);">
 	  <li class="active"><a href="./">'.\CORE::t('mt','Образовательные учреждения').'</a></li>
 	  <li><a href="./?c=mt">'.\CORE::t('mt_list','Список учреждений').'</a></li>
-	  <!--<li><a href="./?c=geo">'.\CORE::t('geo','География').'</a></li>-->
-	  <!--<li><a href="./?c=map&manage">'.\CORE::t('map','Карта').'</a></li>-->
+	  <li><a href="#./?c=apps&act=list">'.\CORE::t('apps_list','Руйхати дархостҳо').'</a></li>
 	</ul>
+	<br>
+	<!--<ul class="nav nav-pills nav-stacked" style="border-radius: 4px;border: 1px solid #efefef;box-shadow: 5px 5px 10px 0px rgba(204,204,204,1);">
+	  <li class="active"><a href="./">'.\CORE::t('reports','Отчеты').'</a></li>
+	</ul>-->
   </div>
   <div class="col-md-4">
   	<ul class="nav nav-pills nav-stacked" style="border-radius: 4px;border: 1px solid #efefef;box-shadow: 5px 5px 10px 0px rgba(204,204,204,1);">
-	  <li class="active"><a href="./">'.\CORE::t('devteam','Группа разработчиков').'</a></li>
-	  <!--<li><a href="./?c=todo">'.\CORE::t('tasks','Задачи').'</a></li>-->
+	  <li class="active"><a href="./">'.\CORE::t('tasks','Масъалаҳо').'</a></li>
+	  <li><a href="#1">Testing...</a></li>
 	</ul>
   </div>
 </div>

@@ -6,6 +6,7 @@ $pages=array(
     'about'=>'about',
     'about_opendata'=>'about_opendata',
     'team'=>'team',
+    'od'=>'od',
     );
 \CORE\UI::init()->set_pages($pages);
 \CORE::init()->set_modules(array(

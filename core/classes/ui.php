@@ -98,7 +98,7 @@ class UI {
             }
         } else {
             \CORE::msg('error','Page is not available');
-            print_r($this->pages);
+            //print_r($this->pages);
         }
     }
 

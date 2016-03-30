@@ -8,7 +8,7 @@ public function get_users(){
 	$users=array();
 	$DB=\DB::init();
 	if($DB->connect()){
-		$sql="SELECT * FROM `n-users` LEFT OUTER JOIN `n-groups` ON `usr-gid`=`gp-gid` 
+		$sql="SELECT * FROM `n-users` LEFT OUTER JOIN `n-groups` ON `usr-gid`=`gp-gid` WHERE `usr-status`>0
 		ORDER BY `usr-login`;";
 		$sth=$DB->dbh->prepare($sql);
 		$sth->execute();
