@@ -132,6 +132,12 @@ class CORE {
         // experimental
         CORE::init()->lng=$lng;
     }
+    public static function add_lng($lng){
+        // experimental
+        foreach ($lng as $alias => $val) {
+            CORE::init()->lng[$alias]=$val;
+        }
+    }
 
     public function is_ajax(){ return $this->ajax; }
 

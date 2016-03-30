@@ -97,9 +97,9 @@ function showMyMarkers(markers) {
             var lat = markers[i][2];
             var popupText = "<div class=\"xpopup\"> \
             <div class=\"xpopup_title\"><strong>"+markers[i][5]+"</strong></div> \
-            <div class=\"xpopup_addr\"><strong>'.\CORE::t('address','Адрес').':</strong> \
+            <div class=\"xpopup_addr\"><strong>'.\CORE::t('address','Address').':</strong> \
             "+(markers[i][6] || "")+"</div> \
-            <div class=\"xpopup_more\"><a href=\"./?c=mt&act=view&id="+markers[i][0]+"\">'.\CORE::t('more...','Подробнее').'...</div> \
+            <div class=\"xpopup_more\"><a href=\"./?c=mt&act=view&id="+markers[i][0]+"\">'.\CORE::t('more...','More').'...</div> \
             </p>";
             var markerLocation = new L.LatLng(lat, lng);
             var marker = new L.Marker(markerLocation, {icon: MyIcons[ "type" + markers[i][4] ]});

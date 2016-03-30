@@ -25,7 +25,7 @@ function __construct(){
     ////$this->get_geox();
 }
 
-public function get_mt_types(){
+public static function get_mt_types(){
     $lang=\CORE::lng();
     $types=array();
     $DB=\DB::init();
