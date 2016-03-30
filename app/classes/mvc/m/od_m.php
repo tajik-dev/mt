@@ -16,6 +16,11 @@ public function get_mt($format=''){
 	$filter_type=0;
     $filter_id=0;
 	$only_geo=false;
+
+    if(isset($_GET['filter_geo'])){$filter_geo=(int) $_GET['filter_geo'];}
+    if(isset($_GET['filter_type'])){$filter_type=(int) $_GET['filter_type'];}
+    if(isset($_GET['filter_id'])){$filter_id=(int) $_GET['filter_id'];}
+
 	if(isset($_POST['filter_geo'])){$filter_geo=(int) $_POST['filter_geo'];}
 	if(isset($_POST['filter_type'])){$filter_type=(int) $_POST['filter_type'];}
     if(isset($_POST['filter_id'])){$filter_id=(int) $_POST['filter_id'];}
@@ -101,7 +106,7 @@ public function get_mt($format=''){
             break;
         
         default:
-            echo json_encode($mt);
+            echo json_encode($mt); exit;
             break;
     }
 }
