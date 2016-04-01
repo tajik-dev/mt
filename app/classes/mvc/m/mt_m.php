@@ -17,12 +17,11 @@ function __construct(){
         break;
     }
     if(isset($_GET['geo'])){
-        $tmp_geo_id=(int) $_GET['type'];
+        $tmp_geo_id=(int) $_GET['geo'];
         if(isset($available_geo[$tmp_geo_id])){
             $this->sel_geo=$available_geo[$tmp_geo_id];
-        }        
+        }
     }
-    ////$this->get_geox();
 }
 
 public static function get_mt_types(){
@@ -440,5 +439,34 @@ public function view_mt($id=0){
     }
     return $mt;
 }
+
+public static function get_available_mt($geos=array(),$mt_id=0){
+    $mts=array();
+    $lng='-'.\CORE::lng();
+    $DB=\DB::init();
+    if($DB->connect()){
+        $sql="SELECT * FROM `mt`";
+        $sth=$DB->dbh->prepare($sql);
+        $sth->execute();
+        $DB->query_count();
+        if($sth->rowCount()>0){
+            while($r=$sth->fetch()){
+                if(isset($geos[$r['mt-geo-id']])){
+                    if($mt_id==0) {
+                        $mts[$r['mt-id']]=$r['mt-id']; //$r['mt-name'.$lng];
+                    } else {
+                        if($r['mt-id']==$mt_id){
+                            $mts[$r['mt-id']]=$r['mt-id']; //$r['mt-name'.$lng];
+                        }
+                    }
+                }                
+            }
+        }
+    }
+    return $mts;
+}
+
+
+
 
 }

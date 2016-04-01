@@ -3,33 +3,46 @@ namespace APP\MVC\V;
 
 class FRM_V {
 
-public function main($model,$act=''){
+public function main($model){
+	$result='';
 	$UI=\CORE\UI::init();
-	$result=''; $lang=\CORE::lng();
-	if($act==''){
-		$result='<div><h4>'.\CORE::t('forms','Формы').':</h4></div>';
-		if($model->selected_mt==0){
-			$result.='Для начала необходимо выбрать учебное учреждение, а затем форму для заполнения:';
-			$mt_m = new \APP\MVC\M\MT_M();
-			$mt = $mt_m->get_mt();
-			
-		} else {
-			$result.='Выберите форму для заполнения.';
+	$mt_types=\APP\MVC\MT_M::get_mt_types();
+	//$result.='<div><h3>'.\CORE::t('forms','Формы').':</h3></div>';
 
-		}
+	// 3. show select html list for geo and mt (and mt_type) if available
+	if($model->mt==0){
+		$result.='select mt (list)'.$UI->html_list($mt_types,'',' id="mt_type"',$model->mt_type,'-- '.\CORE::t('all','Все').' --');
 	} else {
-		if($model->selected_mt==0){
-			header("Location: ./?c=frm"); exit;
+		$result.='select mt (list)';
+		$result.='show list of avail forms for mt ('.$model->mt.'): AND LIST TO CHOOSE ANOTHER mt<br>';
+		foreach ($model->frms as $frm_name => $parts) {
+			$result.=$frm_name.'<br>';
+			if($parts>0){
+				for ($i=1; $i<=$parts; $i++) { 
+					$result.=' -'.$frm_name.'_part'.$i.'<br>';
+				}
+			}
 		}
-		if(isset($_GET['part'])){
-			$part=(int) $_GET['part'];
-			if($part>0){$part='_part'.$part;} // parts
-		} else {$part='';}
-		$path=DIR_APP.'/forms/'.$act.$part.'.php';
-		if(is_readable($path)){ include($path); }
+	}
+
+	$result.=$this->get_frm($model); // before it check mt_id (geo_id) and form (frm)
+
+	return $result;
+}
+
+public function get_frm($model){
+	$result=''; $part='';
+	if($model->frm_part>0){ $part='_part'.$model->frm_part; }
+	$path=DIR_APP.'/forms/'.$model->frm.$part.'.php';
+	if(is_readable($path)){ include($path);	} else {
+		if(isset($_GET['form'])) {
+			\CORE::msg('error',\CORE::t('frm_404','form 404'));
+		}
 	}
 	return $result;
 }
+
+
 
 
 }

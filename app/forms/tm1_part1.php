@@ -1,5 +1,5 @@
 <?php
-$UI->pos['main'].='<form action="./?c=frm&act=tm1&part=1" method="post">
+$result.='<form action="./?c=frm&act=tm1&part=1" method="post">
 <h3>Шакли TM-1 (1)</h3>
 <h4>XII. Маълумот оид ба ҳайати миллии хонандагон аз рӯи забони таълим</h4>
 <hr>
@@ -61,6 +61,3 @@ $UI->pos['main'].='<form action="./?c=frm&act=tm1&part=1" method="post">
 
 </form>
 ';
-$tm=[
-
-];

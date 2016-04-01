@@ -111,24 +111,6 @@ $(document).ready(function() {
 		if($USER->auth()){
 			// authorized users
 			$UI->pos['mainmenu'].='
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('reports','Отчеты').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=frm&act=ps">'.\CORE::t('mt_frm_ps','Шиносномаи мактаб').'</a></li>
-                <li><a href="./?c=frm&act=tm1">'.\CORE::t('mt_frm_tm1','ТМ-1').'</a></li>
-                <li><a href="./?c=frm&act=bmt1">'.\CORE::t('mt_frm_bmt1','БМТ-1').'</a></li>
-                <li><a href="./?c=frm&act=kom1">'.\CORE::t('mt_frm_kom1','КОМ-1').'</a></li>                
-                <li><a href="./?c=frm&act=fb">'.\CORE::t('mt_frm_fb','Форма ФБ').'</a></li>
-              </ul>
-            </li>
-            <!--<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('statistic','Statistic').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=stat">----</a></li>
-              </ul>
-            </li>-->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('visualization','Visualization').' <span class="caret"></span></a>
@@ -180,7 +162,7 @@ $(document).ready(function() {
 	                <!--<li>
 	                	<a href="./?c=user&act=change_password">
 	                		<small><i class="glyphicon glyphicon-pencil"></i>&nbsp;</small> 
-				    		<span class="text">'.\CORE::t('cpasswd','Change password').'</span>
+				    		<span class="text">'.\CORE::t('change_password','Change password').'</span>
 	                	</a>
 	                </li>
 	                -->

@@ -1,5 +1,5 @@
 <?php
-$UI->pos['main'].='
+$result.='
 <form action="./?c=frm&act=ps" method="post">
 
 <h2>ШИНОСНОМАИ МАКТАБ</h2>

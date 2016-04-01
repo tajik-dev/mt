@@ -30,17 +30,28 @@ public static function get_geo(){
     return $geo;
 }
 
-public static function get_available_geo($geo_id=0){
+public static function get_available_geo($geo_id=0,$parent=false){
     $available_geo=array();
+    if($geo_id==0){ $geo_id = (int) \USER::init()->get('geo'); }
     if($geo_id>0){
         $geo=\APP\MVC\M\GEO_M::get_geo();
         if($geo_id==1){
-            $available_geo=array(
-                '2'=>$geo['2']['title'],
-                '3'=>$geo['3']['title'],
-                '4'=>$geo['4']['title'],
-                '5'=>$geo['5']['title'],
+            if($parent){
+                $available_geo=array(
+                    '1'=>$geo['1']['title'],
+                    '2'=>$geo['2']['title'],
+                    '3'=>$geo['3']['title'],
+                    '4'=>$geo['4']['title'],
+                    '5'=>$geo['5']['title'],
                 );
+            } else {
+                $available_geo=array(
+                    '2'=>$geo['2']['title'],
+                    '3'=>$geo['3']['title'],
+                    '4'=>$geo['4']['title'],
+                    '5'=>$geo['5']['title'],
+                );
+            }            
         } else {
             $available_geo[(string) $geo_id]=$geo[(string) $geo_id]['title'];
         }
