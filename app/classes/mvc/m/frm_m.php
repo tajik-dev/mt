@@ -6,21 +6,23 @@ class FRM_M {
 
 public $lang='tj';
 public $lng='';
+public $gid=0;
 public $geo=0;
 public $geos=array(); // available geo
 public $mt=0;
 public $mts=array(); // available mt
-public $mt_type=0;
+public $mt_type=2;
 public $year=2005;
 public $years=array();
 public $frm='';
-public $frm_part=0;
 public $frms=array(
-	'ps'=>0,
-	'tm1'=>2, // number of parts
-	'bmt1'=>0,
-	'kom1'=>0,
-	'fb'=>0,
+	'ps'=>1,
+	'tm1'=>2,
+	'tm1_part1'=>3,
+	'tm1_part2'=>4,
+	'bmt1'=>5,
+	'kom1'=>6,
+	'fb'=>7,
 	);
 
 function __construct(){
@@ -30,37 +32,39 @@ function __construct(){
 	// date parameters
 	$this->year=(int) date('Y');
 	$this->years=array(2005,$this->year);
-	// form selection parameters
-	if(isset($_GET['form'])){
-		if(isset($this->frms[$_GET['form']])){
-			$this->frm=$_GET['form'];
-			if(isset($_GET['part'])){
-				$part=(int) $_GET['part'];
-				if($part>0 && $part<=$this->frms[$_GET['form']]){
-					$this->frm_part=$part;
-				}
-			}
+	if(isset($_GET['year'])){
+		$user_year=(int) $_GET['year'];
+		if($this->years[0] <= $user_year && $user_year <= $this->years[1]) {
+			$this->year = $user_year;
 		}
 	}
-
-	$gid=(int) \USER::init()->get('gid');
+	// mt_type
+	if(isset($_GET['type'])){
+		$this->mt_type=(int) $_GET['type'];
+		if($this->mt_type<0 || $this->mt_type>4) $this->mt_type=2; // default value
+	}
+	// geo, mt
+	$this->gid=(int) \USER::init()->get('gid');
 	// define limitations and availability of geos and mts for this user
 	$this->geo=(int) \USER::init()->get('geo');
 	$this->mt=(int) \USER::init()->get('mt');
-	if($gid==1 || $gid==2) {$parent_geo=true;} else {$parent_geo=false;}
+	if($this->gid==1 || $this->gid==2) {$parent_geo=true;} else {$parent_geo=false;}
 	$this->geos = \APP\MVC\M\GEO_M::get_available_geo($this->geo,$parent_geo);
-	if($gid==4) {$one_mt=$this->mt;} else {$one_mt=0;}
-	$this->mts = \APP\MVC\M\MT_M::get_available_mt($this->geos,$one_mt);
-	// set mt if required
+	if($this->gid==4) {$one_mt=$this->mt;} else {$one_mt=0;}
+	$this->mts = \APP\MVC\M\MT_M::get_available_mt($this->geos,$one_mt,$this->mt_type);
+	// mt
 	if(isset($_GET['mt'])){
-		if(isset($this->mts[$_GET['mt']])) {
-			\SESSION::set('mt',(int) $_GET['mt']);
+		$tmp_mt=(int) $_GET['mt'];
+		if(isset($this->mts[(string) $tmp_mt])) {
+			$this->mt=$tmp_mt;
 		}
 	}
-	$session_mt=\SESSION::get('mt');
-	if($session_mt!=''){
-		$this->mt = (int) $session_mt;
-	}
+	// frm
+	if(isset($_GET['frm'])){
+		if(isset($this->frms[$_GET['frm']])){
+			$this->frm=$_GET['frm'];
+		}
+	}	
 
 }
 

@@ -440,12 +440,14 @@ public function view_mt($id=0){
     return $mt;
 }
 
-public static function get_available_mt($geos=array(),$mt_id=0){
-    $mts=array();
+public static function get_available_mt($geos=array(),$mt_id=0,$mt_type=0){
+    $mts=array(); $mt_type=(int) $mt_type;
     $lng='-'.\CORE::lng();
     $DB=\DB::init();
     if($DB->connect()){
-        $sql="SELECT * FROM `mt`";
+        $where="";
+        if($mt_type>0){$where=" WHERE `mt-type`=".$mt_type;}
+        $sql="SELECT * FROM `mt`".$where;
         $sth=$DB->dbh->prepare($sql);
         $sth->execute();
         $DB->query_count();
@@ -453,10 +455,10 @@ public static function get_available_mt($geos=array(),$mt_id=0){
             while($r=$sth->fetch()){
                 if(isset($geos[$r['mt-geo-id']])){
                     if($mt_id==0) {
-                        $mts[$r['mt-id']]=$r['mt-id']; //$r['mt-name'.$lng];
+                        $mts[$r['mt-id']]=$r['mt-name'.$lng];
                     } else {
                         if($r['mt-id']==$mt_id){
-                            $mts[$r['mt-id']]=$r['mt-id']; //$r['mt-name'.$lng];
+                            $mts[$r['mt-id']]=$r['mt-name'.$lng];
                         }
                     }
                 }                
