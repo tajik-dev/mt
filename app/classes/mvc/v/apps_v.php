@@ -43,7 +43,7 @@ public function app_frm($model){
 	<h2 class="text-center text-danger">'.\CORE::t('app_frm','Application form').'</h2>
 	<div style="display:none;"><img src="./ui/img/small_loader.gif" border="0"></div>
 	<form id="apps_frm" action="./?c=apps&act=create" method="post">
-			<input type="hidden" id="frmhash" name="frmhash" value="'.md5(time()).'">
+			<input type="hidden" id="frmhash" name="frmhash" value="'.md5(microtime()).'">
 			<div id="myRegBody" class="modal-body">
 
 			<h4 class="text-center text-primary">'.\CORE::t('mt_choice','Выбор образовательного учреждения').'</h4><br>
@@ -198,8 +198,11 @@ $("#send").click(function(e){
 });
 </script>
 ';
-
 	return $result;
+}
+
+public function save(){
+	
 }
 
 public function status(){

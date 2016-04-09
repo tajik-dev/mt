@@ -8,6 +8,10 @@ public function __construct($REQUEST,$model,$view){
 	$UI=\CORE\UI::init();
 	switch ($REQUEST->get('act')) {
 
+		case 'v2':
+			$UI->pos['main'].=$view->main($model);
+		break;
+
 		case 'mtlist':
 			echo $view->mt_list($model);
 		break;
