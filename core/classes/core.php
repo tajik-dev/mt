@@ -179,7 +179,7 @@ class CORE {
                     \CORE\UI::init()->static_page('user',true);
                 }
             } else {
-                \CORE\UI::init()->static_page('home');
+                \CORE\UI::init()->static_page('home',true);
             }    
         } else {
             if(isset($modules[$REQUEST->get('c')])){

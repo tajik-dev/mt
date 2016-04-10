@@ -22,14 +22,14 @@ public function app_frm($model){
 		$lng['volidoninfo']='Данные родителей (опекунов)';
 		$lng['send']='Отправить заявку';
 	} else {
-		$lng['app_frm']='Шақли дархост';
+		$lng['app_frm']='Шакли дархост';
 		$lng['rayon']='Ноҳия';
 		$lng['mt']='Муассисаи таълими';
 		$lng['name']='Ном';
 		$lng['surname']='Насаб';
 		$lng['fathername']='Номи падар';
 		$lng['birthday']='Рузи таввалуд';
-		$lng['shahodatnoma']='Рақами шаходатнома';
+		$lng['shahodatnoma']='Рақами шаҳодатнома';
 		$lng['fio']='Номи пурра';
 		$lng['mt_choice']='Имтихоби муассисаи таълими';
 		$lng['kid_info']='Маълумоти кӯдак';
@@ -208,18 +208,18 @@ public function save(){
 public function status(){
 	$result='<div class="row">
 	<div class="col-md-12">
-		<h3 class="text-center text-primary">Проверка статуса Вашей заявки по трекинг-коду:</h3>
+		<h3 class="text-center text-primary">'.\CORE::t('status_check_code','Проверка статуса Вашей заявки по трекинг-коду').':</h3>
 		<div id="xstatuscheck" class="text-center" style="width:500px;margin:auto;margin-top:30px;margin-bottom:100px;">
 		<form id="checkfrm" class="form-inline" action="./?c=reg&act=check">
 		<br><br><br>
 		<div class="form-group">
 		<label class="sr-only" for="yourID">ID (hash)</label>
 		<div class="input-group">
-		<div class="input-group-addon">Ваш код заявки:</div><!-- example: 5579bdad8f2bc -->
+		<div class="input-group-addon">'.\CORE::t('your_code','Your code').':</div><!-- example: 5579bdad8f2bc -->
 		<input type="text" class="form-control" id="yourID" placeholder="" style="font-size:20px;width:170px;">
 		</div>
 		</div>
-		<button id="xcheck" type="button" class="btn btn-primary">Проверить статус</button>
+		<button id="xcheck" type="button" class="btn btn-primary">'.\CORE::t('check_app','Check status').'</button>
 		</form>
 		</div>
 		<br><br><br>

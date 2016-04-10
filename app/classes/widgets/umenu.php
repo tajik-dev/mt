@@ -113,10 +113,10 @@ $(document).ready(function() {
 			$UI->pos['mainmenu'].='
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('visualization','Visualization').' <span class="caret"></span></a>
+              '.\CORE::t('dvs','Visualization').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('datavisual','Data visualization').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('odvs','Open Data visualization').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">
@@ -131,7 +131,7 @@ $(document).ready(function() {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               '.\CORE::t('zayavki','Заявки').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./?c=apps">'.\CORE::t('app_frm','Форма регистрации').'</a></li>
+                <li><a href="./?c=apps">'.\CORE::t('app_frm','Registration form').'</a></li>
                 <li><a href="./?c=apps&act=status">'.\CORE::t('status_check','Status check').'</a></li>
               </ul>
             </li>
@@ -140,7 +140,7 @@ $(document).ready(function() {
               '.\CORE::t('project','Project').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
-                <li><a href="./?c=page&act=team">'.\CORE::t('project_team','Our team').'</a></li>
+                <li><a href="./?c=page&act=team">'.\CORE::t('team','Our team').'</a></li>
               </ul>
             </li>
 			';
@@ -182,10 +182,10 @@ $(document).ready(function() {
 			$UI->pos['mainmenu'].='
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('visualization','Визуализатсия').' <span class="caret"></span></a>
+              '.\CORE::t('dvs','Visualization').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('datavisual','Data visualization').'</a></li>
+                <li><a href="./?c=vs">'.\CORE::t('odvs','Open Data visualization').'</a></li>
               </ul>
             </li>
 			<li class="dropdown">

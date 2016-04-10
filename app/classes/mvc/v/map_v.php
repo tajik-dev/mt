@@ -7,7 +7,7 @@ public function mt_types_list($model){
 	$result='';
     $mt_types=$model->get_mt_types();
     $result=\CORE\UI::init()->html_list($mt_types,'',' id="type_filter" class="form-control"',
-    	$model->sel_type,'-- '.\CORE::t('all_types','Ҳамаи намудҳо').' --');
+    	$model->sel_type,'-- '.\CORE::t('mt_types','Facility types').' --');
 	return $result;
 }
 
@@ -15,7 +15,7 @@ public function mt_list($model){
 	$result='';
     $mt=$model->get_mt($model->sel_type);
     $result=\CORE\UI::init()->html_list($mt,'',' id="id_filter" class="form-control"',
-    	$model->sel_mt,'-- '.\CORE::t('all_facilities','Ҳамаи мауссисаҳо').' --');
+    	$model->sel_mt,'-- '.\CORE::t('all_fac','All facilities').' --');
 	return $result;
 }
 

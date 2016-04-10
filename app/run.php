@@ -49,7 +49,7 @@ if($USER->auth()){
 	        }
 	    }
 	}
-	\CORE::msg('debug','load translations from DB');
+	//\CORE::msg('debug','load translations from DB');
 	\CORE::set_lng($new_lng);
 }
 

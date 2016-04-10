@@ -2,18 +2,16 @@
 $this->pos['main']='
 <div class="jumbotron text-center">
     <h1 style="font-size:40px; line-height: 1.4;">
-    <strong>
-    ОТКРЫТЫЕ ДАННЫЕ<br> ОБЩЕОБРАЗОВАТЕЛЬНЫХ<br> УЧРЕЖДЕНИЙ Г. ДУШАНБЕ
+    <strong>'.\CORE::t('proj_title','OPEN DATA OF EDUCATIONAL FACILITIES OF DUSHANBE CITY').'
     </strong>
     </h1>
-    <!--<p>OpenEdu</p>-->
 </div>
 <div class="row" style="margin-bottom:42px;">
 	<div class="col-sm-4">
 		<div class="main_icon_1">
 			<a href="./?c=od">
 				<div class="main_icon main_icon_od"></div>
-				Открытые данные
+				'.\CORE::t('opendata','Open Data').'
 			</a>
 		</div>
 	</div>
@@ -21,7 +19,7 @@ $this->pos['main']='
 		<div class="main_icon_1">
 			<a href="./?c=map">
 				<div class="main_icon main_icon_map"></div>
-				Карта
+				'.\CORE::t('map','Map').'
 			</a>
 		</div>
 	</div>
@@ -29,14 +27,14 @@ $this->pos['main']='
 		<div class="main_icon_1">
 			<a href="./?c=app&act=create">
 				<div class="main_icon main_icon_app"></div>
-				Форма заявки
+				'.\CORE::t('app_frm','Application form').'
 			</a>
 		</div>
 	</div>	
 </div>
 <div class="row">
 	<h4 class="text-center" style="color:#dc3300;font-weight:bold;">
-	<span>Карта покрытия образовательных учреждений г. Душанбе</span></h4>
+	<span>Харитаи муассисаҳои таълимии ш. Душанбе</span></h4>
 	<div id="mt_map" style="height:480px;margin:0px 18px;border:1px solid #D9D9D9;border-radius:8px;"></div>
 </div>
 ';
