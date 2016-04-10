@@ -316,11 +316,16 @@ $(document).ready(function() {
 
 public function mt($model){
 	$result='';
+	$queue='';
 	if(isset($_GET['id'])){
 		$id=(int) $_GET['id'];
 	}
 	if($id>0){
 		$mt=$model->view_mt($id);
+		$que=\APP\MVC\M\APPS_M::queue($id);
+		if($que>0){
+			$queue='<p><strong>'.\CORE::t('apps','Дархостҳо').':</strong> '.$que.'</p>';
+		}
 		$address='';
 		if($mt['address']!=''){
 			$address=$mt['geoname'].', '.$mt['address'];
@@ -332,9 +337,8 @@ public function mt($model){
 <div style="font-size:18px;">
 <p><strong>'.\CORE::t('mt_type','Facility type').':</strong> '.$mt['type'].'</p>
 <p><strong>'.\CORE::t('address','Address').':</strong> '.$address.'</p>
-<!--<p><strong>Директор:</strong> - </p>-->
 <p><strong>Телефон:</strong> '.$mt['phone'].'</p>
-<p><strong>'.\CORE::t('mobile','Mobile').':</strong> '.$mt['cellphone'].'</p>
+'.$queue.'
 </div>
 ';
 	} else {

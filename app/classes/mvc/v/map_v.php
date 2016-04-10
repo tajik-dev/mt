@@ -102,7 +102,7 @@ function showMyMarkers(markers) {
             <div class=\"xpopup_more\"><a href=\"./?c=mt&act=view&id="+markers[i][0]+"\">'.\CORE::t('more...','More').'...</div> \
             </p>";
             var markerLocation = new L.LatLng(lat, lng);
-            var marker = new L.Marker(markerLocation, {icon: MyIcons[ "type" + markers[i][4] ]});
+            var marker = new L.Marker(markerLocation, {icon: MyIcons[ "type" + markers[i][4] ], xid: markers[i][0] });
             MyMap.addLayer(marker);
             MyMarkers.push(marker);
             marker.bindPopup(popupText,{

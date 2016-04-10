@@ -34,10 +34,10 @@ if($model->mt==0 && isset($_GET['frm'])) {$er=' has-error';} else {$er='';}
 		<label for="frm">'.\CORE::t('frm','Шақли ҳисобот').'</label>
 		<select id="frm" class="form-control">'."\n";
 		$result.='<option value="0"> -- Шақлро имтихоб намоед -- </option>'."\n";
-		foreach ($model->frms as $frm_name => $frm_val) {
+		foreach ($model->frms as $frm_name => $frm_title) {
 			$sel='';
 			if($model->frm==$frm_name) $sel=' selected="selected"';
-			$result.='<option value="'.$frm_name.'"'.$sel.'>'.$frm_name."</option>\n";
+			$result.='<option value="'.$frm_name.'"'.$sel.'>'.$frm_title."</option>\n";
 		}
 		$result.='</select>
 	</div>
@@ -116,7 +116,7 @@ public function get_frm($model){
 	$result='';
 	$path=DIR_APP.'/forms/'.$model->frm.'.php';
 	if(is_readable($path)){ include($path);	} else {
-		if(isset($_GET['frm']) && $_GET['frm']>0) {
+		if(isset($_GET['frm']) && $_GET['frm']!='') {
 			\CORE::msg('error',\CORE::t('frm_404','form 404'));
 		}
 	}

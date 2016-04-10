@@ -16,13 +16,11 @@ public $year=2005;
 public $years=array();
 public $frm='';
 public $frms=array(
-	'ps'=>1,
-	'tm1'=>2,
-	'tm1_part1'=>3,
-	'tm1_part2'=>4,
-	'bmt1'=>5,
-	'kom1'=>6,
-	'fb'=>7,
+	'ps'=>'Шиносномаи мактаб',
+	'tm1_p12'=>'Шакли ТМ-1 (боби-12)',
+	'bmt1'=>'БМТ-1',
+	'kom1'=>'КОМ-1',
+	'fb'=>'ФБ',
 	);
 
 function __construct(){

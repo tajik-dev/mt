@@ -198,3 +198,17 @@ a:hover, a:active {
     font-size: 16px;
     color:gray;
 }
+.tm1_p1_girls_tj {
+    height:140px;
+    min-width:24px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-image: url('../../../img/forms/tm1_part1_az_onho_duhtaron.png');
+}
+.tm1_p1_all_tj {
+    height:57;
+    min-width:24;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-image: url('../../../img/forms/tm1_part1_hamagi.png');
+}

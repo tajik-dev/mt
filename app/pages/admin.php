@@ -24,8 +24,8 @@ $this->pos['main']='
   </div>
   <div class="col-md-4">
   	<ul class="nav nav-pills nav-stacked" style="border-radius: 4px;border: 1px solid #efefef;box-shadow: 5px 5px 10px 0px rgba(204,204,204,1);">
-	  <li class="active"><a href="./">'.\CORE::t('tasks','Масъалаҳо').'</a></li>
-	  <li><a href="#1">Testing...</a></li>
+	  <li class="active"><a href="./">'.\CORE::t('monitoring','Мониторинг').'</a></li>
+	  <li><a href="#test1">Санҷиш...</a></li>
 	</ul>
   </div>
 </div>

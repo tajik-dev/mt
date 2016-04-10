@@ -60,6 +60,8 @@ public function app_frm($model){
 				<span id="mtbox"></span>
 			</div>
 
+			<h5 style="color:silver;">'.\CORE::t('apps','Дархостҳо').': <span id="xqueue"></span></h5>
+
 			<br><h4 class="text-center text-primary">'.\CORE::t('kid_info','Данные ребенка').'</h4><br>
 			<div class="form-group">
 				<label for="sname">'.\CORE::t('surname','Фамилия').' *</label>
@@ -137,6 +139,9 @@ function mt_list(mt){
 	}
 	my_list += "</select>";
 	$("#mtbox").html(my_list);
+	if(mt[0][0]>0) {
+		show_mt_queue(mt[0][0]);
+	}
 }
 
 function update_mt_list(){
@@ -194,6 +199,20 @@ $("#send").click(function(e){
 		e.preventDefault();
 	}
 });
+
+$(document).on("change","#mt",function(){
+	var xmt_id = $("#mt").val();
+	show_mt_queue(xmt_id);
+});
+
+function show_mt_queue(mt_id){
+	$.post("./?c=apps&act=queue&ajax",{mt:mt_id},function(data){
+		if(IsJsonString(data)){
+			my_mt = JSON.parse(data);
+			$("#xqueue").text(my_mt.queue);
+		} else { console.log("failed to get json: " + data); }
+	});
+}
 
 });
 </script>

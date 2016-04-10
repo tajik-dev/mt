@@ -1,10 +1,10 @@
 <?php
 $this->pos['main']='
-<h4 class="text-primary"><strong>Список открытых данных для использования в приложениях третей стороны</strong></h4>
+<h4 class="text-primary"><strong>Руйхати додахои кушод дар форматхои CSV, JSON, XML</strong></h4>
 <br>
 <table class="table table-bordered table-striped table-hover">
     <thead>
-        <tr class="text-danger" style="font-size:18px;"><th>Наименование набора данных</th><th class="text-center">Форматы данных</th></tr>
+        <tr class="text-danger" style="font-size:18px;"><th>Номи дастаи додахо</th><th class="text-center">Форматхо</th></tr>
     </thead>
     <tbody style="font-size:15px;font-weight:bold;color:#444;">
         <tr>

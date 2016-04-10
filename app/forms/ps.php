@@ -304,7 +304,7 @@ $result.='
 
 <div class="form-group row">
     <div class="col-sm-5 text-right">
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="submit" class="btn btn-primary">'.\CORE::t('save','Save').'</button>
     </div>
 </div>
 
