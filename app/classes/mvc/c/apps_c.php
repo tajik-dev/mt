@@ -8,8 +8,12 @@ public function __construct($REQUEST,$model,$view){
 	$UI=\CORE\UI::init();
 	switch ($REQUEST->get('act')) {
 
+		case 'list':
+			$UI->pos['main'].=$view->apps_list($model);
+		break;
+
 		case 'create':
-			//$UI->pos['main'].=$view->app_frm($model);
+			$UI->pos['main'].=$model->save();
 		break;
 
 		case 'status':

@@ -39,3 +39,4 @@ $lng['check_app']='Check status';
 $lng['proj_title']='ДОДАҲОИ КУШОДИ<br> МУАССИСАҲОИ ТАЪЛИМИИ<br> ШАҲРИ ДУШАНБЕ';
 $lng['mt_types']='Facility types';
 $lng['all_fac']='All facilities';
+$lng['app_accepted']='Your application is received';

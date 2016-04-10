@@ -62,12 +62,12 @@ public function app_frm($model){
 
 			<br><h4 class="text-center text-primary">'.\CORE::t('kid_info','Данные ребенка').'</h4><br>
 			<div class="form-group">
-				<label for="name">'.\CORE::t('name','Имя').' *</label>
-				<input type="text" class="form-control" id="name" name="name" placeholder="'.\CORE::t('name','Имя').'" required>
+				<label for="sname">'.\CORE::t('surname','Фамилия').' *</label>
+				<input type="text" class="form-control" id="sname" name="sname" placeholder="'.\CORE::t('surname','Фамилия').'" required>
 			</div>
 			<div class="form-group">
-				<label for="surname">'.\CORE::t('surname','Фамилия').' *</label>
-				<input type="text" class="form-control" id="surname" name="surname" placeholder="'.\CORE::t('surname','Фамилия').'" required>
+				<label for="name">'.\CORE::t('name','Имя').' *</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="'.\CORE::t('name','Имя').'" required>
 			</div>
 			<div class="form-group">
 				<label for="fname">'.\CORE::t('fathername','Отчество').' *</label>
@@ -201,22 +201,18 @@ $("#send").click(function(e){
 	return $result;
 }
 
-public function save(){
-	
-}
-
 public function status(){
 	$result='<div class="row">
 	<div class="col-md-12">
 		<h3 class="text-center text-primary">'.\CORE::t('status_check_code','Проверка статуса Вашей заявки по трекинг-коду').':</h3>
-		<div id="xstatuscheck" class="text-center" style="width:500px;margin:auto;margin-top:30px;margin-bottom:100px;">
-		<form id="checkfrm" class="form-inline" action="./?c=reg&act=check">
+		<div id="xstatuscheck" class="text-center" style="margin:auto;margin-top:30px;margin-bottom:100px;">
+		<form id="checkfrm" class="form-inline" action="./?c=app&act=check">
 		<br><br><br>
 		<div class="form-group">
 		<label class="sr-only" for="yourID">ID (hash)</label>
 		<div class="input-group">
 		<div class="input-group-addon">'.\CORE::t('your_code','Your code').':</div><!-- example: 5579bdad8f2bc -->
-		<input type="text" class="form-control" id="yourID" placeholder="" style="font-size:20px;width:170px;">
+		<input type="text" class="form-control" id="yourID" placeholder="" style="font-size:20px;width:380px;">
 		</div>
 		</div>
 		<button id="xcheck" type="button" class="btn btn-primary">'.\CORE::t('check_app','Check status').'</button>
@@ -227,6 +223,67 @@ public function status(){
 </div>
 ';
 
+return $result;
+}
+
+public function apps_list($model){
+	$lang=\CORE::lng();
+	$mt_m= new \APP\MVC\M\MT_M();
+	$mt=$mt_m->get_mt();
+	$apps=$model->get_apps();
+	$counter=count($apps);
+	$result='<div><h4>'.\CORE::t('apps_list','Руйхати дархостҳо').': 
+	<span class="badge">'.$counter.'</span></h4>
+</div>';
+	if($counter>0){
+		$result.='
+<table class="table table-bordered table-hover" style="width:auto;">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Учреждение</th>
+			<th>Ребенок</th>
+			<th>Родился</th>
+			<th>Метрика</th>
+			<th>Родитель</th>
+			<th>Адрес</th>
+			<th>Почта</th>
+			<th>Телефон</th>
+			<th>Код</th>
+			<th>Статус</th>
+			<th>Дата</th>
+			<th>Коментарий</th>
+		</tr>
+	</thead>
+<tbody>
+';
+$cnt=0;
+		foreach ($apps as $app_id => $app) {
+			$cnt++;
+			$mt_name=$app['mt'];
+			if(isset($mt[$app['mt']])) {$mt_name=$mt[$app['mt']]['mt-name-'.$lang];}
+			$result.='
+<tr>
+	<td>'.$cnt.'</td>
+	<td>'.$mt_name.'</td>
+	<td>'.trim($app['sname'].' '.$app['name'].' '.$app['fname']).'</td>
+	<td>'.$app['birthday'].'</td>
+	<td>'.$app['shahodatnoma'].'</td>
+	<td>'.$app['parentfio'].'</td>
+	<td>'.$app['address'].'</td>
+	<td>'.$app['email'].'</td>
+	<td>'.$app['phone'].'</td>
+	<td title="'.$app['frmhash'].'">'.substr($app['frmhash'], 0, 5).'...</td>
+	<td>'.$app['status'].'</td>
+	<td>'.$app['time'].'</td>
+	<td>'.$app['cmt'].'</td>
+</tr>
+';
+		}
+		$result.="</tbody></table>\n";
+	} else {
+		$result.='<div class="well">'.\CORE::t('norecdb','No records found in the database.').'</div>';
+	}
 	return $result;
 }
 
