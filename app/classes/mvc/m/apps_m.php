@@ -121,5 +121,111 @@ public function save(){
 	}
 }
 
+public static function check(){
+	$code=''; $lang=\CORE::lng();
+	$desc['ru']=array(
+		'Введен некорректный код',
+		'Заявка на обработке',
+		'Заявка отклонена',
+		'Заявка успешно принята',
+		);
+	$desc['tj']=array(
+		'Рамзи нодуруст дохил карда шуд',
+		'Дархост ҳоло дар навбат аст',
+		'Дархост қатъ карда шуд',
+		'Дархост қабул карда шуд',
+		);
+	$status=array(
+		'status'=>0,
+		'desc'=>$desc['tj'][0],
+		'cmt'=>''
+		);
+	if(isset($_POST['code'])){$code=trim($_POST['code']);}
+	if($code!=''){
+		$DB=\DB::init();
+		if($DB->connect()){
+	        $sql="SELECT * FROM `mt-apps` WHERE `ap-code`=:code LIMIT 1;";
+	        $sth=$DB->dbh->prepare($sql);
+	        $sth->execute(array('code'=>$code));
+	        $DB->query_count();
+	        if($sth->rowCount()==1){
+	            $r=$sth->fetch();
+	            $s=(int) $r['ap-status'];
+	            $d='';
+	            if(isset($desc[$lang][$s])) {$d=$desc[$lang][$s];}
+	            $status=array(
+					'status'=>$s,
+					'desc'=>$d,
+					'cmt'=>htmlspecialchars($r['ap-cmt'])
+				);
+	        }
+	    }
+	}
+	echo json_encode($status);
+}
+
+public static function read(){
+	$id=0; $lang=\CORE::lng();
+	$status=array(
+		'status'=>0,
+		'cmt'=>''
+		);
+	if(isset($_POST['id'])){$id=(int) $_POST['id'];}
+	if($id>0){
+		$DB=\DB::init();
+		if($DB->connect()){
+	        $sql="SELECT * FROM `mt-apps` WHERE `ap-id`=:id LIMIT 1;";
+	        $sth=$DB->dbh->prepare($sql);
+	        $sth->execute(array('id'=>$id));
+	        $DB->query_count();
+	        if($sth->rowCount()==1){
+	            $r=$sth->fetch();
+	            $s=(int) $r['ap-status'];
+	            $status=array(
+					'status'=>$s,
+					'cmt'=>trim(htmlspecialchars($r['ap-cmt']))
+				);
+	        }
+	    }
+	}
+	echo json_encode($status);
+}
+
+public static function update(){
+	$app=array(
+		'status'=>0,
+		'cmt'=>'',
+		'id'=>0
+		);
+	if(isset($_POST['id'])){$app['id']=(int) $_POST['id'];}
+	if(isset($_POST['status'])){$app['status']=(int) $_POST['status'];}
+	if(isset($_POST['cmt'])){$app['cmt']=trim($_POST['cmt']);}
+	if($app['id']>0){
+		$DB=\DB::init();
+		if($DB->connect()){
+	        $sql="UPDATE `mt-apps` SET `ap-status`=:status,`ap-cmt`=:cmt WHERE `ap-id`=:id;";
+	        $sth=$DB->dbh->prepare($sql);
+	        $sth->execute($app);
+	        $DB->query_count();
+	    }
+	}
+}
+
+public static function queue($mt=0){
+	$queue=0;
+	if(isset($_POST['mt'])){$mt=(int) $_POST['mt'];}
+	if($mt>0){
+		$DB=\DB::init();
+		if($DB->connect()){
+	        $sql="SELECT * FROM `mt-apps` WHERE `ap-mt`=:mt;";
+	        $sth=$DB->dbh->prepare($sql);
+	        $sth->execute(array('mt'=>$mt));
+	        $DB->query_count();
+	        $queue=$sth->rowCount();
+	    }
+	}
+    return $queue;
+}
+
 
 }

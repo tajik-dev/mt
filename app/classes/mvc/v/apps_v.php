@@ -202,31 +202,86 @@ $("#send").click(function(e){
 }
 
 public function status(){
-	$result='<div class="row">
-	<div class="col-md-12">
-		<h3 class="text-center text-primary">'.\CORE::t('status_check_code','Проверка статуса Вашей заявки по трекинг-коду').':</h3>
-		<div id="xstatuscheck" class="text-center" style="margin:auto;margin-top:30px;margin-bottom:100px;">
-		<form id="checkfrm" class="form-inline" action="./?c=app&act=check">
-		<br><br><br>
-		<div class="form-group">
-		<label class="sr-only" for="yourID">ID (hash)</label>
+	$UI=\CORE\UI::init();
+	$result='
+<h3 class="text-center text-primary">'.\CORE::t('status_check_code','Проверка статуса Вашей заявки по трекинг-коду').':</h3>
+<div id="check_box" class="text-center" style="margin-top:30px;margin-bottom:100px;">
+<div id="check_icon" class="status_icon"></div>
+	<form id="check_frm" class="form-inline" action="./?c=app&act=check">
+	<div class="form-group">
 		<div class="input-group">
-		<div class="input-group-addon">'.\CORE::t('your_code','Your code').':</div><!-- example: 5579bdad8f2bc -->
-		<input type="text" class="form-control" id="yourID" placeholder="" style="font-size:20px;width:380px;">
+			<div class="input-group-addon">'.\CORE::t('your_code','Your code').':</div>
+			<input type="text" class="form-control" id="xcode" placeholder="" style="font-size:20px;width:380px;">
+			<!-- example: bd7e131b064db093c1b7257c77cd92e1 -->
 		</div>
-		</div>
-		<button id="xcheck" type="button" class="btn btn-primary">'.\CORE::t('check_app','Check status').'</button>
-		</form>
-		</div>
-		<br><br><br>
+		<input id="check_status" type="button" class="btn btn-primary" value="'.\CORE::t('check_app','Check status').'">
 	</div>
+	<div style="width:480px;margin-top:30px;margin-left:auto;margin-right:auto;">
+		<div id="xdesc" class="status_txt_1 text-danger"></div>
+		<div id="xcmt" class="status_txt_2"></div>
+	</div>
+	</form>
 </div>
-';
 
+<div style="display:none;" class="status_0"></div>
+<div style="display:none;" class="status_1"></div>
+<div style="display:none;" class="status_2"></div>
+<div style="display:none;" class="status_3"></div>
+';
+$UI->pos['js'].='
+<script>
+$(document).ready(function(){
+
+	function IsJsonString(str) {
+    	try { JSON.parse(str); } catch(e) { return false; }
+    	return true;
+	}
+
+	$("#xcode").keyup(function(){
+		$("#check_status").prop("disabled", false);
+	});
+
+	$("#check_status").click(function(){
+		var xcode = $("#xcode").val().trim();
+		if(xcode.length>0){
+			$("#xcode").parent("div").removeClass("has-error");
+
+			$.post("./?c=apps&act=check&ajax", {code:xcode}, function(data){
+				if(IsJsonString(data)){
+					var obj = JSON.parse(data);
+					var xstatus = obj.status;
+					var xdesc = obj.desc;
+					var xcmt = obj.cmt;
+					$("#xdesc").html(xdesc);
+					$("#xcmt").html(xcmt);
+					$("#check_icon").removeClass();
+					$("#check_icon").addClass("status_icon");
+					$("#check_icon").addClass("status_" + xstatus);
+				} else {
+					alert("Error. Check JS console log.");
+					console.log(data);
+					$("#check_icon").removeClass();
+					$("#check_icon").addClass("status_icon");
+				}
+				$("#check_status").prop("disabled", true);
+			});
+
+		} else {
+			$("#xcode").parent("div").addClass("has-error");
+			$("#xcode").focus();
+			$("#check_icon").removeClass();
+			$("#check_icon").addClass("status_icon");
+		}
+	});
+
+});
+</script>
+';
 return $result;
 }
 
 public function apps_list($model){
+	$UI=\CORE\UI::init();
 	$lang=\CORE::lng();
 	$mt_m= new \APP\MVC\M\MT_M();
 	$mt=$mt_m->get_mt();
@@ -253,6 +308,7 @@ public function apps_list($model){
 			<th>Статус</th>
 			<th>Дата</th>
 			<th>Коментарий</th>
+			<th class="text-center">'.\CORE::t('action','Действие').'</th>
 		</tr>
 	</thead>
 <tbody>
@@ -273,14 +329,73 @@ $cnt=0;
 	<td>'.$app['address'].'</td>
 	<td>'.$app['email'].'</td>
 	<td>'.$app['phone'].'</td>
-	<td title="'.$app['frmhash'].'">'.substr($app['frmhash'], 0, 5).'...</td>
+	<td>'.$app['frmhash'].'</td>
 	<td>'.$app['status'].'</td>
 	<td>'.$app['time'].'</td>
 	<td>'.$app['cmt'].'</td>
+	<td>
+	<div id="'.$app_id.'" class="btn-group btn-group-xs">
+		<button type="button" class="btn btn-default editItem" data-toggle="modal" data-target="#editModal">'.\CORE::t('edit','изменить').'</button>
+	</div>
+	</td>
 </tr>
 ';
 		}
 		$result.="</tbody></table>\n";
+$status_list=array(
+	'1'=>\CORE::t('waiting','Waiting'),
+	'2'=>\CORE::t('rejected','Rejected'),
+	'3'=>\CORE::t('accepted','Accepted'),
+	);
+$edit_body='
+<input type="hidden" id="edit_id" value="0">
+<div class="form-group">
+	<label for="edit_status">'.\CORE::t('status','Status').'</label>
+	'.$UI->html_list($status_list,'',' id="edit_status" class="form-control"').'
+</div>
+<div class="form-group">
+	<label for="edit_cmt">'.\CORE::t('cmt','Comments').'</label>
+	<textarea id="edit_cmt" class="form-control"></textarea>
+</div>
+';
+$result.=$UI->bootstrap_modal('editModal',\CORE::t('edit','Редактировать').':','',$edit_body,'updateItem',\CORE::t('update','Обновить'));
+$UI->pos['js'].='
+<script>
+$(document).ready(function(){
+
+	function IsJsonString(str) {
+    	try { JSON.parse(str); } catch(e) { return false; }
+    	return true;
+	}
+
+	$(".editItem").click(function(){
+		var xid = $(this).parent("div").attr("id");
+		$("#edit_id").val(xid);
+		$.post("./?c=apps&act=read&ajax", {id: xid}, function(data){
+			if(IsJsonString(data)){
+				var obj = JSON.parse(data);
+				$("#edit_status").val(obj.status);
+				$("#edit_cmt").val(obj.cmt);
+			} else {
+				alert("Error. Check JS console log.");
+				console.log(data);
+			}
+		});
+	});
+
+	$("#updateItem").click(function(e){
+		e.preventDefault();
+		var xid = $("#edit_id").val();
+		var xstatus = $("#edit_status").val();
+		var xcmt = $("#edit_cmt").val();
+		$.post("./?c=apps&act=update&ajax", {id: xid, status: xstatus, cmt: xcmt}, function(data){
+			location.reload();
+		});
+	});
+
+});
+</script>';
+
 	} else {
 		$result.='<div class="well">'.\CORE::t('norecdb','No records found in the database.').'</div>';
 	}

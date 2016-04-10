@@ -165,3 +165,36 @@ a:hover, a:active {
 .main_icon_app {
     background-image: url('../img/main_icon_app.png');
 }
+.status_icon {
+    width: 100px;
+    height: 100px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:30px;
+    font-size:72px;
+    color:silver;
+    line-height:100px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.status_0 {
+    background-image: url('../../../img/status0.jpg');
+}
+.status_1 {
+    background-image: url('../../../img/status1.gif');
+}
+.status_2 {
+    background-image: url('../../../img/status2.jpg');
+}
+.status_3 {
+    background-image: url('../../../img/status3.jpg');
+}
+.status_txt_1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+.status_txt_2 {
+    margin-top: 20px;
+    font-size: 16px;
+    color:gray;
+}

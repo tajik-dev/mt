@@ -20,6 +20,23 @@ public function __construct($REQUEST,$model,$view){
 			$UI->pos['main'].=$view->status($model);
 		break;
 
+		case 'check':
+			$model::check();
+		break;
+
+		case 'read':
+			$model::read();
+		break;
+
+		case 'update':
+			$model::update();
+		break;
+
+		case 'queue':
+			$queue=$model::queue();
+			echo json_encode(array('queue'=>$queue));
+		break;
+
 		default:
 			$UI->pos['main'].=$view->app_frm($model);
 		break;
