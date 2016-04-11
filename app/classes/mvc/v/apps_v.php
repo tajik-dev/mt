@@ -8,7 +8,6 @@ public function app_frm($model){
 	$lang=\CORE::lng();
 	$UI=\CORE\UI::init();
 	if($lang=='ru'){
-		$lng['app_frm']='Форма заявки';
 		$lng['rayon']='Район';
 		$lng['mt']='Учебное учреждение';
 		$lng['name']='Имя';
@@ -22,7 +21,6 @@ public function app_frm($model){
 		$lng['volidoninfo']='Данные родителей (опекунов)';
 		$lng['send']='Отправить заявку';
 	} else {
-		$lng['app_frm']='Шакли дархост';
 		$lng['rayon']='Ноҳия';
 		$lng['mt']='Муассисаи таълими';
 		$lng['name']='Ном';
@@ -60,7 +58,7 @@ public function app_frm($model){
 				<span id="mtbox"></span>
 			</div>
 
-			<h5 style="color:silver;">'.\CORE::t('apps','Дархостҳо').': <span id="xqueue"></span></h5>
+			<h5 style="color:silver;">'.\CORE::t('apps','Applications').': <span id="xqueue"></span></h5>
 
 			<br><h4 class="text-center text-primary">'.\CORE::t('kid_info','Данные ребенка').'</h4><br>
 			<div class="form-group">

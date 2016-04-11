@@ -111,25 +111,12 @@ $(document).ready(function() {
 		if($USER->auth()){
 			// authorized users
 			$UI->pos['mainmenu'].='
+            <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
+	        <li><a href="./?c=vs">'.\CORE::t('dvs','Visualization').'</a></li>
+            <li><a href="./?c=od">'.\CORE::t('opendata','Open Data').'</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('dvs','Visualization').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('odvs','Open Data visualization').'</a></li>
-              </ul>
-            </li>
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('opendata','Открытые данные').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','About Open Data').'</a></li>
-                <li><a href="./?c=od">'.\CORE::t('opendata','Open Data').'</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('zayavki','Заявки').' <span class="caret"></span></a>
+              '.\CORE::t('apps','Applications').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=apps">'.\CORE::t('app_frm','Registration form').'</a></li>
                 <li><a href="./?c=apps&act=status">'.\CORE::t('status_check','Status check').'</a></li>
@@ -173,25 +160,12 @@ $(document).ready(function() {
 		} else {
 			// guests
 			$UI->pos['mainmenu'].='
+	        <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
+	        <li><a href="./?c=vs">'.\CORE::t('dvs','Visualization').'</a></li>
+			<li><a href="./?c=od">'.\CORE::t('opendata','Open Data').'</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('dvs','Visualization').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=map">'.\CORE::t('map','Map').'</a></li>
-                <li><a href="./?c=vs">'.\CORE::t('odvs','Open Data visualization').'</a></li>
-              </ul>
-            </li>
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('opendata','Додаҳои боз').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about_opendata">'.\CORE::t('about_opendata','About Open Data').'</a></li>
-                <li><a href="./?c=od">'.\CORE::t('opendata','Open Data').'</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('zayavleniya','Заявления').' <span class="caret"></span></a>
+              '.\CORE::t('apps','Applications').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=apps">'.\CORE::t('app_frm','Application form').'</a></li>
                 <li><a href="./?c=apps&act=status">'.\CORE::t('status_check','Status check').'</a></li>

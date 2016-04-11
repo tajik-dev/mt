@@ -15,7 +15,7 @@ $this->pos['main']='
 	  <li class="active"><a href="./">'.\CORE::t('mt','Образовательные учреждения').'</a></li>
 	  <li><a href="./?c=frm">'.\CORE::t('forms','Формы').'</a></li>
 	  <li><a href="./?c=mt">'.\CORE::t('mt_list','Список учреждений').'</a></li>
-	  <li><a href="./?c=apps&act=list">'.\CORE::t('apps_list','Руйхати дархостҳо').'</a></li>
+	  <li><a href="./?c=apps&act=list">'.\CORE::t('apps_list','Руйхати аризаҳо').'</a></li>
 	</ul>
 	<br>
 	<!--<ul class="nav nav-pills nav-stacked" style="border-radius: 4px;border: 1px solid #efefef;box-shadow: 5px 5px 10px 0px rgba(204,204,204,1);">
