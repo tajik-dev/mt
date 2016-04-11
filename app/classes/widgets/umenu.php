@@ -135,13 +135,7 @@ $(document).ready(function() {
                 <li><a href="./?c=apps&act=status">'.\CORE::t('status_check','Status check').'</a></li>
               </ul>
             </li>
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('project','Project').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
-              </ul>
-            </li>
+			<li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
 			';
 			$UI->pos['user1'].='
 			<ul class="nav navbar-nav">
@@ -203,13 +197,7 @@ $(document).ready(function() {
                 <li><a href="./?c=apps&act=status">'.\CORE::t('status_check','Status check').'</a></li>
               </ul>
             </li>
-			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              '.\CORE::t('project','Project').' <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
-              </ul>
-            </li>
+            <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
 			';
 			$UI->pos['user1'].='<form action="./?c=user&act=login" method="post" class="navbar-form">
 			'.LANGUAGE::SWITCHER();

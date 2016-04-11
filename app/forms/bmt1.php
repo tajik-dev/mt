@@ -69,11 +69,53 @@ $result.='
 </div>
 
 <div class="form-group">
-	<label for="muvofik_mekunad">Шиносномаи техники дорад?</label>
-	<select id="muvofik_mekunad" class="form-control">
+	<label for="techpass_dorad">Шиносномаи техники дорад?</label>
+	<select id="techpass_dorad" class="form-control">
 		<option value="1">Ҳа</option>
 		<option value="2">Не</option>
 	</select>
+</div>
+
+<div class="form-group">
+	<label for="zamin_cert">Сертификати замине, ки дар он мактаб ҷойгир шудааст, дорад?</label>
+	<select id="zamin_cert" class="form-control">
+		<option value="1">Ҳа</option>
+		<option value="2">Не</option>
+	</select>
+</div>
+
+<div class="form-group">
+	<label for="cert_hojagi">Сертификати қитъаи ёрирасони хоҷагии кишоварзӣ дорад?</label>
+	<select id="cert_hojagi" class="form-control">
+		<option value="1">Ҳа</option>
+		<option value="2">Не</option>
+	</select>
+</div>
+
+<div class="form-group">
+	<label for="holati_sadamavi">Мактаб дар холати садамавӣ аст?</label>
+	<select id="holati_sadamavi" class="form-control">
+		<option value="1">Ҳа</option>
+		<option value="2">Не</option>
+	</select>
+</div>
+
+<div class="form-group">
+	<label for="tamiri_asosi">Мактаб таъмири асосиро талаб мекунад?</label>
+	<select id="tamiri_asosi" class="form-control">
+		<option value="1">Ҳа</option>
+		<option value="2">Не</option>
+	</select>
+</div>
+
+<div class="form-group">
+	<label for="maktabi_asosi_nazdik">Мактаби асосии наздиктарин дар кадом масофа ҷойгир шудааст (км)?</label>
+	<input type="text" class="form-control" id="maktabi_asosi_nazdik" placeholder="">
+</div>
+
+<div class="form-group">
+	<label for="maktabi_miena_nazdik">Мактаби миёнаи наздиктарин дар кадом масофа ҷойгир шудааст (км)?</label>
+	<input type="text" class="form-control" id="maktabi_miena_nazdik" placeholder="">
 </div>
 
 ';
