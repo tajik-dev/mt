@@ -53,6 +53,7 @@ if($USER->auth()){
 	//\CORE::msg('debug','load translations from DB');
 	\CORE::set_lng($new_lng);
 }
-
+$UI=\CORE\UI::init();
+$UI->pos['title']=\CORE::t('proj_title2','Додаҳои кушодаи муассисаҳои таълимии ш. Душанбе');
 $UMENU = new \APP\WIDGETS\UMENU;
 $UMENU->show();

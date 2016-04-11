@@ -24,7 +24,7 @@ public function main($model){
 	$result='<div class="row">
 	<div id="mt_map" style="height:478px;"></div>
 	<div id="mt_map_filter">
-		<div class="text-center"><strong>Фильтр:</strong></div>
+		<div class="text-center"><strong>Филтр:</strong></div>
 		<div id="type_filter_box">'.$this->mt_types_list($model).'</div>
 		<div id="id_filter_box">'.$this->mt_list($model).'</div>
 	</div>
