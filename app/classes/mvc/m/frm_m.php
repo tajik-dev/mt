@@ -17,6 +17,7 @@ public $years=array();
 public $frm='';
 public $frms=array(
 	'ps'=>'Шиносномаи мактаб',
+	'tm1_p1'=>'Шакли ТМ-1 (1)',
 	'tm1_p12'=>'Шакли ТМ-1 (12)',
 	'bmt1'=>'БМТ-1',
 	'kom1'=>'КОМ-1',

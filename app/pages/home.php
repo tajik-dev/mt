@@ -25,7 +25,7 @@ $this->pos['main']='
 	</div>
 	<div class="col-sm-4">
 		<div class="main_icon_1">
-			<a href="./?c=app&act=create">
+			<a href="./?c=apps">
 				<div class="main_icon main_icon_app"></div>
 				'.\CORE::t('app_frm','Application form').'
 			</a>
