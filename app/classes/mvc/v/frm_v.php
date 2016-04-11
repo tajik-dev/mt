@@ -17,7 +17,7 @@ if($model->gid!=4){
 	$result.='
 	<div class="col-sm-3">
 	    <label for="mt_type">'.\CORE::t('mt_type','Намуди муассиса').'</label>
-	    '.$UI->html_list($mt_types,'',' id="mt_type" class="form-control"',$model->mt_type,'-- '.\CORE::t('all','Все').' --').'
+	    '.$UI->html_list($mt_types,'',' id="mt_type" class="form-control" disabled',$model->mt_type,'-- '.\CORE::t('all','Все').' --').'
 	</div>';
 if($model->mt==0 && isset($_GET['frm'])) {$er=' has-error';} else {$er='';}
 	$result.='
