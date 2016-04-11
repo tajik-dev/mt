@@ -362,18 +362,18 @@ $cnt=0;
 		}
 		$result.="</tbody></table>\n";
 $status_list=array(
-	'1'=>\CORE::t('waiting','Waiting'),
-	'2'=>\CORE::t('rejected','Rejected'),
-	'3'=>\CORE::t('accepted','Accepted'),
+	'1'=>\CORE::t('waiting','Дар навбат'),
+	'2'=>\CORE::t('rejected','Қатъ шуда'),
+	'3'=>\CORE::t('accepted','Қабул шуда'),
 	);
 $edit_body='
 <input type="hidden" id="edit_id" value="0">
 <div class="form-group">
-	<label for="edit_status">'.\CORE::t('status','Status').'</label>
+	<label for="edit_status">'.\CORE::t('status','Ҳолат').'</label>
 	'.$UI->html_list($status_list,'',' id="edit_status" class="form-control"').'
 </div>
 <div class="form-group">
-	<label for="edit_cmt">'.\CORE::t('cmt','Comments').'</label>
+	<label for="edit_cmt">'.\CORE::t('cmt','Тавзеҳот').'</label>
 	<textarea id="edit_cmt" class="form-control"></textarea>
 </div>
 ';

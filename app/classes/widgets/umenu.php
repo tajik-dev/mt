@@ -140,7 +140,6 @@ $(document).ready(function() {
               '.\CORE::t('project','Project').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
-                <li><a href="./?c=page&act=team">'.\CORE::t('team','Our team').'</a></li>
               </ul>
             </li>
 			';
@@ -209,7 +208,6 @@ $(document).ready(function() {
               '.\CORE::t('project','Project').' <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="./?c=page&act=about">'.\CORE::t('about_project','About the project').'</a></li>
-                <li><a href="./?c=page&act=team">'.\CORE::t('team','Our team').'</a></li>
               </ul>
             </li>
 			';
