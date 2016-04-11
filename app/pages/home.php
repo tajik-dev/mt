@@ -64,10 +64,14 @@ function initMyMap() {
 	MyMap = new L.Map("mt_map");
 	var osmUrl="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 	var osmAttrib="";
-	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});	
+	var osm = new L.TileLayer(osmUrl, {zoomControl: false});	
 	MyMap.setView(new L.LatLng(38.57,68.7781477), 14);
 	MyMap.addLayer(osm);
 	MyMap.attributionControl.setPrefix("");
+
+	// Disable drag and zoom handlers.
+	MyMap.scrollWheelZoom.disable();
+
 }
 
 function getMyIcon(IconColor){
